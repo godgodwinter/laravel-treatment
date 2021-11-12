@@ -24,18 +24,7 @@ class CreateSettingsTable extends Migration
             $table->string('lembaga_kota')->nullable();
 
             $table->string('lembaga_logo')->nullable();
-            $table->string('tapelaktif')->nullable();
-            $table->string('nominaltagihandefault')->nullable();
-            $table->string('moodleuser')->nullable();
-            $table->string('moodlepass')->nullable();
-            $table->string('passdefaultsiswa')->nullable();
-            $table->string('passdefaultpegawai')->nullable();
-            $table->string('passdefaultortu')->nullable();
-            $table->string('sekolahlogo')->nullable();
             $table->string('sekolahttd')->nullable();
-            $table->string('sekolahttd2')->nullable();
-            $table->string('minimalpembayaranujian')->nullable();
-            $table->string('semesteraktif')->nullable();
             $table->timestamps();
         });
     }

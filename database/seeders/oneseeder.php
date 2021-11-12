@@ -33,24 +33,15 @@ class oneseeder extends Seeder
 
           //settings SEEDER
         DB::table('settings')->insert([
-            'app_nama' => 'Nama App',
-            'app_namapendek' => 'St',
+            'app_nama' => 'Ramdani Skincare',
+            'app_namapendek' => 'KRS',
             'paginationjml' => '10',
-            'lembaga_nama' => 'LEMBAGA PSIKOLOGI PELITA WACANA',
-            'lembaga_jalan' => 'Jl.Simpang Wilis 2 Kav. B',
-            'lembaga_telp' => '0341-581777',
+            'lembaga_nama' => 'Klinik Kecantikan Ramdani Skincare',
+            'lembaga_jalan' => 'Jl. Raya Jatikerto No. 78, Kec. Kromengan, Kab. Malang',
+            'lembaga_telp' => '0341-123456',
             'lembaga_kota' => 'Malang',
             'lembaga_logo' => 'assets/upload/logo.png',
-            'tapelaktif' => '2021/2022',
-            'nominaltagihandefault' => '1000000',
-            'passdefaultsiswa' => 'siswa123',
-            'passdefaultpegawai' => '12345678',
-            'passdefaultortu' => 'ortu123',
-            'sekolahlogo' => '',
             'sekolahttd' => 'Nama Kepala Sekolah M.Pd',
-            'sekolahttd2' => 'Nama Kepala Sekolah M.Pd', //masih konsep
-            'minimalpembayaranujian' => 70, //untuk melihat pass dan user moodle
-            'semesteraktif' => 1, //semesteraktif
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
          ]);

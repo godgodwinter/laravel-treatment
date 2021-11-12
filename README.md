@@ -31,15 +31,15 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">SIM PreAlpha 2.0.21.10.02</h3>
+  <h3 align="center">Sistem Treatment PreAlpha 2.0.21.10.02</h3>
 
   <p align="center">
-   Sistem Informasi Manajemen Sekolah
+   Sistem Treatment Klinik kecantikan Scincare
     <br />
-    <a href="https://github.com/godgodwinter/sim-v2"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/godgodwinter/laravel-treatment"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://sim.baemon.web.id/">View Demo</a>
+    <a href="https://treatment.baemon.web.id/">View Demo</a>
     ·
     <a href="https://twitter.com/kakadlz">Report Bug</a>
     ·
@@ -74,11 +74,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot-dashboardlm2]](https://github.com/godgodwinter/sim-v2)
-[![Product Name Screen Shot][product-screenshot-dashboardlm3]](https://github.com/godgodwinter/sim-v2)
-<!-- [![Product Name Screen Shot][product-classdiagram1]](https://github.com/godgodwinter/sim-v2) -->
+[![Product Name Screen Shot][product-screenshot-dashboardlm2]](https://github.com/godgodwinter/laravel-treatment)
+[![Product Name Screen Shot][product-screenshot-dashboardlm3]](https://github.com/godgodwinter/laravel-treatment)
+<!-- [![Product Name Screen Shot][product-classdiagram1]](https://github.com/godgodwinter/laravel-treatment) -->
 
-Sistem administrasi keuangan sekolah
+Sistem Treatment Klinik kecantikan Scincare
 
 ### Built With
 
@@ -100,11 +100,10 @@ Library/Plugin
 
 
 Fitur Utama
-* [Menejemen Pembayaran Tagihan Siswa](#)
-* [Menejemen Penilaian Siswa per Materi pada Kompetensi Dasar](#)
-* [Menejemen Bank Soal untuk di Import pada Moodle melalui XML](#)
-* [Guru dapat Mengisi nilai, Kompetensi dasar, Bank Soal dan Nilai Siswa](#)
-* [Siswa dapat melihat nilai dan tagihan serta materi dari guru](#)
+* [Menejemen Data Produk dan Treatment](#)
+* [Menejemen Dokter](#)
+* [Menejemen Member dan Penjadwalan Perawatan](#)
+* [Pengingat SMS gateway](#)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -124,7 +123,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
 1. Clone the repo
    ```sh
-   git clone https://github.com/godgodwinter/sim-v2.git
+   git clone https://github.com/godgodwinter/laravel-treatment.git
    ```
 2. Install menggunakan composer
    ```sh
@@ -180,7 +179,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Kukuh Setya Nugraha - [@kakadlz](https://twitter.com/kakadlz) 
 Kukuh Setya Nugraha - [@kukuh.sn](https://www.instagram.com/kukuh.sn/) 
 
-Project Link: [https://github.com/godgodwinter/sim-v2](https://github.com/godgodwinter/sim-v2)
+Project Link: [https://github.com/godgodwinter/laravel-treatment](https://github.com/godgodwinter/laravel-treatment)
 
 
 
@@ -189,16 +188,16 @@ Project Link: [https://github.com/godgodwinter/sim-v2](https://github.com/godgod
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/godgodwinter/sim-v2.svg?style=for-the-badge
-[contributors-url]: https://github.com/godgodwinter/sim-v2/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/godgodwinter/sim-v2.svg?style=for-the-badge
-[forks-url]: https://github.com/godgodwinter/sim-v2/network/members
-[stars-shield]: https://img.shields.io/github/stars/godgodwinter/sim-v2.svg?style=for-the-badge
-[stars-url]: https://github.com/godgodwinter/sim-v2/stargazers
-[issues-shield]: https://img.shields.io/github/issues/godgodwinter/sim-v2.svg?style=for-the-badge
-[issues-url]: https://github.com/godgodwinter/sim-v2/issues
-[license-shield]: https://img.shields.io/github/license/godgodwinter/sim-v2.svg?style=for-the-badge
-[license-url]: https://github.com/godgodwinter/sim-v2/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/godgodwinter/laravel-treatment.svg?style=for-the-badge
+[contributors-url]: https://github.com/godgodwinter/laravel-treatment/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/godgodwinter/laravel-treatment.svg?style=for-the-badge
+[forks-url]: https://github.com/godgodwinter/laravel-treatment/network/members
+[stars-shield]: https://img.shields.io/github/stars/godgodwinter/laravel-treatment.svg?style=for-the-badge
+[stars-url]: https://github.com/godgodwinter/laravel-treatment/stargazers
+[issues-shield]: https://img.shields.io/github/issues/godgodwinter/laravel-treatment.svg?style=for-the-badge
+[issues-url]: https://github.com/godgodwinter/laravel-treatment/issues
+[license-shield]: https://img.shields.io/github/license/godgodwinter/laravel-treatment.svg?style=for-the-badge
+[license-url]: https://github.com/godgodwinter/laravel-treatment/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.instagram.com/kukuh.sn/
 [product-screenshot-dashboardlm2]: images/dashboardlm2.png
