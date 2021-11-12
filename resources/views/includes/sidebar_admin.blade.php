@@ -15,6 +15,7 @@
                     <li {{$pages=='kelas' ? 'class=active' : ''}}><a class="nav-link" href="#"><i class="fas fa-school"></i><span>Treatment</span></a></li>
                     <li {{$pages=='siswa' ? 'class=active' : ''}}><a class="nav-link" href="#"><i class="fas fa-user-graduate"></i><span>Dokter</span></a></li>
                     <li {{$pages=='guru' ? 'class=active' : ''}}><a class="nav-link" href="#"><i class="fas fa-chalkboard-teacher"></i><span>Member</span></a></li>
+                    <li {{$pages=='guru' ? 'class=active' : ''}}><a class="nav-link" href="#"><i class="fas fa-chalkboard-teacher"></i><span>Jadwal Treatment</span></a></li>
                     <li {{$pages=='users' ? 'class=active' : ''}}><a class="nav-link" href="{{route('users')}}"><i class="fas fa-building"></i> <span>User</span></a></li>
                 </ul>
             </li>
