@@ -38,7 +38,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 Route::get('/', function () {
-    return view('landing');
+    return view('landing.pages.index');
 });
 
 
