@@ -16,6 +16,7 @@ class CreatePenjadwalanTable extends Migration
         Schema::create('penjadwalan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('jadwaltreatment_id');
+            $table->string('treatment_id');
             $table->string('member_id');
             $table->string('status')->nullable();
             $table->string('pengingat')->nullable();
