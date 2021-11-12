@@ -22,12 +22,9 @@
                             <h4>Jumlah Siswa</h4>
                           </div>
                           <div class="card-body">
-                            @php
-                                $jmlsiswa=DB::table('siswa')->whereNull('deleted_at')->count();
-                                $jmlkelas=DB::table('kelas')->count();
-                            @endphp
-                            {{$jmlsiswa}} Siswa
-                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> {{$jmlkelas}} Kelas</div>
+                          
+                            1 Siswa
+                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 1Kelas</div>
 
                           </div>
                         </div>
@@ -43,10 +40,8 @@
                             <h4>Jumlah Guru</h4>
                           </div>
                           <div class="card-body">
-                            @php
-                                $jmlguru=DB::table('guru')->whereNull('deleted_at')->count();
-                            @endphp
-                            {{$jmlguru}} Guru
+                           
+                            1 Guru
                           </div>
                         </div>
                       </div>
@@ -61,12 +56,9 @@
                             <h4>Jumlah Mata Pelajaran</h4>
                           </div>
                           <div class="card-body">
-                            @php
-                                $jmlmapel=DB::table('mapel')->whereNull('deleted_at')->count();
-                                $jmlmapelperkelas=DB::table('dataajar')->whereNull('deleted_at')->count();
-                            @endphp
-                            {{$jmlmapel}} Mapel
-                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> Total {{$jmlmapelperkelas}} Mapel</div>
+                         
+                            2 Mapel
+                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> Total 1 Mapel</div>
                           </div>
                         </div>
                       </div>
@@ -81,12 +73,9 @@
                             <h4>Bank Soal</h4>
                           </div>
                           <div class="card-body">
-                            @php
-                                $jmlkompetensidasar=DB::table('kompetensidasar')->whereNull('deleted_at')->count();
-                                $jmlbanksoal=DB::table('banksoal')->whereNull('deleted_at')->count();
-                            @endphp
-                                {{$jmlbanksoal}} Soal
-                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span>  {{$jmlkompetensidasar}} Silabus</div>
+                            
+                                3 Soal
+                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 1 Silabus</div>
                           </div>
                         </div>
                       </div>
@@ -99,30 +88,17 @@
                     </div>
                     <div class="card-body">
                       <div class="row">
-                        @forelse ($mapel as $m)
-                        @php
-                        $totalkd=0;
-                        $totalsoal=0;
-                            $ambildataajar=DB::table('dataajar')->where('mapel_id',$m->id)->whereNull('deleted_at')->get();
-                            foreach ($ambildataajar as $d) {
-                                $jmlkd=DB::table('kompetensidasar')->whereNull('deleted_at')->where('dataajar_id',$d->id)->count();
-                                $totalkd+=$jmlkd;
-                                $jmlsoal=DB::table('banksoal')->whereNull('deleted_at')->where('dataajar_id',$d->id)->count();
-                                $totalsoal+=$jmlsoal;
-                            }
-                        @endphp
+                       
                         <div class="col text-center col-6 col-md-3 mt-2">
 
-                            <img alt="image" src="https://ui-avatars.com/api/?name={{$m->nama}}&color=7F9CF5&background=EBF4FF&length=3" class="img-thumbnail" data-toggle="tooltip" title="{{$m->nama}}" width="100px" height="100px" style="object-fit:cover;">
+                            <img alt="image" src="https://ui-avatars.com/api/?name=aaa&color=7F9CF5&background=EBF4FF&length=3" class="img-thumbnail" data-toggle="tooltip" title="zxczc" width="100px" height="100px" style="object-fit:cover;">
 
-                            <div class="mt-2 font-weight-bold">{{$m->nama}}</div>
-                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> {{$totalkd}} Silabus </div>
-                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> {{$totalsoal}} Soal </div>
+                            <div class="mt-2 font-weight-bold">1</div>
+                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 1 Silabus </div>
+                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span>1 Soal </div>
                           </div>
 
-                        @empty
-
-                        @endforelse
+                     
 
 
                       </div>
