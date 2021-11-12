@@ -10,13 +10,131 @@ body{
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
+    background-color: var(--light-gray);
+}
+
+@media screen and (max-width: 600px){
+    #logoCompany{
+        display: none;
+    }
+
+    #container{
+        background-color: yellowgreen;
+    }
+
+    #wrapper{
+        display: flex;
+    }
+
+    #loginForm{
+        background-color: var(--cultured);
+        height: 100%;
+        width: 100%;
+    }
+
+    #loginForm h1{
+        padding: 35px 35px 0 35px;
+        margin: 0;
+        font-weight: 500;
+        display: block;
+    }
+
+    #loginForm span{
+        /* background-color: blue; */
+        margin: 0;
+        padding-left: 35px;
+        padding-top: 5px;
+        font-size: 14px;
+        display: block;
+        /* font-style: italic; */
+    }
+
+    #inputField{
+        /* background-color: blueviolet; */
+        padding-left: 35px;
+        padding-right: 35px;
+        margin-top: 20px;
+    }
+
+    #inputField input{
+        background-color: var(--cultured);
+        width: 100%;
+        display: block;
+        outline: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border: 0;
+        /* border-radius: 5px; */
+        border-bottom: 1px solid #747474;
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+
+    #inputField input:focus{
+        border-bottom: 1px solid black;
+        border-radius: 5px;
+    }
+
+    #inputSignIn{
+        padding-left: 35px;
+        padding-right: 35px;
+        margin-top: 30px;
+    }
+
+    #inputSignIn input{
+        cursor: pointer;
+        margin: auto;
+        background-color: var(--cultured);
+        width: 100%;
+        display: block;
+        outline: none;
+        padding: 0.75rem;
+        border: 1px solid #747474;
+        border-radius: 3px;
+        inline-size: 100%;
+        font-family: 'Rubik', sans-serif;
+        font-size: 14px;
+        transition: all 0.3s;
+        text-transform: uppercase;
+    }
+
+    #inputSignIn input:hover{
+        background-color: var(--davys-grey);
+        color: var(--cultured);
+    }
+
+    #loginForm p{
+        font-size: .65em;
+        padding-left: 35px;
+        margin-bottom: 2rem;
+        color: var(--davys-grey);
+    }
+
+    #loginForm a{
+        text-decoration: none;
+        outline: none;
+        color: var(--davys-grey);
+        font-weight: 800;
+    }
+
+    #loginForm a:visited{
+        color: var(--davys-grey);
+    }
+
+    #loginForm a:hover{
+        color: black;
+    }
+
+
 }
 
 /* admin login*/
 
 #container{
     display: flex;
-    background-color: var(--light-gray);
+    /* background-color: var(--light-gray); */
     height: 100vh;
     justify-content: center;
     align-items: center;
@@ -135,13 +253,18 @@ body{
     color: black;
 }
 
+#loginForm #wrong{
+    color: red;
+    font-size: 0.7em;
+    font-weight: 800;
+}
+
 /* logo */
 
 #logoCompany{
     height: 100%;
     width: 300px;
-    /* background-color: blue; */
-    background-image: url(/assets/img/kopek/your-image.jpg);
+    background-image: url(assets/your-image.jpg);
     background-repeat: no-repeat;
     background-position: -350px -30px;
 }
@@ -181,7 +304,6 @@ body{
 /* credit */
 
 #credit{
-    /* background-color: aqua; */
     display: block;
     margin-top: 20px;
     padding: 0;
@@ -211,6 +333,82 @@ body{
 }
 
 #icon {
-    /* background-color: rebeccapurple; */
     margin-top: 5px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 600px) {
+    #container{
+        display: flex;
+        background-color: var(--light-gray);
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+    }
+
+    #wrapper{
+        display: flex;
+        align-items: flex-start;
+        background-color: var(--cultured);
+        height: max-content;
+        width: 80%;
+        border-radius: 5px;
+        box-shadow: 0 10px 6px -6px;
+        justify-content: center;
+        flex-flow: column-reverse;
+    }
+
+    #loginForm{
+        background-color: var(--cultured);
+        height: max-content;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    #loginForm h1{
+        padding: 35px 35px 0 35px;
+        margin: 0;
+        font-weight: 500;
+        display: block;
+    }
+
+    #logoCompany{
+        height: 100%;
+        width: 100%;
+        background-image: url(assets/your-image.jpg);
+        background-repeat: no-repeat;
+        background-position: -300px -30px;
+    }
+
+    #opacity{
+        border-radius: 5px;
+    }
+
+    #opacity img{
+        width: 80px;
+        height: 80px;
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+    }
+
+    #opacity p{
+        font-weight: 500;
+        color: white;
+        font-size: 1.25em;
+        display: inline-block;
+    }
+
+    #credit p{
+        font-size: 0.8em;
+    }
+
+    #loginForm p#wrong{
+        margin-bottom: 0;
+    }
+
+    #loginForm #inputSignIn{
+        margin-top: 15px;
+    }
 }
