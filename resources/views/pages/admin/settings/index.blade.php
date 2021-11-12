@@ -72,7 +72,7 @@ Pengaturan
                     <div class="row">
 
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="lembaga_nama">Nama Sekolah <code>*)</code></label>
+                            <label for="lembaga_nama">Nama Instansi/lembaga <code>*)</code></label>
                             <input type="text" name="lembaga_nama" id="lembaga_nama" class="form-control @error('lembaga_nama') is-invalid @enderror" value="{{$datas->lembaga_nama}}" required>
                             @error('lembaga_nama')<div class="invalid-feedback"> {{$message}}</div>
                             @enderror
@@ -100,18 +100,12 @@ Pengaturan
                         </div>
 
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="sekolahttd">Nama Kepala Sekolah <code>*)</code></label>
+                            <label for="sekolahttd">TTD<code>*)</code></label>
                             <input type="text" name="sekolahttd" id="sekolahttd" class="form-control @error('sekolahttd') is-invalid @enderror" value="{{$datas->sekolahttd}}" required >
                             @error('sekolahttd')<div class="invalid-feedback"> {{$message}}</div>
                             @enderror
                         </div>
 
-                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="sekolahttd2">TTD Kepala Sekolah 2 <code>*)</code></label>
-                            <input type="text" name="sekolahttd2" id="sekolahttd" class="form-control @error('sekolahttd2') is-invalid @enderror" value="{{$datas->sekolahttd2}}" required >
-                            @error('sekolahttd2')<div class="invalid-feedback"> {{$message}}</div>
-                            @enderror
-                        </div>
 
 
 
@@ -121,79 +115,12 @@ Pengaturan
             </div>
             <div class="card">
                 <div class="card-header">
-                <h4>Password dan Data Default</h4>
+                <h4>Logo</h4>
                 </div>
                 <div class="card-body">
 
                     <div class="row">
 
-                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="tapelaktif">Tapel <code>*)</code></label>
-                            <select name="tapelaktif" id="tapelaktif" class="form-control @error('tapelaktif') is-invalid @enderror">
-
-
-                                <option>{{$datas->tapelaktif}}</option>
-
-                            @foreach ($tapel as $t)
-                                <option>{{ $t->nama }}</option>
-                            @endforeach
-                            </select>
-                            {{-- <input type="text" name="tapelaktif" id="tapelaktif" class="form-control @error('tapelaktif') is-invalid @enderror" value="{{$datas->tapelaktif}}" required> --}}
-                            @error('tapelaktif')<div class="invalid-feedback"> {{$message}}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="semester">Semester <code>*)</code></label>
-                            <select name="semesteraktif" id="semesteraktif" class="form-control @error('semesteraktif') is-invalid @enderror">
-                                @if ($datas->semesteraktif=='1')
-                                <option value="1">{{$datas->semesteraktif.'(SATU)'}}</option>
-                                @elseif ($datas->semesteraktif=='2')
-                                <option value="2">{{$datas->semesteraktif.'(DUA)'}}</option>
-                                @endif
-
-                                <option value="1">1(SATU)</option>
-                                <option value="2">2(DUA)</option>
-                            </select>
-                            {{-- <input type="text" name="tapelaktif" id="tapelaktif" class="form-control @error('tapelaktif') is-invalid @enderror" value="{{$datas->tapelaktif}}" required> --}}
-                            @error('semesteraktif')<div class="invalid-feedback"> {{$message}}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="nominaltagihandefault">Nominal Default Tagihan Atur<br>{{number_format($datas->nominaltagihandefault,2);}} <code>*)</code></label>
-                            <input type="number" name="nominaltagihandefault" id="nominaltagihandefault" class="form-control @error('nominaltagihandefault') is-invalid @enderror" value="{{$datas->nominaltagihandefault}}" required >
-                            @error('nominaltagihandefault')<div class="invalid-feedback"> {{$message}}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="minimalpembayaranujian">Minimal Pembayaran Ujian<br> <code>*)</code></label>
-                            <input type="number" name="minimalpembayaranujian" id="minimalpembayaranujian" class="form-control @error('minimalpembayaranujian') is-invalid @enderror" value="{{$datas->minimalpembayaranujian}}" required >
-                            @error('minimalpembayaranujian')<div class="invalid-feedback"> {{$message}}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="passdefaultsiswa">Password Siswa Default <code>*)</code></label>
-                            <input type="text" name="passdefaultsiswa" id="passdefaultsiswa" class="form-control @error('passdefaultsiswa') is-invalid @enderror" value="{{$datas->passdefaultsiswa}}" required>
-                            @error('passdefaultsiswa')<div class="invalid-feedback"> {{$message}}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="passdefaultortu">Password Ortu Default <code>*)</code></label>
-                            <input type="text" name="passdefaultortu" id="passdefaultortu" class="form-control @error('passdefaultortu') is-invalid @enderror" value="{{$datas->passdefaultortu}}" required>
-                            @error('passdefaultortu')<div class="invalid-feedback"> {{$message}}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="passdefaultpegawai">Password pegawai Default <code>*)</code></label>
-                            <input type="text" name="passdefaultpegawai" id="passdefaultpegawai" class="form-control @error('passdefaultpegawai') is-invalid @enderror" value="{{$datas->passdefaultpegawai}}" required>
-                            @error('passdefaultpegawai')<div class="invalid-feedback"> {{$message}}</div>
-                            @enderror
-                        </div>
 
 
 
@@ -234,7 +161,7 @@ Pengaturan
 
                                     <div class="col-sm-4 col-md-4">
                                       <div id="image-preview" class="image-preview">
-                                        <label for="image-upload" id="image-label2">Ganti Logo Sekolah</label>
+                                        <label for="image-upload" id="image-label2">Ganti Logo </label>
                                         <input type="file" name="lembaga_logo" id="image-upload" class="@error('lembaga_logo')
                                         is_invalid
                                     @enderror"  accept="image/png, image/gif, image/jpeg" />
@@ -257,33 +184,25 @@ Pengaturan
                 </div>
                 <div class="card-body">
 
-                    <form action="{{route('seeder.kelas')}}" method="post" class="d-inline">
+                    <form action="#" method="post" class="d-inline">
                         @csrf
-                        <button class="btn btn-info">Seeder Data Kelas</button>
+                        <button class="btn btn-info">Seeder Data Produk, Dokter dan Treatment</button>
                     </form>
 
-                    <form action="{{route('seeder.siswa')}}" method="post" class="d-inline">
+                    <form action="#" method="post" class="d-inline">
                         @csrf
-                        <button class="btn btn-info">Seeder Data Siswa</button>
-                    </form>
-
-
-                    <form action="{{route('seeder.guru')}}" method="post" class="d-inline">
-                        @csrf
-                        <button class="btn btn-info">Seeder Data Guru</button>
+                        <button class="btn btn-info">Seeder Data Mastering Penjadwalan</button>
                     </form>
 
 
-                    {{-- <form action="{{route('seeder.mapel')}}" method="post" class="d-inline">
+                    <form action="#" method="post" class="d-inline">
                         @csrf
-                        <button class="btn btn-info">Seeder Data Mapel</button>
-                    </form> --}}
-
-
-                    <form action="{{route('kko')}}" method="get" class="d-inline">
-                        @csrf
-                        <button class="btn btn-success">Fungsi KKO</button>
+                        <button class="btn btn-info">Seeder Data Pasien</button>
                     </form>
+
+
+
+
                     <br>
                     <br>
 

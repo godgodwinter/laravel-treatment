@@ -20,15 +20,6 @@ class settings extends Model
         'lembaga_telp',
         'lembaga_kota',
         'lembaga_logo',
-        'moodleuser',
-        'moodlepass',
-        'passdefaultsiswa',
-        'passdefaultpegawai',
-        'passdefaultortu',
         'sekolahlogo',
-        'sekolahttd',
-        'sekolahttd2',
-        'minimalpembayaranujian',
-        'semesteraktif',
     ];
 }
