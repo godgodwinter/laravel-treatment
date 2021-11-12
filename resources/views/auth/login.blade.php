@@ -30,7 +30,7 @@
 
 
             <div class="card card-primary">
-              <div class="card-header text-center"><h4>SISTEM INFOMASI MANAJEMEN SEKOLAH</h4>
+              <div class="card-header text-center"><h4>SISTEM TREATMENT KLINIK KECANTIKAN</h4>
               </div>
 
               <div class="card-body">
@@ -38,7 +38,7 @@
                     @csrf
                 {{-- <form method="POST" action="#" class="needs-validation" novalidate=""> --}}
                   <div class="form-group">
-                    <label for="identity">Email / NIS / NIG / Username</label>
+                    <label for="identity">Email  / Username</label>
                     <input id="identity" type="text" class="form-control" name="identity" tabindex="1" required autofocus>
 
                     @error('identity')
@@ -139,7 +139,7 @@
                 </div>
             </div>
 
-            <div class="card card-primary col-12 col-md-3 ml-md-4">
+            {{-- <div class="card card-primary col-12 col-md-3 ml-md-4">
 
 
                 <div class="card-body">
@@ -161,7 +161,7 @@
                     <p>Password : siswa123</p>
                 </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
         </div>
