@@ -184,7 +184,7 @@ Pengaturan
                 </div>
                 <div class="card-body">
 
-                    <form action="#" method="post" class="d-inline">
+                    <form action="{{route('seeder.dokter')}}" method="post" class="d-inline">
                         @csrf
                         <button class="btn btn-info">Seeder Data Produk, Dokter dan Treatment</button>
                     </form>

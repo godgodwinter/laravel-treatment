@@ -17,12 +17,12 @@ class member extends Model
             'nama',
             'jk',
             'telp',
-            'usia',
+            'tgllahir',
             'alamat',
             'users_id',
         ];
 
-        
+
         public function users()
         {
             return $this->belongsTo('App\Models\User');

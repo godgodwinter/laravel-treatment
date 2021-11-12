@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminapicontroller;
 use App\Http\Controllers\admindashboardcontroller;
+use App\Http\Controllers\adminprodukcontroller;
 use App\Http\Controllers\adminprosescontroller;
 use App\Http\Controllers\adminseedercontroller;
 use App\Http\Controllers\adminsettingscontroller;
@@ -27,9 +28,9 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     //settings
     Route::get('/admin/settings', [adminsettingscontroller::class, 'index'])->name('settings');
     Route::put('/admin/settings/{id}', [adminsettingscontroller::class, 'update'])->name('settings.update');
-    Route::put('/admin/seeder/produk', [adminseedercontroller::class, 'produk'])->name('seeder.produk');
-    Route::put('/admin/seeder/dokter', [adminseedercontroller::class, 'dokter'])->name('seeder.dokter');
-    Route::put('/admin/seeder/treatment', [adminseedercontroller::class, 'treatment'])->name('seeder.treatment');
+    Route::get('/admin/seeder/produk', [adminseedercontroller::class, 'produk'])->name('seeder.produk');
+    Route::post('/admin/seeder/dokter', [adminseedercontroller::class, 'dokter'])->name('seeder.dokter');
+    Route::get('/admin/seeder/treatment', [adminseedercontroller::class, 'treatment'])->name('seeder.treatment');
 
     //MASTERING
     //USER

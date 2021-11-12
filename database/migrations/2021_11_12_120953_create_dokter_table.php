@@ -19,7 +19,7 @@ class CreateDokterTable extends Migration
             $table->string('jk')->nullable();
             $table->string('spesialisasi')->nullable();
             $table->string('telp')->nullable();
-            $table->string('usia')->nullable();
+            $table->string('tgllahir')->nullable();
             $table->string('alamat')->nullable();
             $table->string('ket')->nullable();
             $table->string('photo')->nullable();

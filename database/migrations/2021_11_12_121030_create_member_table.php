@@ -18,7 +18,7 @@ class CreateMemberTable extends Migration
             $table->string('nama');
             $table->string('jk')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('usia')->nullable();
+            $table->string('tgllahir')->nullable();
             $table->string('telp')->nullable();
             $table->string('user_id')->nullable();
             $table->softDeletes();

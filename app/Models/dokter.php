@@ -18,7 +18,7 @@ class dokter extends Model
             'jk',
             'spesialisasi',
             'telp',
-            'usia',
+            'tgllahir',
             'alamat',
             'ket',
             'photo',

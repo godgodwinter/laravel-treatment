@@ -15,75 +15,7 @@ class Fungsi {
     //     return (isset($user->username) ? $user->username : '');
     // }
 
-    public static function periksatingkatkesulitan($datas) {
-        $strex=explode(" ",$datas);
-        // dd(count($strex));
-        // $hasil='Tidak diketahui';
-        $hasil='Mudah';
-        for($i=0;$i<count($strex);$i++){
-            $ambilkko=kko::where('nama',$strex[$i])->first();
-            if($ambilkko!=null){
-                $tipe=$ambilkko->tipe;
-                if($tipe=='sulit'){
-                    $hasil=$tipe;
-                }
-                if($hasil!='sulit'){
-                    if($tipe=='sedang'){
-                        $hasil=$tipe;
-                    }
-                    //sedang
-                        //mudah
-                        if($hasil!='sedang'){
-                            $hasil=$tipe;
-                        }
-                }
-            }
-        }
 
-
-
-    return (isset($hasil) ? $hasil : '');
-    }
-
-    public static  function ambilkdmateripokok($data,$dataajar_id) {
-
-        $kd_materi=0;
-        $kd_kd=0;
-        $datamateri=materipokok::with('kompetensidasar')->where('id',$data)->first();
-        $hasil=0;
-        if($datamateri->kompetensidasar!=null){
-            $kd_kd=$datamateri->kompetensidasar->kode;
-
-            if($datamateri->kompetensidasar->tipe==1){
-                $tipe=$datamateri->kompetensidasar->tipe;
-                $preffix='3.';
-            }else{
-                $tipe=$datamateri->kompetensidasar->tipe;
-                $preffix='4.';
-            }
-            //ambil kode kompetensidasar
-            $datakompetensidasar=kompetensidasar::where('dataajar_id',$dataajar_id)->get();
-            // dd($datakompetensidasar,$dataajar_id);
-            $collection = new Collection();
-            foreach($datakompetensidasar as $datakd){
-                $nomer=1;
-                $ambildatamateripokok=materipokok::where('kompetensidasar_id',$datakd->id)->get();
-                foreach($ambildatamateripokok as $dm){
-                    $dm_id=$dm->id;
-
-                    $collection->push((object)[
-                        'dm_id' => $dm_id,
-                        'kode' => $nomer,
-                    ]);
-                    $nomer++;
-                }
-            }
-        }
-        $kd_materi=$collection->where('dm_id',$data)->first()->kode;
-        $hasil=$preffix.$kd_kd.'.'.$kd_materi;
-        // dd($hasil,$collection);
-        return $hasil;
-    }
     public static  function isWeekend($date) {
         $weekDay = date('w', strtotime($date));
         return ($weekDay == 0 || $weekDay == 6 );
