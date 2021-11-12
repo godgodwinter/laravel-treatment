@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-Produk
+Treatment
 @endsection
 
 @push('before-script')
@@ -18,7 +18,7 @@ Produk
         <h1>@yield('title')</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{route('dashboard')}}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{route('produk')}}">@yield('title')</a></div>
+            <div class="breadcrumb-item"><a href="{{route('treatment')}}">@yield('title')</a></div>
             <div class="breadcrumb-item">Edit</div>
         </div>
     </div>
@@ -30,14 +30,14 @@ Produk
             </div>
             <div class="card-body">
 
-                <form action="{{route('produk.update',$id->id)}}" method="post">
+                <form action="{{route('treatment.update',$id->id)}}" method="post">
                     @method('put')
                     @csrf
 
                     <div class="row">
 
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="nama">Nama Produk <code>*)</code></label>
+                            <label for="nama">Nama treatment <code>*)</code></label>
                             <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{old('nama')!=null?old('nama'):$id->nama}}" required>
                             @error('nama')<div class="invalid-feedback"> {{$message}}</div>
                             @enderror
@@ -70,11 +70,11 @@ Produk
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
                           <div id="image-preview" class="image-preview">
                             <label for="image-upload" id="image-label2">UPLOAD FOTO</label>
-                            <input type="file" name="produkfoto" id="image-upload" class="@error('produkfoto')
+                            <input type="file" name="treatmentfoto" id="image-upload" class="@error('treatmentfoto')
                             is_invalid
                         @enderror"  accept="image/png, image/gif, image/jpeg" />
 
-                        @error('produkfoto')<div class="invalid-feedback"> {{$message}}</div>
+                        @error('treatmentfoto')<div class="invalid-feedback"> {{$message}}</div>
                         @enderror
                           </div>
                         </div>

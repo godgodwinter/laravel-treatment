@@ -2,11 +2,16 @@
 
 use App\Http\Controllers\adminapicontroller;
 use App\Http\Controllers\admindashboardcontroller;
+use App\Http\Controllers\admindoktercontroller;
+use App\Http\Controllers\adminjadwaltreatmentcontroller;
+use App\Http\Controllers\adminmembercontroller;
+use App\Http\Controllers\adminpenjadwalancontroller;
 use App\Http\Controllers\adminprodukcontroller;
 use App\Http\Controllers\adminprosescontroller;
 use App\Http\Controllers\adminseedercontroller;
 use App\Http\Controllers\adminsettingscontroller;
 use App\Http\Controllers\adminsynccontroller;
+use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
 
 
@@ -52,6 +57,62 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/admin/dataproduk/create', [adminprodukcontroller::class, 'create'])->name('produk.create');
     Route::post('/admin/dataproduk', [adminprodukcontroller::class, 'store'])->name('produk.store');
     Route::delete('/admin/dataproduk/multidel', [adminprodukcontroller::class, 'multidel'])->name('produk.multidel');
+
+
+    //treatment
+    Route::get('/admin/treatment', [admintreatmentcontroller::class, 'index'])->name('treatment');
+    Route::get('/admin/treatment/{id}', [admintreatmentcontroller::class, 'edit'])->name('treatment.edit');
+    Route::put('/admin/treatment/{id}', [admintreatmentcontroller::class, 'update'])->name('treatment.update');
+    Route::delete('/admin/treatment/{id}', [admintreatmentcontroller::class, 'destroy'])->name('treatment.destroy');
+    Route::get('/admin/datatreatment/cari', [admintreatmentcontroller::class, 'cari'])->name('treatment.cari');
+    Route::get('/admin/datatreatment/create', [admintreatmentcontroller::class, 'create'])->name('treatment.create');
+    Route::post('/admin/datatreatment', [admintreatmentcontroller::class, 'store'])->name('treatment.store');
+    Route::delete('/admin/datatreatment/multidel', [admintreatmentcontroller::class, 'multidel'])->name('treatment.multidel');
+
+
+    //dokter
+    Route::get('/admin/dokter', [admindoktercontroller::class, 'index'])->name('dokter');
+    Route::get('/admin/dokter/{id}', [admindoktercontroller::class, 'edit'])->name('dokter.edit');
+    Route::put('/admin/dokter/{id}', [admindoktercontroller::class, 'update'])->name('dokter.update');
+    Route::delete('/admin/dokter/{id}', [admindoktercontroller::class, 'destroy'])->name('dokter.destroy');
+    Route::get('/admin/datadokter/cari', [admindoktercontroller::class, 'cari'])->name('dokter.cari');
+    Route::get('/admin/datadokter/create', [admindoktercontroller::class, 'create'])->name('dokter.create');
+    Route::post('/admin/datadokter', [admindoktercontroller::class, 'store'])->name('dokter.store');
+    Route::delete('/admin/datadokter/multidel', [admindoktercontroller::class, 'multidel'])->name('dokter.multidel');
+
+
+    //member
+    Route::get('/admin/member', [adminmembercontroller::class, 'index'])->name('member');
+    Route::get('/admin/member/{id}', [adminmembercontroller::class, 'edit'])->name('member.edit');
+    Route::put('/admin/member/{id}', [adminmembercontroller::class, 'update'])->name('member.update');
+    Route::delete('/admin/member/{id}', [adminmembercontroller::class, 'destroy'])->name('member.destroy');
+    Route::get('/admin/datamember/cari', [adminmembercontroller::class, 'cari'])->name('member.cari');
+    Route::get('/admin/datamember/create', [adminmembercontroller::class, 'create'])->name('member.create');
+    Route::post('/admin/datamember', [adminmembercontroller::class, 'store'])->name('member.store');
+    Route::delete('/admin/datamember/multidel', [adminmembercontroller::class, 'multidel'])->name('member.multidel');
+
+
+    //jadwaltreatment
+    Route::get('/admin/jadwaltreatment', [adminjadwaltreatmentcontroller::class, 'index'])->name('jadwaltreatment');
+    Route::get('/admin/jadwaltreatment/{id}', [adminjadwaltreatmentcontroller::class, 'edit'])->name('jadwaltreatment.edit');
+    Route::put('/admin/jadwaltreatment/{id}', [adminjadwaltreatmentcontroller::class, 'update'])->name('jadwaltreatment.update');
+    Route::delete('/admin/jadwaltreatment/{id}', [adminjadwaltreatmentcontroller::class, 'destroy'])->name('jadwaltreatment.destroy');
+    Route::get('/admin/datajadwaltreatment/cari', [adminjadwaltreatmentcontroller::class, 'cari'])->name('jadwaltreatment.cari');
+    Route::get('/admin/datajadwaltreatment/create', [adminjadwaltreatmentcontroller::class, 'create'])->name('jadwaltreatment.create');
+    Route::post('/admin/datajadwaltreatment', [adminjadwaltreatmentcontroller::class, 'store'])->name('jadwaltreatment.store');
+    Route::delete('/admin/datajadwaltreatment/multidel', [adminjadwaltreatmentcontroller::class, 'multidel'])->name('jadwaltreatment.multidel');
+
+
+
+    //penjadwalan
+    Route::get('/admin/penjadwalan', [adminpenjadwalancontroller::class, 'index'])->name('penjadwalan');
+    Route::get('/admin/penjadwalan/{id}', [adminpenjadwalancontroller::class, 'edit'])->name('penjadwalan.edit');
+    Route::put('/admin/penjadwalan/{id}', [adminpenjadwalancontroller::class, 'update'])->name('penjadwalan.update');
+    Route::delete('/admin/penjadwalan/{id}', [adminpenjadwalancontroller::class, 'destroy'])->name('penjadwalan.destroy');
+    Route::get('/admin/datapenjadwalan/cari', [adminpenjadwalancontroller::class, 'cari'])->name('penjadwalan.cari');
+    Route::get('/admin/datapenjadwalan/create', [adminpenjadwalancontroller::class, 'create'])->name('penjadwalan.create');
+    Route::post('/admin/datapenjadwalan', [adminpenjadwalancontroller::class, 'store'])->name('penjadwalan.store');
+    Route::delete('/admin/datapenjadwalan/multidel', [adminpenjadwalancontroller::class, 'multidel'])->name('penjadwalan.multidel');
 
 
     //export
