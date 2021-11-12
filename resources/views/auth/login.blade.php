@@ -16,23 +16,38 @@
 <body>
     <div id="container">
         <div id="wrapper">
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
             <div id="loginForm">
                 <h1>Login</h1>
                 <span>Sign in to your account</span>
                 <div id="inputField">
-                    <input type="text" placeholder="Username" autocomplete="nope">
+                    <input type="text" placeholder="Username" autocomplete="nope" name="identity" >
                 </div>
+
+  @if($errors->any())
+  @foreach ($errors->all() as $error)
+  <p id="wrong" class="wrong">
+    {{ $error }}
+  </p>
+  @endforeach
+@endif
                 <div id="inputField">
-                    <input type="password" placeholder="Password" autocomplete="nope">
+                    <input type="password" placeholder="Password" autocomplete="nope"  name="password">
                 </div>
+
+                @error('password')
                 <p id="wrong" class="wrong">
-                    Username / Password not match !
+                    {{ $message }}
                 </p>
+            @enderror
+
                 <div id="inputSignIn">
                     <input type="submit" value="Login">
                 </div>
                 <p>Not registered? <a href="#">Create an account</a></p>
             </div>
+            </form>
             <div id="logoCompany">
                 <div id="opacity">
                     <a href="#" target="_blank" id="linkLogo">
