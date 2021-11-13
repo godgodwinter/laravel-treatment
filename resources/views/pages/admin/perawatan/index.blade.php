@@ -140,23 +140,80 @@ $cari=$request->cari;
 @forelse ($datas as $data)
 <!-- Import Excel -->
 <div class="modal fade" id="modaljadwalAtur{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <form method="post" action="#" enctype="multipart/form-data">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{$data->member->nama}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Nama : {{$data->member->nama}} <br> Paket Treatment : {{$data->treatment->nama}} - {{Fungsi::rupiah($data->treatment->harga)}}</h5>
           </div>
+          <form action="#">
           <div class="modal-body">
-              {{ csrf_field() }}
             <div class="row">
-                <div class="col-12">
-
-                    <label>Pilih file excel(.xlsx)</label>
-                    <div class="form-group">
-                      <input type="file" name="file" required="required">
-                    </div>
-
+                <div class="form-group col-md-5 col-5 mt-0 ml-5">
+                    <label for="tgllahir">Pilih Tanggal Perawatan<code>*)</code></label>
+                    <input type="date" name="tgllahir" id="tgllahir" class="form-control @error('tgllahir') is-invalid @enderror" value="{{old('tgllahir')?old('tgllahir') : date('Y-m-d')}}" required>
+                    @error('tgllahir')<div class="invalid-feedback"> {{$message}}</div>
+                    @enderror
                 </div>
+
+                <div class="form-group col-md-5 col-5 mt-0 ml-5">
+                    <label for="dokter_id">Pilih Dokter <code></code></label>
+
+                    <select class="js-example-basic-single form-control-sm @error('dokter_id')
+                    is-invalid
+                @enderror" name="dokter_id"  style="width: 75%" required>
+
+                    <option disabled selected value=""> Pilih Dokter</option>
+
+                    @foreach ($dokter as $t)
+                        <option value="{{ $t->id }}"> {{ $t->nama }}</option>
+                    @endforeach
+                  </select>
+                    @error('dokter_id')<div class="invalid-feedback"> {{$message}}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-3 col-3 mt-0 ml-5">
+                    <label class="form-label">Pilih Ruangan</label>
+                    <div class="selectgroup w-100">
+                      {{-- <label class="selectgroup-item">
+                        <input type="radio" name="semester" value="Semua" class="selectgroup-input" >
+                        <span class="selectgroup-button">Semua</span>
+                      </label> --}}
+{{-- {{dd($loop->index)}} --}}
+                    @foreach ($ruangan as $t)
+                      <label class="selectgroup-item">
+                        <input type="radio" name="semester" value="{{$t->id}}" class="selectgroup-input"   {{$loop->index=='0'?'checked=""':''}}>
+                        <span class="selectgroup-button">{{$t->nama}}</span>
+                      </label>
+
+                      @endforeach
+
+                    </div>
+                  </div>
+                </form>
+
+                <div class="form-group col-md-3 col-3 mt-0 ml-5">
+                    <label class="form-label">Pilih Jam</label>
+                    <div class="selectgroup w-100">
+                      {{-- <label class="selectgroup-item">
+                        <input type="radio" name="semester" value="Semua" class="selectgroup-input" >
+                        <span class="selectgroup-button">Semua</span>
+                      </label> --}}
+                      <label class="selectgroup-item">
+                        <input type="radio" name="semester" value="1" class="selectgroup-input" >
+                        <span class="selectgroup-button">1</span>
+                      </label>
+
+                      <label class="selectgroup-item">
+                        <input type="radio" name="semester" value="2" class="selectgroup-input">
+                        <span class="selectgroup-button">2</span>
+                      </label>
+
+                    </div>
+                  </div>
+
+
+
                 {{-- <div class="col-12">
                     <label>Jumlah Materi</label>
                     <div class="form-group">
@@ -170,10 +227,8 @@ $cari=$request->cari;
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Import</button>
           </div>
         </div>
-      </form>
     </div>
   </div>
   @endforeach
