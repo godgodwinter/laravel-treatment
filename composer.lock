@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64d85dd03b2933a3049da7c80c5fcac3",
+    "content-hash": "64b8f4d1a36bb94701c80c730e25b902",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4270,6 +4270,70 @@
             "time": "2020-06-01T09:10:00+00:00"
         },
         {
+            "name": "shipu/muthofun-sms-gateway",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Shipu/muthofun-sms-gateway.git",
+                "reference": "b6c1ffdeef3f33602f6ee8931307d81bc4899250"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Shipu/muthofun-sms-gateway/zipball/b6c1ffdeef3f33602f6ee8931307d81bc4899250",
+                "reference": "b6c1ffdeef3f33602f6ee8931307d81bc4899250",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.1",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Shipu\\MuthoFun\\MuthoFunServiceProvider"
+                    ],
+                    "aliases": {
+                        "MUTHOFUN": "Shipu\\MuthoFun\\Facades\\MuthoFun"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shipu\\MuthoFun\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shipu Ahamed",
+                    "email": "shipuahamed01@gmail.com"
+                }
+            ],
+            "description": "PHP client for MuthoFun SMS Payment Gateway API",
+            "keywords": [
+                "api",
+                "gateway",
+                "laravel",
+                "lumen",
+                "muthofun",
+                "php",
+                "php-muthofun",
+                "sms"
+            ],
+            "support": {
+                "issues": "https://github.com/Shipu/muthofun-sms-gateway/issues",
+                "source": "https://github.com/Shipu/muthofun-sms-gateway/tree/v2.0.0"
+            },
+            "time": "2020-09-27T07:27:45+00:00"
+        },
+        {
             "name": "simplesoftwareio/simple-qrcode",
             "version": "4.2.0",
             "source": {
@@ -6719,6 +6783,60 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.3"
             },
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "twilio/sdk",
+            "version": "6.31.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "9a866ad7e6b4681c7d9564ee7b9d97cb67deb6a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/9a866ad7e6b4681c7d9564ee7b9d97cb67deb6a0",
+                "reference": "9a866ad7e6b4681c7d9564ee7b9d97cb67deb6a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "phpunit/phpunit": ">=4.5",
+                "theseer/phpdox": "^0.12.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Twilio\\": "src/Twilio/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "http://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "support": {
+                "issues": "https://github.com/twilio/twilio-php/issues",
+                "source": "https://github.com/twilio/twilio-php/tree/6.31.0"
+            },
+            "time": "2021-11-03T22:47:25+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -9444,5 +9562,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
