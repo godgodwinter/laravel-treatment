@@ -87,7 +87,17 @@ Perawatan
                                     @endif
                                 </td>
                                 <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
-                                    Jadwal belum diatur
+                                    @php
+                                        $hasil='Jadwal belum diatur';
+                                        $cek=\App\Models\penjadwalan::where('perawatan_id',$data->id)->count();
+                                        if($cek>0){
+                                        $ambil=\App\Models\penjadwalan::where('perawatan_id',$data->id)->first();
+                                            // dd($ambil);
+                                            $hasil=Fungsi::tanggalindo($ambil->tgl).' - '.$ambil->ruangan.' - '.$ambil->jam;
+                                        }
+                                    @endphp
+
+                                    {{$hasil}}
                                 </td>
                                 {{-- @push('after-style')
                                 <script>
@@ -145,17 +155,18 @@ $cari=$request->cari;
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Nama : {{$data->member->nama}} <br> Paket Treatment : {{$data->treatment->nama}} - {{Fungsi::rupiah($data->treatment->harga)}}</h5>
           </div>
-          <form action="#">
+          <form action="{{route('perawatan.tambahjadwal',$data->id)}}" method="post">
+            @csrf
           <div class="modal-body">
             <div class="row">
-                <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                    <label for="tgllahir">Pilih Tanggal Perawatan<code>*)</code></label>
-                    <input type="date" name="tgllahir" id="tgllahir" class="form-control @error('tgllahir') is-invalid @enderror" value="{{old('tgllahir')?old('tgllahir') : date('Y-m-d')}}" required>
-                    @error('tgllahir')<div class="invalid-feedback"> {{$message}}</div>
+                <div class="form-group col-md-5 col-12 mt-0 ml-5">
+                    <label for="tgl">Pilih Tanggal Perawatan<code>*)</code></label>
+                    <input type="date" name="tgl" id="tgl" class="form-control @error('tgl') is-invalid @enderror" value="{{old('tgl')?old('tgl') : date('Y-m-d')}}" required>
+                    @error('tgl')<div class="invalid-feedback"> {{$message}}</div>
                     @enderror
                 </div>
 
-                <div class="form-group col-md-5 col-5 mt-0 ml-5">
+                <div class="form-group col-md-5 col-12 mt-0 ml-5">
                     <label for="dokter_id">Pilih Dokter <code></code></label>
 
                     <select class="js-example-basic-single form-control-sm @error('dokter_id')
@@ -171,8 +182,11 @@ $cari=$request->cari;
                     @error('dokter_id')<div class="invalid-feedback"> {{$message}}</div>
                     @enderror
                 </div>
+                </div>
 
-                <div class="form-group col-md-3 col-3 mt-0 ml-5">
+            <div class="row" id="ruangandanhari">
+
+                <div class="form-group col-md-3 col-12 mt-0 ml-5">
                     <label class="form-label">Pilih Ruangan</label>
                     <div class="selectgroup w-100">
                       {{-- <label class="selectgroup-item">
@@ -182,7 +196,7 @@ $cari=$request->cari;
 {{-- {{dd($loop->index)}} --}}
                     @foreach ($ruangan as $t)
                       <label class="selectgroup-item">
-                        <input type="radio" name="semester" value="{{$t->id}}" class="selectgroup-input"   {{$loop->index=='0'?'checked=""':''}}>
+                        <input type="radio" name="ruangan" value="{{$t->nama}}" class="selectgroup-input"   {{$loop->index=='0'?'checked=""':''}}>
                         <span class="selectgroup-button">{{$t->nama}}</span>
                       </label>
 
@@ -190,24 +204,17 @@ $cari=$request->cari;
 
                     </div>
                   </div>
-                </form>
 
-                <div class="form-group col-md-3 col-3 mt-0 ml-5">
+                <div class="form-group col-md-6 col-12 mt-0 ml-5">
                     <label class="form-label">Pilih Jam</label>
                     <div class="selectgroup w-100">
-                      {{-- <label class="selectgroup-item">
-                        <input type="radio" name="semester" value="Semua" class="selectgroup-input" >
-                        <span class="selectgroup-button">Semua</span>
-                      </label> --}}
+                    @foreach ($jam as $t)
                       <label class="selectgroup-item">
-                        <input type="radio" name="semester" value="1" class="selectgroup-input" >
-                        <span class="selectgroup-button">1</span>
+                        <input type="radio" name="jam" value="{{$t->nama}}" class="selectgroup-input"  {{$loop->index=='0'?'checked=""':''}}>
+                        <span class="selectgroup-button">{{$t->nama}}</span>
                       </label>
+                    @endforeach
 
-                      <label class="selectgroup-item">
-                        <input type="radio" name="semester" value="2" class="selectgroup-input">
-                        <span class="selectgroup-button">2</span>
-                      </label>
 
                     </div>
                   </div>
@@ -227,7 +234,10 @@ $cari=$request->cari;
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
           </div>
+
+        </form>
         </div>
     </div>
   </div>

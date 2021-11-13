@@ -14,16 +14,20 @@ class penjadwalan extends Model
         use HasFactory;
 
         protected $fillable = [
-            'jadwaltreatment_id',
+            // 'jadwaltreatment_id',
             'perawatan_id',
             'status',
+            'tgl',
+            'dokter_id',
+            'ruangan',
+            'jam',
             'pengingat',
         ];
 
-        public function jadwaltreatment()
-        {
-            return $this->belongsTo('App\Models\jadwaltreatment');
-        }
+        // public function jadwaltreatment()
+        // {
+        //     return $this->belongsTo('App\Models\jadwaltreatment');
+        // }
 
         public function perawatan()
         {

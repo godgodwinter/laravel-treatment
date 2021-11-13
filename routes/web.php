@@ -118,6 +118,9 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::post('/admin/dataperawatan', [adminperawatancontroller::class, 'store'])->name('perawatan.store');
     Route::delete('/admin/dataperawatan/multidel', [adminperawatancontroller::class, 'multidel'])->name('perawatan.multidel');
 
+
+    Route::post('/admin/perawatan/{id}', [adminperawatancontroller::class, 'tambahjadwal'])->name('perawatan.tambahjadwal');
+
     //penjadwalan
     Route::get('/admin/penjadwalan', [adminpenjadwalancontroller::class, 'index'])->name('penjadwalan');
 

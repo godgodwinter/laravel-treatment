@@ -15,7 +15,7 @@ class Fungsi {
     //     return (isset($user->username) ? $user->username : '');
     // }
 
-    public static function periksaHari($date){
+    public static function namaHari($date){
         //format = Y-m-d
         $day = date('w', strtotime($date));
         $hari='Senin';

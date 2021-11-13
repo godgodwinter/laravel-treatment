@@ -6,6 +6,7 @@ use App\Helpers\Fungsi;
 use App\Models\dokter;
 use App\Models\kategori;
 use App\Models\member;
+use App\Models\penjadwalan;
 use App\Models\perawatan;
 use App\Models\treatment;
 use Illuminate\Http\Request;
@@ -27,21 +28,24 @@ class adminperawatancontroller extends Controller
     }
     public function index(Request $request)
     {
+        $date=date('Y-m-d');
         #WAJIB
         $pages='perawatan';
         $dokter=dokter::get();
         $ruangan=kategori::where('prefix','ruangan')->get();
+        $namaHari=Fungsi::namaHari($date);
 
-        $jam=kategori::where('prefix','jam')->where('kode','2')->get();
+        $periksaHari=kategori::where('nama',$namaHari)->where('prefix','hari')->first();
+        $idHarisekarang=$periksaHari->id;
 
-        $date=date('Y-m-d');
-        $weekDay=Fungsi::periksaHari($date);
-        dd($weekDay);
+        $jam=kategori::where('prefix','jam')->where('kode',$idHarisekarang)->get();
+
+        // dd($namaHari,$periksaHari,$idHarisekarang,$jam);
         // $datas=jadwaltreatment::paginate(Fungsi::paginationjml());
         $datas=perawatan::with('member')->with('treatment')->paginate(Fungsi::paginationjml());
 
 
-        return view('pages.admin.perawatan.index',compact('datas','request','pages','dokter','ruangan','jam'));
+        return view('pages.admin.perawatan.index',compact('datas','request','pages','dokter','ruangan','jam','namaHari'));
     }
     public function cari(Request $request)
     {
@@ -151,6 +155,64 @@ class adminperawatancontroller extends Controller
         // dd($datas);
 
         return view('pages.admin.perawatan.index',compact('datas','request','pages'));
+
+    }
+
+    public function tambahjadwal(Request $request,perawatan $id){
+
+        $cekperawatanid=penjadwalan::where('perawatan_id',$id->id)->count();
+        if($cekperawatanid>0){
+            $ambilpenjadwalanid=penjadwalan::where('perawatan_id',$id->id)->first();
+            // dd($ambilpenjadwalanid->id);
+
+            if(($request->tgl==$ambilpenjadwalanid->tgl) AND ($request->ruangan==$ambilpenjadwalanid->ruangan) AND ($request->jam==$ambilpenjadwalanid->jam)){
+                dd('update');
+            }
+                $cektglruangdanjam=penjadwalan::where('tgl',$request->tgl)
+                // ->where('dokter_id',$request->dokter_id)
+                ->where('ruangan',$request->ruangan)
+                ->where('jam',$request->jam)
+                ->count();
+                // dd($cektglruangdanjam);
+
+                if($cektglruangdanjam>0){
+                return redirect()->route('perawatan')->with('status','Gagal! Ruangan, Jam pada Tanggal telah digunakan')->with('tipe','error')->with('icon','fas fa-feather');
+                }else{
+                    dd('update');
+
+                }
+        }else{
+
+        $cektglruangdanjam=penjadwalan::where('tgl',$request->tgl)
+        // ->where('dokter_id',$request->dokter_id)
+        ->where('ruangan',$request->ruangan)
+        ->where('jam',$request->jam)
+        ->count();
+        // dd($cektglruangdanjam);
+
+        if($cektglruangdanjam>0){
+        return redirect()->route('perawatan')->with('status','Gagal! Ruangan, Jam pada Tanggal telah digunakan')->with('tipe','error')->with('icon','fas fa-feather');
+         }else{
+
+        DB::table('penjadwalan')->insert(
+            array(
+                   'perawatan_id'     =>   $id->id,
+                   'ruangan'     =>   $request->ruangan,
+                   'tgl'     =>   $request->tgl,
+                   'jam'     =>   $request->jam,
+                   'dokter_id'     =>   $request->dokter_id,
+                   'status'     =>   'Belum',
+                   'pengingat'     =>   'Aktif',
+                   'created_at'=>date("Y-m-d H:i:s"),
+                   'updated_at'=>date("Y-m-d H:i:s")
+            ));
+
+        return redirect()->route('perawatan')->with('status','Data berhasil di tambahkan')->with('tipe','success')->with('icon','fas fa-feather');
+
+    }
+        }
+
+        // dd($request,$id);
 
     }
 }
