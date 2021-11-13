@@ -191,7 +191,7 @@ $cari=$request->cari;
                             // e.preventDefault();
                             console.log(tgl{{$data->id}}.val());
 
-                                let component=`<h4>${tgl{{$data->id}}.val()}</h4`;
+                            let component=`<h4>${tgl{{$data->id}}.val()}</h4`;
                             ruangandanhari{{$data->id}}.html(component);
 
 
