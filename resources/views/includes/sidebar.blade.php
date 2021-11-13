@@ -1,6 +1,7 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
+            <img src='{{asset('/assets/img/kopek/cosmetics.png')}}' alt="Your Logo">
             <a href="{{route('dashboard')}}">{{Fungsi::app_nama()}}</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">

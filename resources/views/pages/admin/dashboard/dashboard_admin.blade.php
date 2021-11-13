@@ -22,7 +22,7 @@
                             <h4>Jumlah Siswa</h4>
                           </div>
                           <div class="card-body">
-                          
+
                             1 Siswa
                             <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 1Kelas</div>
 
@@ -40,7 +40,7 @@
                             <h4>Jumlah Guru</h4>
                           </div>
                           <div class="card-body">
-                           
+
                             1 Guru
                           </div>
                         </div>
@@ -56,7 +56,7 @@
                             <h4>Jumlah Mata Pelajaran</h4>
                           </div>
                           <div class="card-body">
-                         
+
                             2 Mapel
                             <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> Total 1 Mapel</div>
                           </div>
@@ -73,7 +73,7 @@
                             <h4>Bank Soal</h4>
                           </div>
                           <div class="card-body">
-                            
+
                                 3 Soal
                             <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 1 Silabus</div>
                           </div>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="card-body">
                       <div class="row">
-                       
+
                         <div class="col text-center col-6 col-md-3 mt-2">
 
                             <img alt="image" src="https://ui-avatars.com/api/?name=aaa&color=7F9CF5&background=EBF4FF&length=3" class="img-thumbnail" data-toggle="tooltip" title="zxczc" width="100px" height="100px" style="object-fit:cover;">
@@ -98,7 +98,7 @@
                             <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span>1 Soal </div>
                           </div>
 
-                     
+
 
 
                       </div>

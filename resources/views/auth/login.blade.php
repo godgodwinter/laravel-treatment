@@ -49,7 +49,7 @@
             </div>
             <div id="logoCompany">
                 <div id="opacity">
-                    <a href="#" target="_blank" id="linkLogo">
+                    <a href="#" id="linkLogo">
                         <img src='{{asset('/assets/img/kopek/cosmetics.png')}}' alt="Your Logo">
                     </a>
                     <p>
