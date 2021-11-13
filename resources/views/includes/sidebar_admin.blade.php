@@ -11,7 +11,7 @@
     </ul>
 </li>
 <li
-    class="nav-item dropdown {{ $pages == 'users' || $pages == 'produk' || $pages == 'treatment' || $pages == 'dokter' || $pages == 'member' || $pages == 'jadwaltreatment' ? 'active' : '' }}">
+    class="nav-item dropdown {{ $pages == 'users' || $pages == 'produk' || $pages == 'treatment' || $pages == 'dokter' || $pages == 'member' || $pages == 'jadwaltreatment' || $pages== 'ruangan' ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-dumpster"></i>
         <span>Mastering</span></a>
     <ul class="dropdown-menu">
@@ -24,6 +24,9 @@
                     class="fas fa-user-graduate"></i><span>Dokter</span></a></li>
         <li {{ $pages == 'member' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('member') }}"><i
                     class="fas fa-chalkboard-teacher"></i><span>Member</span></a></li>
+        <li {{ $pages == 'ruangan' ? 'class=active' : '' }}><a class="nav-link"
+                href="{{ route('ruangan') }}"><i class="fas fa-chalkboard-teacher"></i><span>
+                    Ruangan </span></a></li>
         <li {{ $pages == 'jadwaltreatment' ? 'class=active' : '' }}><a class="nav-link"
                 href="{{ route('jadwaltreatment') }}"><i class="fas fa-chalkboard-teacher"></i><span>Jadwal
                     Treatment</span></a></li>
@@ -37,10 +40,10 @@
         <span>Proses</span></a>
     <ul class="dropdown-menu">
 
-        <li {{ $pages == 'mapel' ? 'class=active' : '' }}><a class="nav-link" href="#"><i
+        <li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('perawatan')}}"><i
                     class="fab fa-monero"></i> <span>Perawatan</span></a></li>
-        <li {{ $pages == 'silabus' ? 'class=active' : '' }}><a class="nav-link" href="#"><i
-                    class="fas fa-microchip"></i> <span>Penjadwalan</span></a></li>
+        {{-- <li {{ $pages == 'penjadwalan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('penjadwalan')}}"><i
+                    class="fas fa-microchip"></i> <span>Penjadwalan</span></a></li> --}}
     </ul>
 </li>
 <li class="nav-item dropdown  {{ $pages == 'absensi' || $pages == 'pelanggaran' ? 'active' : '' }}">

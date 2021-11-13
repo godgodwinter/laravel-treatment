@@ -15,19 +15,18 @@ class penjadwalan extends Model
 
         protected $fillable = [
             'jadwaltreatment_id',
-            'treatment_id',
-            'member_id',
+            'perawatan_id',
             'status',
             'pengingat',
         ];
-        
-        public function member()
+
+        public function jadwaltreatment()
         {
-            return $this->belongsTo('App\Models\member');
+            return $this->belongsTo('App\Models\jadwaltreatment');
         }
 
-        public function treatment()
+        public function perawatan()
         {
-            return $this->belongsTo('App\Models\treatment');
+            return $this->belongsTo('App\Models\perawatan');
         }
 }
