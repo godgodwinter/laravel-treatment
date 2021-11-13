@@ -109,6 +109,8 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //jadwaltreatment
     Route::get('/admin/jadwaltreatment', [adminjadwaltreatmentcontroller::class, 'index'])->name('jadwaltreatment');
+    Route::delete('/admin/jadwaltreatment/{id}', [adminjadwaltreatmentcontroller::class, 'destroyjam'])->name('jadwaltreatment.destroyjam');
+    Route::post('/admin/datjadwaltreatment', [adminjadwaltreatmentcontroller::class, 'storejam'])->name('jadwaltreatment.storejam');
 
 
     //perawatan

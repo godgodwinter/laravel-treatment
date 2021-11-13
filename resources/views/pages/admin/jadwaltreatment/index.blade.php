@@ -59,12 +59,19 @@ Mastering Jadwal Treatment
                                 </td>
                                 <td>
                                     @forelse ($data->jam as $jam)
-                                        <button class="btn btn-light"> {{$jam}}</button>
+                                    <form action="{{route('jadwaltreatment.destroyjam',$jam->id)}}" method="post" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button  class="btn btn-light"
+                                            onclick="return  confirm('Anda yakin menghapus data ini? Y/N')"  data-toggle="tooltip" data-placement="top" title="Hapus Data!"><span
+                                                class="pcoded-micon">{{$jam->nama}}</span></button>
+                                    </form>
+                                        {{-- <a class="btn btn-light" href="{{route('jadwaltreatment.destroyjam',$jam->id)}}" > {{$jam->nama}}</a> --}}
                                     @empty
                                         Data tidak ditemukan
                                     @endforelse
 
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-plus-square"></i> </button>
+                                    <button class="btn btn-sm btn-info"  data-toggle="modal" data-target="#modalJam{{ $data->id }}"><i class="fas fa-plus-square"></i> </button>
                                 </td>
 
                                 <td class="babeng-min-row">
@@ -94,9 +101,56 @@ Mastering Jadwal Treatment
         </div>
     </div>
 </section>
+@push('after-style')
+<link rel="stylesheet" href="{{asset('/')}}assets/modules/bootstrap-timepicker/bootstrap-timepicker.min.css">
+@endpush
+@push('before-script')
+<script src="{{asset('/')}}assets/modules/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+@endpush
 @endsection
+
 
 
 @section('containermodal')
+@forelse ($datas as $data)
+<!-- Import Excel -->
+<div class="modal fade" id="modalJam{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{$data->hari}}</h5>
+          </div>
+          <form action="{{route('jadwaltreatment.storejam')}}" method="post">
+            @csrf
+          <div class="modal-body">
+            <div class="row">
 
+                <div class="form-group col-md-5 col-12 mt-0 ml-5">
+                    <label>Tambahkan Jam</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-clock"></i>
+                          </div>
+                        </div>
+                        <input type="text" class="form-control timepicker" required name="nama">
+                        <input type="hidden" required name="kode" value="{{$data->id}}" readonly>
+                      </div>
+                    </div>
+                </div>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+
+        </form>
+        </div>
+    </div>
+  </div>
+  @endforeach
 @endsection
+
