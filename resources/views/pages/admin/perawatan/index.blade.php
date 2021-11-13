@@ -225,11 +225,8 @@ $cari=$request->cari;
                 <div class="form-group col-md-3 col-12 mt-0 ml-5">
                     <label class="form-label">Pilih Ruangan</label>
                     <div class="selectgroup w-100">
-                      {{-- <label class="selectgroup-item">
-                        <input type="radio" name="semester" value="Semua" class="selectgroup-input" >
-                        <span class="selectgroup-button">Semua</span>
-                      </label> --}}
-{{-- {{dd($loop->index)}} --}}
+
+
                     @foreach ($ruangan as $t)
                       <label class="selectgroup-item">
                         <input type="radio" name="ruangan" value="{{$t->nama}}" class="selectgroup-input"   {{$loop->index=='0'?'checked=""':''}}>
