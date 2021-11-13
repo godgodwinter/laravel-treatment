@@ -15,6 +15,26 @@ class Fungsi {
     //     return (isset($user->username) ? $user->username : '');
     // }
 
+    public static function periksaHari($date){
+        //format = Y-m-d
+        $day = date('w', strtotime($date));
+        $hari='Senin';
+        if($day==1)
+        $hari='Senin';
+        else if($day==2)
+        $hari='Selasa';
+        else if($day==3)
+        $hari='Rabu';
+        else if($day==4)
+        $hari='Kamis';
+        else if($day==5)
+        $hari='Jumat';
+        else if($day==6)
+        $hari='Sabtu';
+        else
+        $hari='Minggu';
+        return $hari;
+    }
 
     public static  function isWeekend($date) {
         $weekDay = date('w', strtotime($date));

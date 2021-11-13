@@ -33,6 +33,10 @@ class adminperawatancontroller extends Controller
         $ruangan=kategori::where('prefix','ruangan')->get();
 
         $jam=kategori::where('prefix','jam')->where('kode','2')->get();
+
+        $date=date('Y-m-d');
+        $weekDay=Fungsi::periksaHari($date);
+        dd($weekDay);
         // $datas=jadwaltreatment::paginate(Fungsi::paginationjml());
         $datas=perawatan::with('member')->with('treatment')->paginate(Fungsi::paginationjml());
 
