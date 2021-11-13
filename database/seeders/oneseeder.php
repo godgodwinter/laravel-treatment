@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\kategori;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
@@ -46,29 +47,45 @@ class oneseeder extends Seeder
             'updated_at' => Carbon::now()
          ]);
 
-           //ruangan
-        DB::table('kategori')->insert([
-            'nama' => 'Ruangan 1',
-            'prefix' => 'ruangan',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-         ]);
 
-         DB::table('kategori')->insert([
-             'nama' => 'Ruangan 2',
-             'prefix' => 'ruangan',
-             'created_at' => Carbon::now(),
-             'updated_at' => Carbon::now()
-          ]);
 
-          DB::table('kategori')->insert([
-              'nama' => 'Ruangan 3',
-              'prefix' => 'ruangan',
+           $arrHari=['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
+           foreach($arrHari as $hari){
+            DB::table('kategori')->insert([
+              'nama' => $hari,
+              'prefix' => 'hari',
               'created_at' => Carbon::now(),
               'updated_at' => Carbon::now()
            ]);
+           }
+
+           //ambil data hari kemudian ulangi per jam dengan kode id hari tersebut
+           $ambildatahari=kategori::where('prefix','hari')->get();
+
+           foreach($ambildatahari as $data){
+                $arrJam=['08:00:00','10:00:00','12:00:00','14:00:00','16:00:00'];
+                foreach($arrJam as $jam){
+                DB::table('kategori')->insert([
+                'nama' => $jam,
+                'prefix' => 'jam',
+                'kode' => $data->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+                ]);
+                }
+
+           }
 
 
 
+        $arrRuangan=['R1','R2','R3','R4'];
+        foreach($arrRuangan as $ruangan){
+         DB::table('kategori')->insert([
+           'nama' => $ruangan,
+           'prefix' => 'ruangan',
+           'created_at' => Carbon::now(),
+           'updated_at' => Carbon::now()
+        ]);
+        }
     }
 }
