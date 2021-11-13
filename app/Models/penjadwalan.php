@@ -24,10 +24,10 @@ class penjadwalan extends Model
             'pengingat',
         ];
 
-        // public function jadwaltreatment()
-        // {
-        //     return $this->belongsTo('App\Models\jadwaltreatment');
-        // }
+        public function dokter()
+        {
+            return $this->belongsTo('App\Models\dokter');
+        }
 
         public function perawatan()
         {

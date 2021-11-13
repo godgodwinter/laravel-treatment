@@ -137,6 +137,7 @@ class adminperawatancontroller extends Controller
     public function destroy(perawatan $id){
 
         perawatan::destroy($id->id);
+        penjadwalan::where('perawatan_id',$id->id)->delete();
         return redirect()->route('perawatan')->with('status','Data berhasil dihapus!')->with('tipe','warning')->with('icon','fas fa-feather');
 
     }
@@ -166,7 +167,19 @@ class adminperawatancontroller extends Controller
             // dd($ambilpenjadwalanid->id);
 
             if(($request->tgl==$ambilpenjadwalanid->tgl) AND ($request->ruangan==$ambilpenjadwalanid->ruangan) AND ($request->jam==$ambilpenjadwalanid->jam)){
-                dd('update');
+                // dd('update');
+
+    penjadwalan::where('id',$ambilpenjadwalanid->id)
+    ->update([
+        'ruangan'     =>   $request->ruangan,
+        'tgl'     =>   $request->tgl,
+        'jam'     =>   $request->jam,
+        'dokter_id'     =>   $request->dokter_id,
+       'updated_at'=>date("Y-m-d H:i:s")
+    ]);
+
+        return redirect()->route('perawatan')->with('status','Data berhasil di diubah')->with('tipe','success')->with('icon','fas fa-feather');
+
             }
                 $cektglruangdanjam=penjadwalan::where('tgl',$request->tgl)
                 // ->where('dokter_id',$request->dokter_id)
@@ -178,7 +191,19 @@ class adminperawatancontroller extends Controller
                 if($cektglruangdanjam>0){
                 return redirect()->route('perawatan')->with('status','Gagal! Ruangan, Jam pada Tanggal telah digunakan')->with('tipe','error')->with('icon','fas fa-feather');
                 }else{
-                    dd('update');
+                    // dd('update');
+
+    penjadwalan::where('id',$ambilpenjadwalanid->id)
+        ->update([
+            'ruangan'     =>   $request->ruangan,
+            'tgl'     =>   $request->tgl,
+            'jam'     =>   $request->jam,
+            'dokter_id'     =>   $request->dokter_id,
+           'updated_at'=>date("Y-m-d H:i:s")
+        ]);
+
+        return redirect()->route('perawatan')->with('status','Data berhasil di diubah')->with('tipe','success')->with('icon','fas fa-feather');
+
 
                 }
         }else{
