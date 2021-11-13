@@ -42,8 +42,8 @@
 
         <li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('perawatan')}}"><i
                     class="fab fa-monero"></i> <span>Perawatan</span></a></li>
-        <li {{ $pages == 'penjadwalan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('penjadwalan')}}"><i
-                    class="fas fa-microchip"></i> <span>Penjadwalan</span></a></li>
+        {{-- <li {{ $pages == 'penjadwalan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('penjadwalan')}}"><i
+                    class="fas fa-microchip"></i> <span>Penjadwalan</span></a></li> --}}
     </ul>
 </li>
 <li class="nav-item dropdown  {{ $pages == 'absensi' || $pages == 'pelanggaran' ? 'active' : '' }}">

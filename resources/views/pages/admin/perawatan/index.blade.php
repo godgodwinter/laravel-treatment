@@ -64,6 +64,7 @@ Perawatan
                             <th >Nama Member</th>
                             <th >Paket Treatment</th>
                             <th >Status</th>
+                            <th >Jadwal</th>
                             <th >Aksi</th>
                         </tr>
                     </thead>
@@ -85,6 +86,18 @@ Perawatan
                                     {{$data->tglbayar?Fungsi::tanggalindo($data->tglbayar):''}}
                                     @endif
                                 </td>
+                                <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
+                                    Jadwal belum diatur
+                                </td>
+                                {{-- @push('after-style')
+                                <script>
+                                    $(function () {
+                                        $('#jadwalAtur{{ $data->id }}').click(function () {
+                                            console.log('test{{ $data->id }}');
+                                        });
+                                    });
+                                </script>
+                                @endpush --}}
 
                                 <td class="text-center babeng-min-row">
                                     {{-- <x-button-reset-pass link="/admin/{{ $pages }}/{{$data->id}}/reset" /> --}}
@@ -124,5 +137,44 @@ $cari=$request->cari;
 
 
 @section('containermodal')
+@forelse ($datas as $data)
+<!-- Import Excel -->
+<div class="modal fade" id="modaljadwalAtur{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form method="post" action="#" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{$data->member->nama}}</h5>
+          </div>
+          <div class="modal-body">
+              {{ csrf_field() }}
+            <div class="row">
+                <div class="col-12">
 
+                    <label>Pilih file excel(.xlsx)</label>
+                    <div class="form-group">
+                      <input type="file" name="file" required="required">
+                    </div>
+
+                </div>
+                {{-- <div class="col-12">
+                    <label>Jumlah Materi</label>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="jml" required="required">
+                    </div>
+
+                </div> --}}
+            </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Import</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  @endforeach
 @endsection
