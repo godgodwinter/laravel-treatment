@@ -143,6 +143,8 @@ $cari=$request->cari;
         </div>
     </div>
 </section>
+
+
 @endsection
 
 
@@ -159,12 +161,45 @@ $cari=$request->cari;
             @csrf
           <div class="modal-body">
             <div class="row">
+
+                @php
+                $hasil='Jadwal belum diatur';
+                $tgl=date('Y-m-d');
+                $cek=\App\Models\penjadwalan::where('perawatan_id',$data->id)->count();
+                if($cek>0){
+                $ambil=\App\Models\penjadwalan::where('perawatan_id',$data->id)->first();
+                    // dd($ambil);
+                    $hasil=Fungsi::tanggalindo($ambil->tgl).' - '.$ambil->ruangan.' - '.$ambil->jam;
+                    $tgl=$ambil->tgl;
+                }
+            @endphp
                 <div class="form-group col-md-5 col-12 mt-0 ml-5">
                     <label for="tgl">Pilih Tanggal Perawatan<code>*)</code></label>
-                    <input type="date" name="tgl" id="tgl" class="form-control @error('tgl') is-invalid @enderror" value="{{old('tgl')?old('tgl') : date('Y-m-d')}}" required>
+                    <input type="date" name="tgl" id="tgl{{$data->id}}" class="form-control @error('tgl') is-invalid @enderror" value="{{old('tgl')?old('tgl') : $tgl}}" required>
                     @error('tgl')<div class="invalid-feedback"> {{$message}}</div>
                     @enderror
                 </div>
+
+                @push('before-script')
+                <script>
+                    $(function () {
+                        let tgl{{$data->id}} = $('#tgl{{$data->id}}');
+                        let ruangandanhari{{$data->id}} = $('#ruangandanhari{{$data->id}}');
+
+                        tgl{{$data->id}}.change(function () {
+                            // e.preventDefault();
+                            console.log(tgl{{$data->id}}.val());
+
+                                let component=`<h4>${tgl{{$data->id}}.val()}</h4`;
+                            ruangandanhari{{$data->id}}.html(component);
+
+
+
+                        });
+                    });
+                </script>
+                @endpush
+
 
                 <div class="form-group col-md-5 col-12 mt-0 ml-5">
                     <label for="dokter_id">Pilih Dokter <code></code></label>
@@ -184,7 +219,7 @@ $cari=$request->cari;
                 </div>
                 </div>
 
-            <div class="row" id="ruangandanhari">
+            <div class="row" id="ruangandanhari{{$data->id}}">
 
                 <div class="form-group col-md-3 col-12 mt-0 ml-5">
                     <label class="form-label">Pilih Ruangan</label>

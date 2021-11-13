@@ -15,16 +15,19 @@ use App\Http\Controllers\adminsettingscontroller;
 use App\Http\Controllers\adminsynccontroller;
 use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
-
-
+use App\Http\Controllers\smscontroller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+// use Facades\Yugo\SMSGateway\Interfaces\SMS;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 Route::get('/', function () {
     return view('landing.pages.index');
 });
+
+
+Route::get('/sms', [smscontroller::class, 'index'])->name('sms');
 
 
 //halaman admin fixed
@@ -151,6 +154,9 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     //proseslainlain
     Route::post('/admin/proses/cleartemp', [adminprosescontroller::class, 'cleartemp'])->name('cleartemp');
 
+    // Route::get('sms/send', function (){
+    //     return SMS::send(['085736863399'], 'Hello, world!');
+    // });
 
 
 });
