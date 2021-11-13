@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Fungsi;
+use App\Models\dokter;
+use App\Models\kategori;
 use App\Models\member;
 use App\Models\perawatan;
 use App\Models\treatment;
@@ -27,11 +29,15 @@ class adminperawatancontroller extends Controller
     {
         #WAJIB
         $pages='perawatan';
+        $dokter=dokter::get();
+        $ruangan=kategori::where('prefix','ruangan')->get();
+
+        $jam=kategori::where('prefix','jam')->where('kode','2')->get();
         // $datas=jadwaltreatment::paginate(Fungsi::paginationjml());
         $datas=perawatan::with('member')->with('treatment')->paginate(Fungsi::paginationjml());
 
 
-        return view('pages.admin.perawatan.index',compact('datas','request','pages'));
+        return view('pages.admin.perawatan.index',compact('datas','request','pages','dokter','ruangan','jam'));
     }
     public function cari(Request $request)
     {
