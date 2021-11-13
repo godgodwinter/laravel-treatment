@@ -182,6 +182,7 @@ $cari=$request->cari;
 
                 @push('before-script')
                 <script>
+
                     $(function () {
                         let tgl{{$data->id}} = $('#tgl{{$data->id}}');
                         let ruangandanhari{{$data->id}} = $('#ruangandanhari{{$data->id}}');

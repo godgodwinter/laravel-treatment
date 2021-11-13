@@ -182,7 +182,6 @@ return [
         App\Providers\getsettingsServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
-        Shipu\MuthoFun\MuthoFunServiceProvider::class,
 
     ],
 
@@ -244,7 +243,6 @@ return [
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
-        'MUTHOFUN'   =>  Shipu\MuthoFun\Facades\MuthoFun::class,
 
     ],
 
