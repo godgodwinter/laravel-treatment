@@ -37,6 +37,7 @@ class adminjadwaltreatmentcontroller extends Controller
             $arrJam=kategori::where('prefix','jam')->where('kode',$data->id)->pluck('nama');
 
             $collection->push((object)['hari' => $data->nama,
+                                        'id' => $data->id,
                                         'jam' => $arrJam,
                                         'ruangan' => $arrRuangan,
             ]);

@@ -6,6 +6,7 @@ use App\Http\Controllers\admindoktercontroller;
 use App\Http\Controllers\adminjadwaltreatmentcontroller;
 use App\Http\Controllers\adminmembercontroller;
 use App\Http\Controllers\adminpenjadwalancontroller;
+use App\Http\Controllers\adminperawatancontroller;
 use App\Http\Controllers\adminprodukcontroller;
 use App\Http\Controllers\adminprosescontroller;
 use App\Http\Controllers\adminruangancontroller;
@@ -105,25 +106,20 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //jadwaltreatment
     Route::get('/admin/jadwaltreatment', [adminjadwaltreatmentcontroller::class, 'index'])->name('jadwaltreatment');
-    Route::get('/admin/jadwaltreatment/{id}', [adminjadwaltreatmentcontroller::class, 'edit'])->name('jadwaltreatment.edit');
-    Route::put('/admin/jadwaltreatment/{id}', [adminjadwaltreatmentcontroller::class, 'update'])->name('jadwaltreatment.update');
-    Route::delete('/admin/jadwaltreatment/{id}', [adminjadwaltreatmentcontroller::class, 'destroy'])->name('jadwaltreatment.destroy');
-    Route::get('/admin/datajadwaltreatment/cari', [adminjadwaltreatmentcontroller::class, 'cari'])->name('jadwaltreatment.cari');
-    Route::get('/admin/datajadwaltreatment/create', [adminjadwaltreatmentcontroller::class, 'create'])->name('jadwaltreatment.create');
-    Route::post('/admin/datajadwaltreatment', [adminjadwaltreatmentcontroller::class, 'store'])->name('jadwaltreatment.store');
-    Route::delete('/admin/datajadwaltreatment/multidel', [adminjadwaltreatmentcontroller::class, 'multidel'])->name('jadwaltreatment.multidel');
 
 
+    //perawatan
+    Route::get('/admin/perawatan', [adminperawatancontroller::class, 'index'])->name('perawatan');
+    Route::get('/admin/perawatan/{id}', [adminperawatancontroller::class, 'edit'])->name('perawatan.edit');
+    Route::put('/admin/perawatan/{id}', [adminperawatancontroller::class, 'update'])->name('perawatan.update');
+    Route::delete('/admin/perawatan/{id}', [adminperawatancontroller::class, 'destroy'])->name('perawatan.destroy');
+    Route::get('/admin/dataperawatan/cari', [adminperawatancontroller::class, 'cari'])->name('perawatan.cari');
+    Route::get('/admin/dataperawatan/create', [adminperawatancontroller::class, 'create'])->name('perawatan.create');
+    Route::post('/admin/dataperawatan', [adminperawatancontroller::class, 'store'])->name('perawatan.store');
+    Route::delete('/admin/dataperawatan/multidel', [adminperawatancontroller::class, 'multidel'])->name('perawatan.multidel');
 
     //penjadwalan
     Route::get('/admin/penjadwalan', [adminpenjadwalancontroller::class, 'index'])->name('penjadwalan');
-    Route::get('/admin/penjadwalan/{id}', [adminpenjadwalancontroller::class, 'edit'])->name('penjadwalan.edit');
-    Route::put('/admin/penjadwalan/{id}', [adminpenjadwalancontroller::class, 'update'])->name('penjadwalan.update');
-    Route::delete('/admin/penjadwalan/{id}', [adminpenjadwalancontroller::class, 'destroy'])->name('penjadwalan.destroy');
-    Route::get('/admin/datapenjadwalan/cari', [adminpenjadwalancontroller::class, 'cari'])->name('penjadwalan.cari');
-    Route::get('/admin/datapenjadwalan/create', [adminpenjadwalancontroller::class, 'create'])->name('penjadwalan.create');
-    Route::post('/admin/datapenjadwalan', [adminpenjadwalancontroller::class, 'store'])->name('penjadwalan.store');
-    Route::delete('/admin/datapenjadwalan/multidel', [adminpenjadwalancontroller::class, 'multidel'])->name('penjadwalan.multidel');
 
 
     //export

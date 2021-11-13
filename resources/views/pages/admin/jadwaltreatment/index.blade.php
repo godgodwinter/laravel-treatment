@@ -54,6 +54,7 @@ Mastering Jadwal Treatment
 
                                     {{ ((($loop->index)+1)) }}</td>
                                 <td>
+                                    {{-- {{dd($data->id)}} --}}
                                     {{$data->hari}}
                                 </td>
                                 <td>
