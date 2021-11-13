@@ -80,11 +80,9 @@ Mastering Jadwal Treatment
                                     @empty
 
                                     @endforelse
-                                    <button class="btn btn-sm btn-info"><i class="fas fa-plus-square"></i> </button>
+                                    {{-- <button class="btn btn-sm btn-info"><i class="fas fa-plus-square"></i> </button> --}}
                                 </td>
-                                {{-- <td class="babeng-min-row">
-                                    <button class="btn btn-sm btn-info"> Edit </button>
-                                </td> --}}
+                                
 
 
                             </tr>
