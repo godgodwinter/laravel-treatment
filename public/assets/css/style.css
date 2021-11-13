@@ -53,7 +53,8 @@
 /* 2. Mixin */
 /* 3. Bootstrap Override */
 /* 3.1 Misc */
-@import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800");
+/* @import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800"); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 .btn:focus,
 .btn:active,
 .btn:active:focus,
@@ -2517,7 +2518,7 @@ body.sidebar-mini .main-sidebar {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
     content: ' ';
     position: fixed;
-    background-color: #fff;
+    background-color:var(--wax-flower-light);
     width: 65px;
     height: 100%;
     left: 0;
@@ -2545,7 +2546,7 @@ body.sidebar-mini .main-sidebar {
   body.sidebar-mini .main-sidebar .sidebar-brand {
     display: none; }
   body.sidebar-mini .main-sidebar .sidebar-brand-sm {
-    display: block; }
+    display: flex; }
   body.sidebar-mini .main-sidebar .sidebar-menu > li {
     padding: 10px; }
     body.sidebar-mini .main-sidebar .sidebar-menu > li.menu-header {
@@ -2571,12 +2572,12 @@ body.sidebar-mini .main-sidebar {
       body.sidebar-mini .main-sidebar .sidebar-menu > li > a.has-dropdown:after {
         content: initial; }
     body.sidebar-mini .main-sidebar .sidebar-menu > li.active > a {
-      box-shadow: 0 4px 8px #acb5f6;
-      background-color: #6777ef;
-      color: #fff; }
+      box-shadow: 0 2px 4px #f62459;
+      background-color: var(--wax-flower-light);
+      color: var(--radical-red); }
     body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu {
       position: absolute;
-      background-color: #fff;
+      background-color: var(--wax-flower-light);
       left: 65px;
       top: 10px;
       width: 200px;
@@ -2585,12 +2586,12 @@ body.sidebar-mini .main-sidebar {
       body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li > a:focus,
       body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a,
       body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a:hover {
-        color: #fff;
-        background-color: #6777ef !important; }
+        color: var(--monza);
+        background-color: var(--sunglo) !important; }
       body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li a {
         height: 40px;
         padding: 0 20px;
-        background-color: #fff; }
+        background-color: var(--wax-flower-light); }
         body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li a.has-dropdown:after {
           content: "";
           font-family: 'Font Awesome 5 Free';
@@ -2604,7 +2605,7 @@ body.sidebar-mini .main-sidebar {
   body.sidebar-mini .main-sidebar .sidebar-menu li:hover > ul.dropdown-menu {
     display: block !important; }
     body.sidebar-mini .main-sidebar .sidebar-menu li:hover > ul.dropdown-menu li:hover > a {
-      background-color: #fcfcfd; }
+      background-color: var(--sunglo); }
     body.sidebar-mini .main-sidebar .sidebar-menu li:hover > ul.dropdown-menu li .dropdown-menu {
       left: 200px;
       padding: 0; }

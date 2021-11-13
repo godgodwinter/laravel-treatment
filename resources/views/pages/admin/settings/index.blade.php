@@ -44,7 +44,7 @@ Pengaturan
 
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
                             <label for="app_namapendek">Singkatan Aplikasi <code>*)</code></label>
-                            <input type="text" name="app_namapendek" id="app_namapendek" class="form-control @error('app_namapendek') is-invalid @enderror" value="{{$datas->app_namapendek}}" required>
+                            <input type="text" name="app_namapendek" id="app_namapendek" class="form-control @error('app_namapendek') is-invalid @enderror" value="{{$datas->app_namapendek}}" maxlength="3" required>
                             @error('app_namapendek')<div class="invalid-feedback"> {{$message}}</div>
                             @enderror
                         </div>
