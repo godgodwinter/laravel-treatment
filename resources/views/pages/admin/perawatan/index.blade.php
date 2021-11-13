@@ -223,8 +223,10 @@ $cari=$request->cari;
             <div class="row" id="ruangandanhari{{$data->id}}">
 
                 <div class="form-group col-md-3 col-12 mt-0 ml-5">
-                    <label class="form-label">Pilih Ruangan</label>
+                    <label class="form-label">Pilih Ruangan 2</label>
                     <div class="selectgroup w-100">
+
+
 
 
                     @foreach ($ruangan as $t)
