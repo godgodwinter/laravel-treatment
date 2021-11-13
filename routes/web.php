@@ -8,6 +8,7 @@ use App\Http\Controllers\adminmembercontroller;
 use App\Http\Controllers\adminpenjadwalancontroller;
 use App\Http\Controllers\adminprodukcontroller;
 use App\Http\Controllers\adminprosescontroller;
+use App\Http\Controllers\adminruangancontroller;
 use App\Http\Controllers\adminseedercontroller;
 use App\Http\Controllers\adminsettingscontroller;
 use App\Http\Controllers\adminsynccontroller;
@@ -90,6 +91,16 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/admin/datamember/create', [adminmembercontroller::class, 'create'])->name('member.create');
     Route::post('/admin/datamember', [adminmembercontroller::class, 'store'])->name('member.store');
     Route::delete('/admin/datamember/multidel', [adminmembercontroller::class, 'multidel'])->name('member.multidel');
+
+    //ruangan
+    Route::get('/admin/ruangan', [adminruangancontroller::class, 'index'])->name('ruangan');
+    Route::get('/admin/ruangan/{id}', [adminruangancontroller::class, 'edit'])->name('ruangan.edit');
+    Route::put('/admin/ruangan/{id}', [adminruangancontroller::class, 'update'])->name('ruangan.update');
+    Route::delete('/admin/ruangan/{id}', [adminruangancontroller::class, 'destroy'])->name('ruangan.destroy');
+    Route::get('/admin/dataruangan/cari', [adminruangancontroller::class, 'cari'])->name('ruangan.cari');
+    Route::get('/admin/dataruangan/create', [adminruangancontroller::class, 'create'])->name('ruangan.create');
+    Route::post('/admin/dataruangan', [adminruangancontroller::class, 'store'])->name('ruangan.store');
+    Route::delete('/admin/dataruangan/multidel', [adminruangancontroller::class, 'multidel'])->name('ruangan.multidel');
 
 
     //jadwaltreatment
