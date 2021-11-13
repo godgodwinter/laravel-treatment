@@ -29,12 +29,12 @@ class adminperawatancontroller extends Controller
     public function index(Request $request)
     {
         $date=date('Y-m-d');
+
         #WAJIB
         $pages='perawatan';
         $dokter=dokter::get();
         $ruangan=kategori::where('prefix','ruangan')->get();
         $namaHari=Fungsi::namaHari($date);
-
         $periksaHari=kategori::where('nama',$namaHari)->where('prefix','hari')->first();
         $idHarisekarang=$periksaHari->id;
 
