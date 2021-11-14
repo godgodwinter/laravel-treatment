@@ -50,17 +50,28 @@ Tambah Transaksi
 @push('before-script')
     <script>
         $(document).ready(function () {
-            let dataProduk = [{
-                id : '1',
-                nama : 'PUBG',
-                jml : 5,
-                harga : 50000,
-            },{
-                id : '2',
-                nama : 'WS',
-                jml :15,
-                harga :20000,
-            }];
+
+            //CONTOH DATA PRODUK
+                let dataProduk = [{
+                    id : '1',
+                    nama : 'Pelembab',
+                    jml : 1,
+                    harga : 5000,
+                },{
+                    id : '2',
+                    nama : 'Cream',
+                    jml :3,
+                    harga :2000,
+                }];
+            //ENDCONTOHDATAPRODUK
+            let dataBaru={
+                    id : '3',
+                    nama : 'Pemutih',
+                    jml : 2,
+                    harga : 5000,
+                };
+                dataProduk=dataProduk.concat(dataBaru);
+                // console.log(dataProduk);
 
             // let dataMember = {
             //     id : '1',
@@ -125,7 +136,7 @@ Tambah Transaksi
                                 </td>
 
                                 <td class="text-center babeng-min-row">
-                                    <button class="btn btn-info btn-sm"><i class="fas fa-cart-plus"></i></button>
+                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalAddtoCart"><i class="fas fa-cart-plus"></i></button>
                                 </td>
 
 
@@ -189,7 +200,7 @@ $cari=$request->cari;
 
 
                                 <td class="text-center babeng-min-row">
-                                    <button class="btn btn-warning btn-sm"><i class="fas fa-times"></i></button>
+                                    <button class="btn btn-warning btn-sm"  ><i class="fas fa-times"></i></button>
                                 </td>
 
 
@@ -374,5 +385,43 @@ $cari=$request->cari;
 
 
 @section('containermodal')
+<!-- Import Excel -->
+<div class="modal fade" id="modalAddtoCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">modalAddtoCart</h5>
+          </div>
+          <form action="{{route('jadwaltreatment.storejam')}}" method="post">
+            @csrf
+          <div class="modal-body">
+            <div class="row">
+
+                <div class="form-group col-md-5 col-12 mt-0 ml-5">
+                    <label>Tambahkan Jam</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-clock"></i>
+                          </div>
+                        </div>
+                        <input type="text" class="form-control timepicker" required name="nama">
+                        {{-- <input type="hidden" required name="kode" value="{{$data->id}}" readonly> --}}
+                      </div>
+                    </div>
+                </div>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+
+        </form>
+        </div>
+    </div>
+  </div>
 
 @endsection
