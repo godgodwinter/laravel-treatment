@@ -193,6 +193,9 @@ $cari=$request->cari;
         <div class="card">
             <div class="card-body">
                 <h5>Keranjang</h5>
+                @error('member_id')
+                        <code>Produk tidak boleh kosong</code>
+                @enderror
 
                 <table id="keranjangTable" class="table table-striped table-bordered mt-1 table-sm" style="width:100%">
                     <thead>
@@ -312,6 +315,7 @@ $cari=$request->cari;
             $('#totalBayar').html(ttl)
                 //END TAMPILKANDATAKERANJANG
 
+                window.localStorage.setItem('totalBayar', ttl);
                 //CLICKSIMPAN
                 //END CLICKSIMPAN
 
@@ -331,6 +335,9 @@ $cari=$request->cari;
         <div class="card">
             <div class="card-body">
                 <h5 id="memberSlot">Member : Belum dipilih </h5>
+                @error('member_id')
+                        <code>Member tidak boleh kosong!</code>
+                @enderror
 
                 <div class="form-group col-md-12 col-12 mt-0 ml-2">
                     <label for="member_id">Pilih Member <code></code></label>
@@ -412,23 +419,40 @@ $cari=$request->cari;
 
         <div class="card">
             <div class="card-body">
-                <h5>Checkout</h5>
+                <h5>Akhiri Transaksi</h5>
 
                 <div class="d-flex justify-content-between flex-row-reverse mt-3">
                     <div>
-                        <button class="btn btn-info " id="checkout"> Selesaikan Transaksi</button>
+                        <button class="btn btn-light " id="clear"> Reset</button>
+                        <form action="{{route('transaksi.checkout')}}" method="POST" class="d-inline" >
+                            @csrf
+                                <input type="hidden" name="member_id" value="" id="formmember_id">
+                                <input type="hidden" name="produk" value="" id="formproduk">
+                                <input type="hidden" name="totalbayar" value="" id="formtotalbayar">
+                        <button class="btn btn-info ml-2" id="checkout"> Selesaikan Transaksi</button>
+                    </form>
                     </div>
                 </div>
                 @push('before-script')
                 <script>
                     $(document).ready(function () {
+                        $('#clear').click(function () {
+
+                            window.localStorage.clear();
+                            location.reload();
+
+                        });
+
                         $('#checkout').click(function () {
                             // alert('Cekot')
                             let dataPembeli=null;
                             let dataKeranjang=null;
+                            let StrdataKeranjang=null;
+                            let totalBayar=null;
                             if (localStorage.getItem('adminCart')) {
                                 try{
                                     dataKeranjang = JSON.parse(localStorage.getItem('adminCart'));
+                                    StrdataKeranjang = localStorage.getItem('adminCart');
                                     }catch(e){
                                         localStorage.removeItem('adminCart');
                                     }
@@ -440,21 +464,35 @@ $cari=$request->cari;
                                         localStorage.removeItem('adminPembeli');
                                     }
                             }
+                            if (localStorage.getItem('totalBayar')) {
+                                try{
+                                    totalBayar = JSON.parse(localStorage.getItem('totalBayar'));
+                                    }catch(e){
+                                        localStorage.removeItem('totalBayar');
+                                    }
+                            }
+
+
+                            $('#formmember_id').val(dataPembeli.id);
+                            $('#formproduk').val(StrdataKeranjang);
+                            $('#formtotalbayar').val(totalBayar);
 
                             if(dataPembeli==null){
                                 return alert('Pilih Member dahulu!')
+
                             }
                             if(dataKeranjang==null){
                                 return alert('Keranjang tidak boleh Kosong!')
                             }
-                            console.log(dataKeranjang+dataPembeli);
-
-                            //fungsi
-                            function periksaLocalStorage(data){
-                                return data
+                            if(totalBayar==null){
+                                return alert('Keranjang tidak boleh Kosong!')
                             }
-                            // end fungsi
+                            console.log(totalBayar);
 
+                            window.localStorage.clear();
+                            //fungsi
+
+                            // end fungsi
                         });
                     });
                 </script>

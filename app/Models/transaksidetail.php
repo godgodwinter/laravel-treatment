@@ -16,6 +16,7 @@ class transaksidetail extends Model
         protected $fillable = [
             'produk_id',
             'transaksi_id',
+            'jml',
             'ket',
         ];
 

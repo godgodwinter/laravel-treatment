@@ -15,8 +15,9 @@ class CreateTransaksidetailTable extends Migration
     {
         Schema::create('transaksidetail', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('transactions_id');
-            $table->integer('products_id');
+            $table->integer('transaksi_id');
+            $table->integer('produk_id');
+            $table->string('jml')->nullable();
             $table->string('ket')->nullable();
             $table->softDeletes();
             $table->timestamps();
