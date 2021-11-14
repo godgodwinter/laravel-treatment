@@ -28,7 +28,7 @@ class admintransaksicontroller extends Controller
     {
         #WAJIB
         $pages='transaksi';
-        $datas=transaksi::with('member')->orderBy('tgl','desc')
+        $datas=transaksi::with('member')->orderBy('tgl','desc')->orderBy('created_at','desc')
         ->paginate(Fungsi::paginationjml());
         // dd($datas);
 
