@@ -32,6 +32,7 @@
                     Treatment</span></a></li>
         <li {{ $pages == 'users' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('users') }}"><i
                     class="fas fa-building"></i> <span>User</span></a></li>
+                    <li {{ $pages == 'testimoni' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('testimoni') }}"><i class="fas fa-comments"></i> <span>Testimoni</span></a></li>
     </ul>
 </li>
 

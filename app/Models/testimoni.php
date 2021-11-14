@@ -17,6 +17,7 @@ class testimoni extends Model
             'member_id',
             'pesan',
             'tgl',
+            'status',
         ];
 
 }

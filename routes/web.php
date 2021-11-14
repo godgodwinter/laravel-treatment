@@ -13,6 +13,7 @@ use App\Http\Controllers\adminruangancontroller;
 use App\Http\Controllers\adminseedercontroller;
 use App\Http\Controllers\adminsettingscontroller;
 use App\Http\Controllers\adminsynccontroller;
+use App\Http\Controllers\admintestimonicontroller;
 use App\Http\Controllers\admintransaksicontroller;
 use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
@@ -97,6 +98,8 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::post('/admin/datamember', [adminmembercontroller::class, 'store'])->name('member.store');
     Route::delete('/admin/datamember/multidel', [adminmembercontroller::class, 'multidel'])->name('member.multidel');
 
+    //testimoni
+    Route::get('/admin/testimoni', [admintestimonicontroller::class, 'index'])->name('testimoni');
     //ruangan
     Route::get('/admin/ruangan', [adminruangancontroller::class, 'index'])->name('ruangan');
     Route::get('/admin/ruangan/{id}', [adminruangancontroller::class, 'edit'])->name('ruangan.edit');
