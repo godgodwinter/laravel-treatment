@@ -32,7 +32,9 @@ Perawatan
                     <div class="p-2 bd-highlight">
 
                         <form action="{{ route('perawatan.cari') }}" method="GET">
-                            <input type="text" class="babeng babeng-select  ml-0" name="cari">
+                            <input type="month" name="bln" id="bln"
+                            class="form-control " placeholder=""
+                            value="{{date('Y-m')}}" required>
                         </div>
                         <div class="p-2 bd-highlight">
                             <span>
@@ -42,7 +44,10 @@ Perawatan
                         </div>
 
                         <div class="ml-auto p-2 bd-highlight">
+                            <a href="#" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a>
+                            <a href="#" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="fas fa-stopwatch"></i> Reminder</a>
                             <x-button-create link="{{route('perawatan.create')}}"></x-button-create>
+
                         </form>
 
                     </div>

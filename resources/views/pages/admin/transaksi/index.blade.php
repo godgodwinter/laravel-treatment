@@ -32,16 +32,21 @@ Transaksi
                     <div class="p-2 bd-highlight">
 
                         <form action="{{ route('produk.cari') }}" method="GET">
-                            <input type="text" class="babeng babeng-select  ml-0" name="cari">
+
+                            <input type="month" name="bln" id="bln"
+                            class="form-control " placeholder=""
+                            value="{{date('Y-m')}}" required>
                         </div>
                         <div class="p-2 bd-highlight">
                             <span>
                                 <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
-                                    value="Cari">
+                                    value="Pilih">
                             </span>
                         </div>
 
                         <div class="ml-auto p-2 bd-highlight">
+
+                            <a href="#" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a>
                             <x-button-create link="{{route('transaksi.create')}}"></x-button-create>
                         </form>
 
@@ -81,16 +86,25 @@ Transaksi
                                     {{Fungsi::tanggalindo($data->tgl)}}
                                 </td>
                                 <td class="text-center babeng-min-row">
-                                    {{$data->totaltagihan}}
+                                    {{Fungsi::rupiah($data->totaltagihan)}}
                                 </td>
                                 <td  class="text-center babeng-min-row">
-                                    {{$data->status}}
+                                    @if($data->status=='pending')
+                                        <span class="badge badge-info">
+                                    @elseif($data->status=='success')
+                                    <span class="badge badge-success">
+                                    @else
+                                        <span class="badge badge-danger">
+                                    @endif
+
+                                    {{Str::ucfirst($data->status) }}
+
+                                    </span>
 
                                 </td>
 
                                 <td class="text-center babeng-min-row">
-                                    {{-- <x-button-reset-pass link="/admin/{{ $pages }}/{{$data->id}}/reset" /> --}}
-                                    <x-button-edit link="/admin/{{ $pages }}/{{$data->id}}" />
+                                    <button class="btn btn-sm btn-info">Detail</button>
                                     <x-button-delete link="/admin/{{ $pages }}/{{$data->id}}" />
                                 </td>
 
