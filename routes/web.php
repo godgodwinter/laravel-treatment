@@ -147,6 +147,8 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/admin/sync/mapeltodataajar', [adminsynccontroller::class, 'mapeltodataajar'])->name('sync.mapeltodataajar');
 
     //Seeder
+    Route::post('/admin/seeder/member', [adminseedercontroller::class, 'member'])->name('seeder.member');
+    Route::post('/admin/seeder/jadwaltreatment', [adminseedercontroller::class, 'jadwaltreatment'])->name('seeder.jadwaltreatment');
     Route::post('/admin/seeder/kelas', [adminseedercontroller::class, 'kelas'])->name('seeder.kelas');
     Route::post('/admin/seeder/siswa', [adminseedercontroller::class, 'siswa'])->name('seeder.siswa');
     Route::post('/admin/seeder/guru', [adminseedercontroller::class, 'guru'])->name('seeder.guru');

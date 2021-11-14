@@ -189,15 +189,15 @@ Pengaturan
                         <button class="btn btn-info">Seeder Data Produk, Dokter dan Treatment</button>
                     </form>
 
-                    <form action="#" method="post" class="d-inline">
+                    <form action="{{route('seeder.jadwaltreatment')}}" method="post" class="d-inline">
                         @csrf
-                        <button class="btn btn-info">Seeder Data Mastering Penjadwalan</button>
+                        <button class="btn btn-info">Seeder Data Mastering Jadwal Treatment</button>
                     </form>
 
 
-                    <form action="#" method="post" class="d-inline">
+                    <form action="{{route('seeder.member')}}" method="post" class="d-inline">
                         @csrf
-                        <button class="btn btn-info">Seeder Data Pasien</button>
+                        <button class="btn btn-info">Seeder Data Member</button>
                     </form>
 
 

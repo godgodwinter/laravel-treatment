@@ -62,7 +62,9 @@ Produk
                         <tr style="background-color: #F1F1F1">
                             <th class="text-center py-2 babeng-min-row"> <input type="checkbox" id="chkCheckAll"> All</th>
                             <th >Nama produk</th>
-                            <th >Harga</th>
+                            <th class="text-center">Harga</th>
+                            <th class="text-center">Stok</th>
+                            <th class="text-center">Photo</th>
                             <th >Aksi</th>
                         </tr>
                     </thead>
@@ -75,8 +77,24 @@ Produk
                                 <td>
                                     {{$data->nama}}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     {{Fungsi::rupiah($data->harga)}}
+                                </td>
+                                <td class="text-center babeng-min-row">
+                                    {{$data->stok}}
+                                </td>
+                                <td  class="text-center babeng-min-row">
+                                    @php
+                                    $gambar=$data->photo;
+                                    $randomimg='https://ui-avatars.com/api/?name='.$data->nama.'&color=7F9CF5&background=EBF4FF';
+                                    @endphp
+                                    @if($data->photo!=null AND $data->photo!=url('storage') AND $data->photo!='')
+                                    <img alt="image" src="{{$gambar}}" class="img-thumbnail" data-toggle="tooltip" title="{{$data->nama}}" width="60px" height="60px" style="object-fit:cover;">
+                                    @else
+                                    <img alt="image" src="{{$randomimg}}" class="img-thumbnail" data-toggle="tooltip" title="{{$data->nama}}" width="60px" height="60px" style="object-fit:cover;">
+
+                                    @endif
+
                                 </td>
 
                                 <td class="text-center babeng-min-row">

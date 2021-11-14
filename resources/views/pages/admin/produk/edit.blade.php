@@ -30,7 +30,7 @@ Produk
             </div>
             <div class="card-body">
 
-                <form action="{{route('produk.update',$id->id)}}" method="post">
+                <form action="{{route('produk.update',$id->id)}}" method="post" enctype="multipart/form-data">
                     @method('put')
                     @csrf
 
@@ -49,6 +49,12 @@ Produk
                             @enderror
                         </div>
 
+                        <div class="form-group col-md-5 col-5 mt-0 ml-5">
+                            <label for="stok">Stok Barang<code>*)</code></label>
+                            <input type="number" name="stok" id="stok" class="form-control @error('stok') is-invalid @enderror" value="{{old('stok')?old('stok'):$id->stok}}" required min="1">
+                            @error('stok')<div class="invalid-feedback"> {{$message}}</div>
+                            @enderror
+                        </div>
 
                         @push('after-script')
                         <script type="text/javascript">
@@ -70,11 +76,11 @@ Produk
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
                           <div id="image-preview" class="image-preview">
                             <label for="image-upload" id="image-label2">UPLOAD FOTO</label>
-                            <input type="file" name="produkfoto" id="image-upload" class="@error('produkfoto')
+                            <input type="file" name="files" id="image-upload" class="@error('files')
                             is_invalid
                         @enderror"  accept="image/png, image/gif, image/jpeg" />
 
-                        @error('produkfoto')<div class="invalid-feedback"> {{$message}}</div>
+                        @error('files')<div class="invalid-feedback"> {{$message}}</div>
                         @enderror
                           </div>
                         </div>

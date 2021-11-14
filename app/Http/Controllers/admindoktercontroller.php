@@ -72,7 +72,7 @@ class admindoktercontroller extends Controller
                 'nama.nama'=>'nama harus diisi',
             ]);
 
-            DB::table('dokter')->insert(
+            $data_id=DB::table('dokter')->insertGetId(
                 array(
                        'nama'     =>   $request->nama,
                        'jk'     =>   $request->jk,
@@ -83,6 +83,28 @@ class admindoktercontroller extends Controller
                        'created_at'=>date("Y-m-d H:i:s"),
                        'updated_at'=>date("Y-m-d H:i:s")
                 ));
+
+                $files = $request->file('files');
+
+
+                if($files!=null){
+
+
+                    // dd('storage'.'/'.$id->sekolah_logo);
+                    $namafilebaru=$data_id;
+                    $tujuan_upload = 'storage/dokter';
+                            // upload file
+                    $files->move($tujuan_upload,"dokter/".$namafilebaru.".jpg");
+
+                    $photo="dokter/".$namafilebaru.".jpg";
+
+
+                    dokter::where('id',$data_id)
+                    ->update([
+                        'photo'     =>   $photo,
+                    'updated_at'=>date("Y-m-d H:i:s")
+                    ]);
+                }
 
 
 
@@ -129,6 +151,29 @@ class admindoktercontroller extends Controller
             'alamat'     =>   $request->alamat,
            'updated_at'=>date("Y-m-d H:i:s")
         ]);
+
+
+        $files = $request->file('files');
+
+
+        if($files!=null){
+
+
+            // dd('storage'.'/'.$id->sekolah_logo);
+            $namafilebaru=$id->id;
+            $tujuan_upload = 'storage/dokter';
+                    // upload file
+            $files->move($tujuan_upload,"dokter/".$namafilebaru.".jpg");
+
+            $photo="dokter/".$namafilebaru.".jpg";
+
+
+            dokter::where('id',$id->id)
+            ->update([
+                'photo'     =>   $photo,
+            'updated_at'=>date("Y-m-d H:i:s")
+            ]);
+        }
 
 
     return redirect()->route('dokter')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');
