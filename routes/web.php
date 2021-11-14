@@ -13,6 +13,7 @@ use App\Http\Controllers\adminruangancontroller;
 use App\Http\Controllers\adminseedercontroller;
 use App\Http\Controllers\adminsettingscontroller;
 use App\Http\Controllers\adminsynccontroller;
+use App\Http\Controllers\admintransaksicontroller;
 use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
 use App\Http\Controllers\smscontroller;
@@ -128,6 +129,9 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //penjadwalan
     Route::get('/admin/penjadwalan', [adminpenjadwalancontroller::class, 'index'])->name('penjadwalan');
+
+    //transaksi
+    Route::get('/admin/transaksi', [admintransaksicontroller::class, 'index'])->name('transaksi');
 
 
     //export
