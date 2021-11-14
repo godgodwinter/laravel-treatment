@@ -100,6 +100,10 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //testimoni
     Route::get('/admin/testimoni', [admintestimonicontroller::class, 'index'])->name('testimoni');
+    Route::delete('/admin/testimoni/{id}', [admintestimonicontroller::class, 'destroy'])->name('testimoni.destroy');
+    Route::get('/admin/datatestimoni/cari', [admintestimonicontroller::class, 'cari'])->name('testimoni.cari');
+    Route::get('/admin/datatestimoni/status/{id}', [admintestimonicontroller::class, 'status'])->name('testimoni.status');
+    Route::delete('/admin/datatestimoni/multidel', [admintestimonicontroller::class, 'multidel'])->name('testimoni.multidel');
     //ruangan
     Route::get('/admin/ruangan', [adminruangancontroller::class, 'index'])->name('ruangan');
     Route::get('/admin/ruangan/{id}', [adminruangancontroller::class, 'edit'])->name('ruangan.edit');

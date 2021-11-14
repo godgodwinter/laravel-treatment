@@ -20,4 +20,9 @@ class testimoni extends Model
             'status',
         ];
 
+        public function member()
+        {
+            return $this->belongsTo('App\Models\member');
+        }
+
 }
