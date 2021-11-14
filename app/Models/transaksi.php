@@ -19,6 +19,8 @@ class transaksi extends Model
             'tgl',
             'status',
             'totaltagihan',
+            'tipe', //admin/member
+            'users_id', //penginput
         ];
 
         public function member()

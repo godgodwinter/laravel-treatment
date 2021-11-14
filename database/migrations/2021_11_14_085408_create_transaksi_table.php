@@ -20,6 +20,8 @@ class CreateTransaksiTable extends Migration
             $table->string('tgl');
             $table->string('status')->nullable();
             $table->string('totaltagihan')->nullable();
+            $table->string('tipe')->nullable(); //admin/member
+            $table->string('users_id')->nullable(); //admin/member
             $table->softDeletes();
             $table->timestamps();
         });

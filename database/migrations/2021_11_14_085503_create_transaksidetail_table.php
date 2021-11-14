@@ -17,6 +17,7 @@ class CreateTransaksidetailTable extends Migration
             $table->bigIncrements('id');
             $table->integer('transactions_id');
             $table->integer('products_id');
+            $table->string('ket')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

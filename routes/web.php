@@ -132,6 +132,8 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //transaksi
     Route::get('/admin/transaksi', [admintransaksicontroller::class, 'index'])->name('transaksi');
+    Route::get('/admin/transaksi/create', [admintransaksicontroller::class, 'create'])->name('transaksi.create');
+    Route::get('/admin/transaksi/cari', [admintransaksicontroller::class, 'cariproduk'])->name('transaksi.produk.cari');
 
 
     //export

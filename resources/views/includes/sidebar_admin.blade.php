@@ -35,14 +35,14 @@
     </ul>
 </li>
 
-<li class="nav-item dropdown {{ $pages == 'mapel' || $pages == 'silabus' || $pages == 'penilaian' ? 'active' : '' }}">
+<li class="nav-item dropdown {{ $pages == 'perawatan' || $pages == 'transaksi'  ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
         <span>Proses</span></a>
     <ul class="dropdown-menu">
 
         <li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('perawatan')}}"><i
                     class="fab fa-monero"></i> <span>Perawatan</span></a></li>
-        <li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('transaksi')}}"><i
+        <li {{ $pages == 'transaksi' ? 'class=active' : '' }}><a class="nav-link" href="{{route('transaksi')}}"><i
                     class="fab fa-monero"></i> <span>Transaksi</span></a></li>
         {{-- <li {{ $pages == 'penjadwalan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('penjadwalan')}}"><i
                     class="fas fa-microchip"></i> <span>Penjadwalan</span></a></li> --}}

@@ -42,7 +42,7 @@ Transaksi
                         </div>
 
                         <div class="ml-auto p-2 bd-highlight">
-                            <x-button-create link="{{route('produk.create')}}"></x-button-create>
+                            <x-button-create link="{{route('transaksi.create')}}"></x-button-create>
                         </form>
 
                     </div>
