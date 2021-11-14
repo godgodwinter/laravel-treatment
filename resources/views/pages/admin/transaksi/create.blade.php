@@ -51,37 +51,39 @@ Tambah Transaksi
     <script>
         $(document).ready(function () {
 
-            //CONTOH DATA PRODUK
-                let dataProduk = [{
-                    id : '1',
-                    nama : 'Pelembab',
-                    jml : 1,
-                    harga : 5000,
-                },{
-                    id : '2',
-                    nama : 'Cream',
-                    jml :3,
-                    harga :2000,
-                }];
-            //ENDCONTOHDATAPRODUK
-            let dataBaru={
-                    id : '3',
-                    nama : 'Pemutih',
-                    jml : 2,
-                    harga : 5000,
-                };
-                dataProduk=dataProduk.concat(dataBaru);
+
+
+            // //CONTOH DATA PRODUK
+            //     let dataProduk = [{
+            //         id : '1',
+            //         nama : 'Pelembab',
+            //         jml : 1,
+            //         harga : 5000,
+            //     },{
+            //         id : '2',
+            //         nama : 'Cream',
+            //         jml :3,
+            //         harga :2000,
+            //     }];
+            // //ENDCONTOHDATAPRODUK
+            // let dataBaru={
+            //         id : '3',
+            //         nama : 'Pemutih',
+            //         jml : 2,
+            //         harga : 5000,
+            //     };
+            //     dataProduk=dataProduk.concat(dataBaru);
                 // console.log(dataProduk);
 
             // let dataMember = {
             //     id : '1',
             //     nama : 'Paijo',
             // }
-            let strdataProduk = JSON.stringify(dataProduk)
-            // let strdataMember = JSON.stringify(dataMember)
-            let myStorage = localStorage;
-                window.localStorage.setItem('adminCart', strdataProduk);
-                // window.localStorage.setItem('adminPembeli',strdataMember);
+            // let strdataProduk = JSON.stringify(dataProduk)
+            // // let strdataMember = JSON.stringify(dataMember)
+            // let myStorage = localStorage;
+            //     window.localStorage.setItem('adminCart', strdataProduk);
+            //     // window.localStorage.setItem('adminPembeli',strdataMember);
 
 
         });
@@ -136,8 +138,27 @@ Tambah Transaksi
                                 </td>
 
                                 <td class="text-center babeng-min-row">
-                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalAddtoCart"><i class="fas fa-cart-plus"></i></button>
+                                    <button class="btn btn-info btn-sm open-AddBookDialog" data-toggle="modal" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-stok="{{$data->stok}}" data-harga="{{$data->harga}}" title="Add this item"  href="#modalAddtoCart"><i class="fas fa-cart-plus"></i></button>
                                 </td>
+
+                                @push('before-script')
+                                    <script>
+                                        $(document).on("click", ".open-AddBookDialog", function () {
+                                        var myId = $(this).data('id');
+                                        var myNama = $(this).data('nama');
+                                        var myStok = $(this).data('stok');
+                                        var myHarga = $(this).data('harga');
+                                        $(".modal-body #idProduk").val( myId );
+                                        $(".modal-body #namaProduk").val( myNama );
+                                        $(".modal-body #stokProduk").val( myStok );
+                                        $(".modal-body #hargaProduk").val( myHarga );
+                                        $('#jmlProduk').prop('max',myStok);
+                                        // As pointed out in comments,
+                                        // it is unnecessary to have to manually call the modal.
+                                        // $('#addBookDialog').modal('show');
+                                    });
+                                    </script>
+                                @endpush
 
 
                             </tr>
@@ -185,7 +206,7 @@ $cari=$request->cari;
                         </tr>
                     </thead>
                     <tbody id="dataKeranjang">
-                        <tr >
+                        {{-- <tr >
                                 <td class="text-center">
                                    1</td>
                                 <td>
@@ -200,17 +221,45 @@ $cari=$request->cari;
 
 
                                 <td class="text-center babeng-min-row">
-                                    <button class="btn btn-warning btn-sm"  ><i class="fas fa-times"></i></button>
+                                    <button class="btn btn-warning btn-sm BtnHapusKeranjangId"  ><i class="fas fa-times"></i></button>
                                 </td>
 
 
-                            </tr>
+                            </tr> --}}
+                            @push('before-script')
+                            <script>
+                                $(document).ready(function () {
+                                        $(document).on("click", ".BtnHapusKeranjangId", function () {
+                                        var myId = $(this).data('id');
+                                        let dataKeranjang=[];
+                                        //ambil data localstorage
+                                        if (localStorage.getItem('adminCart')) {
+                                            try{
+                                                dataKeranjang = JSON.parse(localStorage.getItem('adminCart'));
+                                                }catch(e){
+                                                    localStorage.removeItem('adminCart');
+                                                }
+                                        }
+                                        console.log(myId);
+
+                                        dataKeranjang.splice(myId,1);
+                                        const parsed = JSON.stringify(dataKeranjang);
+                                        localStorage.setItem('adminCart', parsed);
+                                        location.reload();
+                                        // parsing
+                                        //splice where index
+                                        //ubaH ke json
+                                        //set local stroaeg baru
+                                    });
+                                });
+                            </script>
+                            @endpush
                     </tbody>
                     <tfoot>
 
                             <tr>
                                 <td colspan="3" class="text-center">Total Bayar</td>
-                                <td class="text-center" id="totalBayar">200000</td>
+                                <td class="text-center" id="totalBayar">0</td>
                             </tr>
 
                         </tfoot>
@@ -252,7 +301,7 @@ $cari=$request->cari;
 
 
                                 <td class="text-center babeng-min-row">
-                                    <button class="btn btn-warning btn-sm" value='tes'><i class="fas fa-times"></i></button>
+                                    <button class="btn btn-warning btn-sm BtnHapusKeranjangId" data-id="${index}"><i class="fas fa-times"></i></button>
                                 </td>
 
 
@@ -367,9 +416,49 @@ $cari=$request->cari;
 
                 <div class="d-flex justify-content-between flex-row-reverse mt-3">
                     <div>
-                        <button class="btn btn-info "> Selesaikan Transaksi</button>
+                        <button class="btn btn-info " id="checkout"> Selesaikan Transaksi</button>
                     </div>
                 </div>
+                @push('before-script')
+                <script>
+                    $(document).ready(function () {
+                        $('#checkout').click(function () {
+                            // alert('Cekot')
+                            let dataPembeli=null;
+                            let dataKeranjang=null;
+                            if (localStorage.getItem('adminCart')) {
+                                try{
+                                    dataKeranjang = JSON.parse(localStorage.getItem('adminCart'));
+                                    }catch(e){
+                                        localStorage.removeItem('adminCart');
+                                    }
+                            }
+                            if (localStorage.getItem('adminPembeli')) {
+                                try{
+                                    dataPembeli = JSON.parse(localStorage.getItem('adminPembeli'));
+                                    }catch(e){
+                                        localStorage.removeItem('adminPembeli');
+                                    }
+                            }
+
+                            if(dataPembeli==null){
+                                return alert('Pilih Member dahulu!')
+                            }
+                            if(dataKeranjang==null){
+                                return alert('Keranjang tidak boleh Kosong!')
+                            }
+                            console.log(dataKeranjang+dataPembeli);
+
+                            //fungsi
+                            function periksaLocalStorage(data){
+                                return data
+                            }
+                            // end fungsi
+
+                        });
+                    });
+                </script>
+                @endpush
 
             </div>
         </div>
@@ -386,42 +475,101 @@ $cari=$request->cari;
 
 @section('containermodal')
 <!-- Import Excel -->
-<div class="modal fade" id="modalAddtoCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalAddtoCart" tabindex="-1" role="dialog" aria-labelledby="modalJudul" aria-hidden="true">
     <div class="modal-dialog " role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">modalAddtoCart</h5>
+            <h5 class="modal-title" id="modalJudul">modalAddtoCart</h5>
           </div>
-          <form action="{{route('jadwaltreatment.storejam')}}" method="post">
-            @csrf
           <div class="modal-body">
             <div class="row">
 
-                <div class="form-group col-md-5 col-12 mt-0 ml-5">
-                    <label>Tambahkan Jam</label>
+
+                        <input type="hidden" class="form-control " required name="idProduk" id="idProduk">
+                        {{-- <input  type="hidden" class="form-control " required name="stokProduk" id="stokProduk"> --}}
+
+                <div class="form-group col-md-10 col-10 mt-0 ml-5">
+                    <label>Nama Produk</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-clock"></i>
-                          </div>
-                        </div>
-                        <input type="text" class="form-control timepicker" required name="nama">
-                        {{-- <input type="hidden" required name="kode" value="{{$data->id}}" readonly> --}}
-                      </div>
+                        <input type="text" class="form-control " required name="namaProduk" id="namaProduk" readonly>
                     </div>
                 </div>
+                <div class="form-group col-md-10 col-10 mt-0 ml-5">
+                    <label>Harga Produk</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control " required name="hargaProduk" id="hargaProduk" readonly>
+                    </div>
+                </div>
+                <div class="form-group col-md-10 col-10 mt-0 ml-5">
+                    <label>Stok Produk</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control " required name="stokProduk" id="stokProduk" min="1" readonly>
+                    </div>
+                </div>
+                <div class="form-group col-md-10 col-10 mt-0 ml-5">
+                    <label>Jumlah Produk</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control " required name="jmlProduk" id="jmlProduk" min="1" value="1">
+                    </div>
+                </div>
+
+
+            </div>
 
 
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button class="btn btn-primary" id="BtnSimpanKeKeranjang">Simpan</button>
           </div>
 
-        </form>
         </div>
     </div>
   </div>
+  @push('before-script')
+    <script>
+        $(document).ready(function () {
+$('#BtnSimpanKeKeranjang').click(function () {
+    let dataKeranjang={};
+    let stokProduk=parseInt($('#stokProduk').val());
+    let jmlProduk=parseInt($('#jmlProduk').val());
+
+    if(jmlProduk>stokProduk){
+        alert('Stok tidak tersedia');
+    }else{
+        dataKeranjang={
+            id : $('#idProduk').val(),
+            nama : $('#namaProduk').val(),
+            harga : $('#hargaProduk').val(),
+            jml : $('#jmlProduk').val(),
+        }
+
+            let strdataKeranjang= JSON.stringify(dataKeranjang)
+        let parsedjsonAdminCart=[];
+        // ambildata local storage
+        let jsonAdminCart=localStorage.getItem("adminCart");
+
+        if(jsonAdminCart!=null){
+        // parse data menjadi objek
+         parsedjsonAdminCart=JSON.parse(jsonAdminCart);
+            //masukkan data baru kedalam objek locakstorage yang telah di parse
+            parsedjsonAdminCart.push(dataKeranjang);
+        }else{
+            parsedjsonAdminCart=[dataKeranjang];
+
+        }
+        // console.log(parsedjsonAdminCart);
+
+        //ubah menjadi json dahulu
+            let strdataProduk = JSON.stringify(parsedjsonAdminCart)
+        // kirim ke localstorage
+                window.localStorage.setItem('adminCart', strdataProduk);
+                location.reload();
+    }
+});
+        });
+    </script>
+  @endpush
 
 @endsection
