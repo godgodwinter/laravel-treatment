@@ -9,6 +9,8 @@ use App\Models\member;
 use App\Models\penjadwalan;
 use App\Models\produk;
 use App\Models\testimoni;
+use App\Models\transaksi;
+use App\Models\transaksidetail;
 use App\Models\treatment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -28,9 +30,21 @@ class adminseedercontroller extends Controller
         for($i=0;$i<$jmlseeder;$i++){
 
             $nama=$faker->unique()->name;
+        $users_id=DB::table('users')->insertGetId([
+            'name' =>  $nama,
+            'email' => $faker->unique()->email,
+            'username'=>$faker->unique()->username,
+            'nomerinduk'=>$faker->unique()->username,
+            'password' => Hash::make('123'),
+            'tipeuser' => 'member',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
             $nomerinduk=$faker->unique()->ean8;
             DB::table('member')->insert([
                 'nama' =>  $nama,
+                'users_id' =>  $users_id,
                 'jk' => $faker->randomElement(['Laki-laki', 'Perempuan']),
                 'telp' => $faker->phoneNumber(),
                 'tgllahir' => $faker->numberBetween(1990,2020).'-0'.$faker->numberBetween(1,9).'-'.$faker->numberBetween(10,29),
@@ -38,6 +52,7 @@ class adminseedercontroller extends Controller
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
+
 
      }
 
@@ -144,7 +159,9 @@ class adminseedercontroller extends Controller
         penjadwalan::truncate();
         member::truncate();
         testimoni::truncate();
-        // DB::table('users')->where('tipeuser','siswa')->delete();
+        transaksi::truncate();
+        transaksidetail::truncate();
+        DB::table('users')->where('tipeuser','member')->delete();
         // DB::table('users')->where('tipeuser','guru')->delete();
         return redirect()->back()->with('status','Hard Reset berhasil dimuat!')->with('tipe','success')->with('icon','fas fa-edit');
 

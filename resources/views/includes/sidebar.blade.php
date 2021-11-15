@@ -15,12 +15,9 @@
 
 @include('includes.sidebar_admin')
 
-@elseif((Auth::user()->tipeuser)=='guru')
+@elseif((Auth::user()->tipeuser)=='member')
 
-@include('includes.sidebar_guru')
-
-@elseif((Auth::user()->tipeuser)=='siswa')
-@include('includes.sidebar_siswa')
+@include('includes.sidebar_member')
 
 @else
 @endif

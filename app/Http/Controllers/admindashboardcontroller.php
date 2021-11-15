@@ -32,6 +32,10 @@ class admindashboardcontroller extends Controller
 
             return view('pages.admin.dashboard.index',compact('pages','produkJml','laki','perempuan','treatmentJml','transaksiSuccessJml','transaksiTotalJml','perawatanJml'));
         }
+        if((Auth::user()->tipeuser)=='member'){
+
+            return view('pages.admin.dashboard.index',compact('pages','produkJml','laki','perempuan','treatmentJml','transaksiSuccessJml','transaksiTotalJml','perawatanJml'));
+        }
     }
 
 }
