@@ -147,6 +147,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     //transaksi
     Route::get('/admin/transaksi', [admintransaksicontroller::class, 'index'])->name('transaksi');
     Route::get('/admin/transaksi/create', [admintransaksicontroller::class, 'create'])->name('transaksi.create');
+    Route::get('/createtest', [admintransaksicontroller::class, 'createtest'])->name('transaksi.createtest');
     Route::get('/admin/datatransaksi/cari', [admintransaksicontroller::class, 'cari'])->name('transaksi.cari');
     Route::get('/admin/transaksi/cari', [admintransaksicontroller::class, 'cariproduk'])->name('transaksi.produk.cari');
     Route::post('/admin/datatransaksi/checkout', [admintransaksicontroller::class, 'checkout'])->name('transaksi.checkout');

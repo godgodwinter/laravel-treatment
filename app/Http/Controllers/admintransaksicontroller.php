@@ -76,6 +76,16 @@ class admintransaksicontroller extends Controller
 
         return view('pages.admin.transaksi.create',compact('datas','request','pages','member'));
     }
+    public function createtest(Request $request)
+    {
+        #WAJIB
+        $pages='transaksi';
+        $datas=produk::paginate(Fungsi::paginationjml());
+        $member=member::get();
+        // dd($produk);
+
+        return view('pages.admin.transaksi.createtest',compact('datas','request','pages','member'));
+    }
     public function cariproduk(Request $request)
     {
 
