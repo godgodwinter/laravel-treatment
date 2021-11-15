@@ -70,6 +70,7 @@ Beranda
                 <ul>
                   <li><strong>Harga</strong>: {{Fungsi::rupiah($datas->harga)}}</li>
                 </ul>
+                <img src="data:image/png;base64,{{DNS2D::getBarcodePNG(route('landing.treatmentdetail',$datas->id), 'QRCODE')}}" alt="barcode" class="float-left"/>
               </div>
               <div class="portfolio-description">
                 {{-- <h2>This is an example of portfolio detail</h2>
