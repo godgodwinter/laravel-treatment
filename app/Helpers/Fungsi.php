@@ -15,6 +15,28 @@ class Fungsi {
     //     return (isset($user->username) ? $user->username : '');
     // }
 
+    public static function reminderjam(){
+
+        $settings = DB::table('settings')->first();
+        $data=$settings->reminderjam;
+        return $data;
+
+    }
+    public static function reminderidmesin(){
+
+        $settings = DB::table('settings')->first();
+        $data=$settings->reminderidmesin;
+        return $data;
+
+    }
+    public static function reminderpin(){
+
+        $settings = DB::table('settings')->first();
+        $data=$settings->reminderpin;
+        return $data;
+
+    }
+
     public static function namaHari($date){
         //format = Y-m-d
         $day = date('w', strtotime($date));

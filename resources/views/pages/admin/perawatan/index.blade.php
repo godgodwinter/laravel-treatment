@@ -45,10 +45,12 @@ Perawatan
 
                         <div class="ml-auto p-2 bd-highlight">
                             <a href="{{route('perawatan.cetak.blnthn',$blnthn?$blnthn:date('Y-m'))}}" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a>
-                            <a href="#" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="fas fa-sms"></i> Reminder</a>
-                            <x-button-create link="{{route('perawatan.create')}}"></x-button-create>
 
                         </form>
+                            <a href="#"  data-toggle="modal" data-target="#modalReminder" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="fas fa-sms"></i> Reminder</a>
+                            <x-button-create link="{{route('perawatan.create')}}"></x-button-create>
+
+
 
                     </div>
                 </div>
@@ -101,9 +103,8 @@ Perawatan
                                             $hasil=Fungsi::tanggalindo($ambil->tgl).' - '.$ambil->ruangan.' - '.$ambil->jam;
                                         }
                                     @endphp
-
-                                    {{$hasil}}
-                                </td>
+                                    <button class="btn btn-light">{{$hasil}}</button>
+                                    </td>
                                 {{-- @push('after-style')
                                 <script>
                                     $(function () {
@@ -291,5 +292,69 @@ $cari=$request->cari;
         </div>
     </div>
   </div>
+  @push('after-style')
+  <link rel="stylesheet" href="{{asset('/')}}assets/modules/bootstrap-timepicker/bootstrap-timepicker.min.css">
+  @endpush
+  @push('before-script')
+  <script src="{{asset('/')}}assets/modules/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+  @endpush
   @endforeach
+
+
+<div class="modal fade" id="modalReminder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Reminder</h5>
+          </div>
+          <form action="{{route('jadwaltreatment.storejam')}}" method="post">
+            @csrf
+          <div class="modal-body">
+
+                <div class="form-group col-md-10 col-12 mt-0">
+                    <label>Jam Pengingat</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-clock"></i>
+                          </div>
+                        </div>
+                        <input type="text" class="form-control timepicker" value="" required name="nama">
+                        <input type="hidden" required name="kode" value="" readonly>
+                      </div>
+                    </div>
+
+
+                <div class="form-group col-md-10 col-12 mt-0">
+                    <label>ID Mesin</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control " value="" required name="idmesin">
+                        <input type="hidden" required name="kode" value="" readonly>
+                      </div>
+                    </div>
+
+
+                <div class="form-group col-md-10 col-12 mt-0">
+                    <label>Pin</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control " value="" required name="pin">
+                        <input type="hidden" required name="kode" value="" readonly>
+                      </div>
+                    </div>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-warning">Manual Reminder</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+
+          </div>
+
+        </form>
+        </div>
+    </div>
+  </div>
+
 @endsection
