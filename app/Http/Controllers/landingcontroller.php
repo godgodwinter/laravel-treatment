@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Fungsi;
 use App\Models\dokter;
 use App\Models\member;
 use App\Models\produk;
@@ -21,11 +22,8 @@ class landingcontroller extends Controller
 
     public function produk(){
         $pages='produk';
-        $jmlproduk=produk::count();
-        $jmltreatment=treatment::count();
-        $jmldokter=dokter::count();
-        $jmlmember=member::count();
-    return view('landing.pages.produk',compact('jmlproduk','jmltreatment','jmldokter','jmlmember','pages'));
+        $datas=produk::paginate(Fungsi::paginationjml());
+    return view('landing.pages.produk',compact('datas','pages'));
     }
 
 

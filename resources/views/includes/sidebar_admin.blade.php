@@ -11,7 +11,7 @@
     </ul>
 </li>
 <li
-    class="nav-item dropdown {{ $pages == 'users' || $pages == 'produk' || $pages == 'treatment' || $pages == 'dokter' || $pages == 'member' || $pages == 'jadwaltreatment' || $pages== 'ruangan' ? 'active' : '' }}">
+    class="nav-item dropdown {{ $pages == 'users' || $pages == 'produk' || $pages == 'treatment' || $pages == 'dokter' || $pages == 'member' || $pages == 'jadwaltreatment' || $pages== 'ruangan' || $pages== 'testimoni' ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-dumpster"></i>
         <span>Mastering</span></a>
     <ul class="dropdown-menu">
