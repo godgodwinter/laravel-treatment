@@ -23,7 +23,7 @@
       <li><a  class="{{($pages=='jadwal'?'active':'')}}" href="{{route('landing.jadwal')}}">Jadwal Perawatan</a></li>
       <li><a class="{{($pages=='testimoni'?'active':'')}}" href="{{route('landing.testimoni')}}">Testimoni</a></li>
 
-      <li><a class="getstarted" href="{{ url('/login') }}">Masuk</a></li>
+      <li><a class="buttonLogin" href="{{ url('/login') }}">Masuk</a></li>
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
   </nav><!-- .navbar -->
