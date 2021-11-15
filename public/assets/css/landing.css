@@ -37,7 +37,8 @@
 
 body {
     /* font-family: "Open Sans", sans-serif; */
-    color: var(--davys-grey);
+    color: var(--monza);
+    background-color: var(--wax-flower-light);
   }
 
   a {
@@ -59,6 +60,10 @@ body {
     z-index: 3;
     position: relative;
   }
+
+  /* #about, #services, #clients{
+      background-color: var(--wax-flower-light);
+  } */
 
   /*--------------------------------------------------------------
   # Back to top button
@@ -422,6 +427,7 @@ body {
   section {
     padding-bottom: 60px;
     overflow: hidden;
+    /* background-color: var(--wax-flower-light); */
   }
 
   .section-bg {
@@ -438,7 +444,7 @@ body {
     margin-bottom: 20px;
     padding-bottom: 0;
     font-family: "Poppins", sans-serif;
-    color: #646c55;
+    color: var(--monza);
   }
   .section-title p {
     margin-bottom: 0;
@@ -495,7 +501,7 @@ body {
   .about .count-box i {
     display: block;
     font-size: 48px;
-    color: #94c045;
+    color: var(--radical-red);
     float: left;
     line-height: 1;
   }
@@ -686,9 +692,10 @@ body {
     overflow: hidden;
     border-radius: 10px;
     margin: 0 10px 40px 10px;
-    background: #fff;
-    box-shadow: 0 2px 29px 0 rgba(68, 88, 144, 0.12);
+    background: var(--wax-flower);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     transition: all 0.3s ease-in-out;
+    min-height: 180px;
   }
   .services .icon-box:hover {
     transform: translateY(-5px);
@@ -696,7 +703,7 @@ body {
   .services .icon {
     position: absolute;
     left: -20px;
-    top: calc(50% - 30px);
+    top: calc(30% - 30px);
   }
   .services .icon i {
     font-size: 64px;
@@ -710,10 +717,10 @@ body {
     font-size: 18px;
   }
   .services .title a {
-    color: #111;
+    color: var(--monza);
   }
   .services .icon-box:hover .title a {
-    color: #94c045;
+    color: var(--radical-red);
   }
   .services .description {
     font-size: 14px;
