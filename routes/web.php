@@ -123,6 +123,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //perawatan
     Route::get('/admin/perawatan', [adminperawatancontroller::class, 'index'])->name('perawatan');
+    Route::get('/admin/dataperawatan/cetak/{blnthn}', [adminperawatancontroller::class, 'cetakblnthn'])->name('perawatan.cetak.blnthn');
     Route::get('/admin/perawatan/{id}', [adminperawatancontroller::class, 'edit'])->name('perawatan.edit');
     Route::put('/admin/perawatan/{id}', [adminperawatancontroller::class, 'update'])->name('perawatan.update');
     Route::delete('/admin/perawatan/{id}', [adminperawatancontroller::class, 'destroy'])->name('perawatan.destroy');

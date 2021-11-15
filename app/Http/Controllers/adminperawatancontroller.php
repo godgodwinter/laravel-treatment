@@ -12,6 +12,7 @@ use App\Models\treatment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class adminperawatancontroller extends Controller
 {
@@ -29,6 +30,11 @@ class adminperawatancontroller extends Controller
     public function index(Request $request)
     {
         $date=date('Y-m-d');
+        $blnthn=date('Y-m');
+
+        $month = date("m",strtotime($date));
+        $year = date("Y",strtotime($date));
+
         #WAJIB
         $pages='perawatan';
         $dokter=dokter::get();
@@ -42,23 +48,54 @@ class adminperawatancontroller extends Controller
 
         // dd($namaHari,$periksaHari,$idHarisekarang,$jam);
         // $datas=jadwaltreatment::paginate(Fungsi::paginationjml());
-        $datas=perawatan::with('member')->with('treatment')->paginate(Fungsi::paginationjml());
+        $datas=perawatan::with('member')
+        ->whereMonth('tglbayar',$month)
+        ->whereYear('tglbayar',$year)
+        ->with('treatment')->paginate(Fungsi::paginationjml());
 
 
-        return view('pages.admin.perawatan.index',compact('datas','request','pages','dokter','ruangan','jam','namaHari'));
+        return view('pages.admin.perawatan.index',compact('datas','request','pages','dokter','ruangan','jam','namaHari','blnthn'));
     }
     public function cari(Request $request)
     {
 
-        $cari=$request->cari;
+        $blnthn=$request->blnthn;
+
+        $month = date("m",strtotime($blnthn));
+        $year = date("Y",strtotime($blnthn));
+        $date=date('Y-m-d');
+
+        $dokter=dokter::get();
+
+        $ruangan=kategori::where('prefix','ruangan')->get();
+        $namaHari=Fungsi::namaHari($date);
+
+        $periksaHari=kategori::where('nama',$namaHari)->where('prefix','hari')->first();
+        $idHarisekarang=$periksaHari->id;
+
+        $jam=kategori::where('prefix','jam')->where('kode',$idHarisekarang)->get();
+        // dd($month,$year,$blnthn);
         #WAJIB
         $pages='perawatan';
-        $datas=perawatan::where('member','like',"%".$cari."%")
+        $datas=perawatan::with('member')
+        ->whereMonth('tglbayar',$month)
+        ->whereYear('tglbayar',$year)
         ->paginate(Fungsi::paginationjml());
 
+        return view('pages.admin.perawatan.index',compact('datas','request','pages','dokter','ruangan','jam','namaHari','blnthn'));
+    }
+    public function cetakblnthn($blnthn){
+        // dd($blnthn);
+        $month = date("m",strtotime($blnthn));
+        $year = date("Y",strtotime($blnthn));
 
+        $datas=perawatan::with('member')
+        ->whereMonth('tglbayar',$month)
+        ->whereYear('tglbayar',$year)
+        ->with('treatment')->paginate(Fungsi::paginationjml());
 
-        return view('pages.admin.perawatan.index',compact('datas','request','pages'));
+        $pdf = PDF::loadview('pages.admin.perawatan.cetakblnthn',compact('datas','blnthn'))->setPaper('a4', 'landscape');
+        return $pdf->stream('dataperawatan'.$blnthn.'.pdf');
     }
     public function create()
     {
