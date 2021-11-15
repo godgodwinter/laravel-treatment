@@ -6,10 +6,12 @@ use App\Helpers\Fungsi;
 use App\Models\member;
 use App\Models\produk;
 use App\Models\transaksi;
+use App\Models\transaksidetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
+use PDF;
 
 class admintransaksicontroller extends Controller
 {
@@ -27,13 +29,43 @@ class admintransaksicontroller extends Controller
     public function index(Request $request)
     {
         #WAJIB
+        $date=date('Y-m-d');
+        $blnthn=date('Y-m');
+
+        $month = date("m",strtotime($date));
+        $year = date("Y",strtotime($date));
         $pages='transaksi';
-        $datas=transaksi::with('member')->orderBy('tgl','desc')->orderBy('created_at','desc')
+        $datas=transaksi::with('member')
+        ->whereMonth('tgl',$month)
+        ->whereYear('tgl',$year)
+        ->orderBy('tgl','desc')->orderBy('created_at','desc')
         ->paginate(Fungsi::paginationjml());
         // dd($datas);
 
-        return view('pages.admin.transaksi.index',compact('datas','request','pages'));
+        return view('pages.admin.transaksi.index',compact('datas','request','pages','blnthn'));
     }
+    public function cari(Request $request)
+    {
+
+        $blnthn=$request->blnthn;
+
+        $month = date("m",strtotime($blnthn));
+        $year = date("Y",strtotime($blnthn));
+        $date=date('Y-m-d');
+
+        #WAJIB
+        $datas=transaksi::with('member')
+        ->whereMonth('tgl',$month)
+        ->whereYear('tgl',$year)
+        ->orderBy('tgl','desc')->orderBy('created_at','desc')
+        ->paginate(Fungsi::paginationjml());
+
+        $pages='transaksi';
+
+        // dd($datas);
+
+        return view('pages.admin.transaksi.index',compact('datas','request','pages','blnthn'));
+     }
     public function create(Request $request)
     {
         #WAJIB
@@ -107,5 +139,52 @@ class admintransaksicontroller extends Controller
             return redirect()->route('transaksi')->with('status','Data berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
 
 
+    }
+
+    public function destroy(transaksi $id){
+
+        transaksi::destroy($id->id);
+        transaksidetail::where('transaksi_id',$id->id)->delete();
+        return redirect()->route('transaksi')->with('status','Data berhasil dihapus!')->with('tipe','warning')->with('icon','fas fa-feather');
+
+    }
+
+    public function multidel(Request $request)
+    {
+
+        $ids=$request->ids;
+        transaksi::whereIn('id',$ids)->delete();
+        transaksidetail::where('transaksi_id',$ids)->delete();
+
+        // load ulang
+        #WAJIB
+        $date=date('Y-m-d');
+        $blnthn=date('Y-m');
+
+        $month = date("m",strtotime($date));
+        $year = date("Y",strtotime($date));
+        $pages='transaksi';
+        $datas=transaksi::with('member')
+        ->whereMonth('tgl',$month)
+        ->whereYear('tgl',$year)
+        ->orderBy('tgl','desc')->orderBy('created_at','desc')
+        ->paginate(Fungsi::paginationjml());
+        // dd($datas);
+
+        return view('pages.admin.transaksi.index',compact('datas','request','pages','blnthn'));
+
+    }
+
+    public function cetakblnthn($blnthn){
+        // dd($blnthn);
+        $month = date("m",strtotime($blnthn));
+        $year = date("Y",strtotime($blnthn));
+
+        $datas=transaksi::with('member')
+        ->whereMonth('tgl',$month)
+        ->whereYear('tgl',$year)->paginate(Fungsi::paginationjml());
+
+        $pdf = PDF::loadview('pages.admin.transaksi.cetakblnthn',compact('datas','blnthn'))->setPaper('a4', 'landscape');
+        return $pdf->stream('datatransaksi'.$blnthn.'.pdf');
     }
 }

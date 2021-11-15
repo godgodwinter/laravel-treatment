@@ -184,15 +184,37 @@ class adminperawatancontroller extends Controller
 
         $ids=$request->ids;
         perawatan::whereIn('id',$ids)->delete();
+        penjadwalan::where('perawatan_id',$ids)->delete();
 
         // load ulang
         #WAJIB
-        $pages='perawatan';
-        $datas=perawatan
-        ::paginate(Fungsi::paginationjml());
-        // dd($datas);
+        $date=date('Y-m-d');
+        $blnthn=date('Y-m');
 
-        return view('pages.admin.perawatan.index',compact('datas','request','pages'));
+        $month = date("m",strtotime($date));
+        $year = date("Y",strtotime($date));
+
+        #WAJIB
+        $pages='perawatan';
+        $dokter=dokter::get();
+        $ruangan=kategori::where('prefix','ruangan')->get();
+        $namaHari=Fungsi::namaHari($date);
+
+        $periksaHari=kategori::where('nama',$namaHari)->where('prefix','hari')->first();
+        $idHarisekarang=$periksaHari->id;
+
+        $jam=kategori::where('prefix','jam')->where('kode',$idHarisekarang)->get();
+
+        // dd($namaHari,$periksaHari,$idHarisekarang,$jam);
+        // $datas=jadwaltreatment::paginate(Fungsi::paginationjml());
+        $datas=perawatan::with('member')
+        ->whereMonth('tglbayar',$month)
+        ->whereYear('tglbayar',$year)
+        ->with('treatment')->paginate(Fungsi::paginationjml());
+
+
+        return view('pages.admin.perawatan.index',compact('datas','request','pages','dokter','ruangan','jam','namaHari','blnthn'));
+
 
     }
 

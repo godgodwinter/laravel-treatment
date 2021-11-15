@@ -31,11 +31,11 @@ Transaksi
 
                     <div class="p-2 bd-highlight">
 
-                        <form action="{{ route('produk.cari') }}" method="GET">
+                        <form action="{{ route('transaksi.cari') }}" method="GET">
 
-                            <input type="month" name="bln" id="bln"
+                            <input type="month" name="blnthn" id="blnthn"
                             class="form-control " placeholder=""
-                            value="{{date('Y-m')}}" required>
+                            value="{{$blnthn?$blnthn:date('Y-m')}}" required>
                         </div>
                         <div class="p-2 bd-highlight">
                             <span>
@@ -46,7 +46,8 @@ Transaksi
 
                         <div class="ml-auto p-2 bd-highlight">
 
-                            <a href="#" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a>
+                            <a href="{{route('transaksi.cetak.blnthn',$blnthn?$blnthn:date('Y-m'))}}" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a>
+
                             <x-button-create link="{{route('transaksi.create')}}"></x-button-create>
                         </form>
 
@@ -60,7 +61,7 @@ Transaksi
                     <x-jsdatatable/>
                 @endif
 
-                <x-jsmultidel link="{{route('produk.multidel')}}" />
+                <x-jsmultidel link="{{route('transaksi.multidel')}}" />
 
                 <table id="example" class="table table-striped table-bordered mt-1 table-sm" style="width:100%">
                     <thead>
