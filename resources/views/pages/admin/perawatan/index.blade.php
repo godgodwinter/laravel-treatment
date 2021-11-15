@@ -255,14 +255,6 @@ $cari=$request->cari;
                   </div>
 
 
-
-                {{-- <div class="col-12">
-                    <label>Jumlah Materi</label>
-                    <div class="form-group">
-                      <input type="number" class="form-control" name="jml" required="required">
-                    </div>
-
-                </div> --}}
             </div>
 
 
