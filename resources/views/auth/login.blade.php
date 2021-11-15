@@ -61,6 +61,8 @@
         <div id="credit">
             <p>
                 Demo : user = admin // pass = admin
+                <br>
+                Demo : member = (gunakan username seeder) // passdefault = 123
             </p>
         </div>
     </div>
