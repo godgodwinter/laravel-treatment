@@ -16,8 +16,18 @@ class treatment extends Model
         protected $fillable = [
             'nama',
             'harga',
-            'label',
+            'stok',
             'photo',
         ];
+
+        public function perawatan()
+        {
+            return $this->hasMany('App\Models\perawatan');
+        }
+
+    public function getPhotoAttribute($value){
+
+        return url('storage/'.$value);
+    }
 
 }

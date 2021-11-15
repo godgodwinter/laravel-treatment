@@ -25,35 +25,39 @@
         <li {{ $pages == 'member' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('member') }}"><i
                     class="fas fa-chalkboard-teacher"></i><span>Member</span></a></li>
         <li {{ $pages == 'ruangan' ? 'class=active' : '' }}><a class="nav-link"
-                href="{{ route('ruangan') }}"><i class="fas fa-chalkboard-teacher"></i><span>
+                href="{{ route('ruangan') }}"><i class="fas fa-person-booth"></i><span>
                     Ruangan </span></a></li>
         <li {{ $pages == 'jadwaltreatment' ? 'class=active' : '' }}><a class="nav-link"
-                href="{{ route('jadwaltreatment') }}"><i class="fas fa-chalkboard-teacher"></i><span>Jadwal
+                href="{{ route('jadwaltreatment') }}"><i class="fas fa-business-time"></i><span>Jadwal
                     Treatment</span></a></li>
         <li {{ $pages == 'users' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('users') }}"><i
                     class="fas fa-building"></i> <span>User</span></a></li>
+                    <li {{ $pages == 'testimoni' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('testimoni') }}"><i class="fas fa-comments"></i> <span>Testimoni</span></a></li>
     </ul>
 </li>
 
-<li class="nav-item dropdown {{ $pages == 'mapel' || $pages == 'silabus' || $pages == 'penilaian' ? 'active' : '' }}">
+{{-- <li class="nav-item dropdown {{ $pages == 'perawatan' || $pages == 'transaksi'  ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
         <span>Proses</span></a>
     <ul class="dropdown-menu">
 
-        <li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('perawatan')}}"><i
-                    class="fab fa-monero"></i> <span>Perawatan</span></a></li>
-        {{-- <li {{ $pages == 'penjadwalan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('penjadwalan')}}"><i
-                    class="fas fa-microchip"></i> <span>Penjadwalan</span></a></li> --}}
+        <li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{route('perawatan')}}"><i class="fas fa-luggage-cart"></i> <span>Perawatan</span></a></li>
+        <li {{ $pages == 'transaksi' ? 'class=active' : '' }}><a class="nav-link" href="{{route('transaksi')}}"><i class="fas fa-cart-arrow-down"></i> <span>Transaksi</span></a></li>
+
     </ul>
-</li>
-<li class="nav-item dropdown  {{ $pages == 'absensi' || $pages == 'pelanggaran' ? 'active' : '' }}">
+</li> --}}
+
+<li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('perawatan') }}"><i class="fas fa-luggage-cart"></i> <span>Perawatan</span></a></li>
+
+<li {{ $pages == 'transaksi' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('transaksi') }}"><i class="fas fa-cart-arrow-down"></i><span>Transaksi</span></a></li>
+
+{{-- <li class="nav-item dropdown  {{ $pages == 'absensi' || $pages == 'pelanggaran' ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-id-card-alt"></i>
         <span>Laporan</span></a>
     <ul class="dropdown-menu">
 
+        <li {{ $pages == 'pelanggaran' ? 'class=active' : '' }}><a class="nav-link" href="#"><i class="far fa-chart-bar"></i><span>Rekap Perawatan</span></a></li>
         <li {{ $pages == 'absensi' ? 'class=active' : '' }}><a class="nav-link" href="#"><i
                     class="fas fa-id-card-alt"></i><span>Rekap Pembayaran</span></a></li>
-        <li {{ $pages == 'pelanggaran' ? 'class=active' : '' }}><a class="nav-link" href="#"><i
-                    class="fas fa-times-circle"></i><span>Rekap Perawatan</span></a></li>
     </ul>
-</li>
+</li> --}}

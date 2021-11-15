@@ -5,26 +5,52 @@
 * License: https://bootstrapmade.com/license/
 */
 
+:root {
+    /* Colors */
+    --primary:  #6777ef;
+    --secondary:  #34395e;
+    --success:  #47c363;
+    --info:  #3abaf4;
+    --warning:  #ffa426;
+    --danger:  #fc544b;
+    --light:  #e3eaef;
+    --dark:  #191d21;
+    --davys-grey: #595959;
+    --grey-web: #7F7F7F;
+    --quick-silver: #A5A5A5;
+    --light-gray: #CCCCCC;
+    --cultured: #F2F2F2;
+    --monza: #6b0007;
+    --wax-flower-dark: #fcac9b;
+    --wax-flower: #ffc9bc;
+    --wax-flower-light: #ffe2db;
+    --radical-red: #f62459;
+    --sunglo: #ffaaaa;
+    --dark-sunglo: #b14c4c;
+    }
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
 body {
-    font-family: "Open Sans", sans-serif;
-    color: #444444;
+    /* font-family: "Open Sans", sans-serif; */
+    color: var(--davys-grey);
   }
 
   a {
-    color: #94c045;
+    color: var(--radical-red);
     text-decoration: none;
   }
 
   a:hover {
-    color: #aacd6b;
+    color: var(--radical-red);
     text-decoration: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway", sans-serif;
+    /* font-family: "Raleway", sans-serif; */
   }
 
   #main {
@@ -78,19 +104,26 @@ body {
     height: 70px;
     z-index: 997;
     transition: all 0.5s ease-in-out;
-    background: #fff;
+    background: var(--wax-flower);
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   }
   #header .logo h1 {
-    font-size: 28px;
+    font-size: 20px;
     margin: 0;
     line-height: 0;
     font-weight: 600;
     letter-spacing: 1px;
   }
-  #header .logo h1 a, #header .logo h1 a:hover {
-    color: #3c4133;
+  #header .logo h1 a{
+      color: var(--monza);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.3s;
+  }
+  #header .logo h1 a:hover {
+    color: var(--radical-red);
     text-decoration: none;
+    text-transform: uppercase;
   }
   #header .logo img {
     padding: 0;

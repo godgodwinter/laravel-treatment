@@ -7,6 +7,7 @@ use App\Models\produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class adminprodukcontroller extends Controller
 {
@@ -51,6 +52,7 @@ class adminprodukcontroller extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $cek=DB::table('produk')
         ->where('nama',$request->nama)
         ->count();
@@ -72,14 +74,41 @@ class adminprodukcontroller extends Controller
             [
                 'nama.nama'=>'nama harus diisi',
             ]);
+            $photo=null;
 
-            DB::table('produk')->insert(
+            $data_id=DB::table('produk')->insertGetId(
                 array(
                        'nama'     =>   $request->nama,
                        'harga'     =>   $request->harga,
+                       'stok'     =>   $request->stok,
                        'created_at'=>date("Y-m-d H:i:s"),
                        'updated_at'=>date("Y-m-d H:i:s")
                 ));
+
+        $files = $request->file('files');
+
+
+        if($files!=null){
+
+
+            // dd('storage'.'/'.$id->sekolah_logo);
+            $namafilebaru=$data_id;
+            $tujuan_upload = 'storage/produk';
+                    // upload file
+            $files->move($tujuan_upload,"produk/".$namafilebaru.".jpg");
+
+            $photo="produk/".$namafilebaru.".jpg";
+
+
+            produk::where('id',$data_id)
+            ->update([
+                'photo'     =>   $photo,
+            'updated_at'=>date("Y-m-d H:i:s")
+            ]);
+        }
+
+
+
 
 
 
@@ -120,8 +149,31 @@ class adminprodukcontroller extends Controller
         ->update([
             'nama'     =>   $request->nama,
             'harga'     =>   $request->harga,
+            'stok'     =>   $request->stok,
            'updated_at'=>date("Y-m-d H:i:s")
         ]);
+
+        $files = $request->file('files');
+
+
+        if($files!=null){
+
+
+            // dd('storage'.'/'.$id->sekolah_logo);
+            $namafilebaru=$id->id;
+            $tujuan_upload = 'storage/produk';
+                    // upload file
+            $files->move($tujuan_upload,"produk/".$namafilebaru.".jpg");
+
+            $photo="produk/".$namafilebaru.".jpg";
+
+
+            produk::where('id',$id->id)
+            ->update([
+                'photo'     =>   $photo,
+            'updated_at'=>date("Y-m-d H:i:s")
+            ]);
+        }
 
 
     return redirect()->route('produk')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');

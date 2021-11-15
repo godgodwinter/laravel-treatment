@@ -16,4 +16,5 @@ Beranda
 @include('pages.admin.dashboard.dashboard_admin')
 
 @else
+@include('pages.admin.dashboard.dashboard_member')
 @endif

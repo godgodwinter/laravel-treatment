@@ -17,6 +17,12 @@ class testimoni extends Model
             'member_id',
             'pesan',
             'tgl',
+            'status',
         ];
+
+        public function member()
+        {
+            return $this->belongsTo('App\Models\member');
+        }
 
 }

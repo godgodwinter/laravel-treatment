@@ -13,8 +13,14 @@ use App\Http\Controllers\adminruangancontroller;
 use App\Http\Controllers\adminseedercontroller;
 use App\Http\Controllers\adminsettingscontroller;
 use App\Http\Controllers\adminsynccontroller;
+use App\Http\Controllers\admintestimonicontroller;
+use App\Http\Controllers\admintransaksicontroller;
 use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
+use App\Http\Controllers\landingcontroller;
+use App\Http\Controllers\memberkeranjangcontroller;
+use App\Http\Controllers\membertestimonicontroller;
+use App\Http\Controllers\membertransaksicontroller;
 use App\Http\Controllers\smscontroller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -22,9 +28,11 @@ use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
-Route::get('/', function () {
-    return view('landing.pages.index');
-});
+Route::get('/', [landingcontroller::class, 'index']);
+// Route::get('/', function () {
+
+//     return view('landing.pages.index');
+// });
 
 
 Route::get('/sms', [smscontroller::class, 'index'])->name('sms');
@@ -96,6 +104,12 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::post('/admin/datamember', [adminmembercontroller::class, 'store'])->name('member.store');
     Route::delete('/admin/datamember/multidel', [adminmembercontroller::class, 'multidel'])->name('member.multidel');
 
+    //testimoni
+    Route::get('/admin/testimoni', [admintestimonicontroller::class, 'index'])->name('testimoni');
+    Route::delete('/admin/testimoni/{id}', [admintestimonicontroller::class, 'destroy'])->name('testimoni.destroy');
+    Route::get('/admin/datatestimoni/cari', [admintestimonicontroller::class, 'cari'])->name('testimoni.cari');
+    Route::get('/admin/datatestimoni/status/{id}', [admintestimonicontroller::class, 'status'])->name('testimoni.status');
+    Route::delete('/admin/datatestimoni/multidel', [admintestimonicontroller::class, 'multidel'])->name('testimoni.multidel');
     //ruangan
     Route::get('/admin/ruangan', [adminruangancontroller::class, 'index'])->name('ruangan');
     Route::get('/admin/ruangan/{id}', [adminruangancontroller::class, 'edit'])->name('ruangan.edit');
@@ -115,6 +129,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //perawatan
     Route::get('/admin/perawatan', [adminperawatancontroller::class, 'index'])->name('perawatan');
+    Route::get('/admin/dataperawatan/cetak/{blnthn}', [adminperawatancontroller::class, 'cetakblnthn'])->name('perawatan.cetak.blnthn');
     Route::get('/admin/perawatan/{id}', [adminperawatancontroller::class, 'edit'])->name('perawatan.edit');
     Route::put('/admin/perawatan/{id}', [adminperawatancontroller::class, 'update'])->name('perawatan.update');
     Route::delete('/admin/perawatan/{id}', [adminperawatancontroller::class, 'destroy'])->name('perawatan.destroy');
@@ -128,6 +143,16 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //penjadwalan
     Route::get('/admin/penjadwalan', [adminpenjadwalancontroller::class, 'index'])->name('penjadwalan');
+
+    //transaksi
+    Route::get('/admin/transaksi', [admintransaksicontroller::class, 'index'])->name('transaksi');
+    Route::get('/admin/transaksi/create', [admintransaksicontroller::class, 'create'])->name('transaksi.create');
+    Route::get('/admin/datatransaksi/cari', [admintransaksicontroller::class, 'cari'])->name('transaksi.cari');
+    Route::get('/admin/transaksi/cari', [admintransaksicontroller::class, 'cariproduk'])->name('transaksi.produk.cari');
+    Route::post('/admin/datatransaksi/checkout', [admintransaksicontroller::class, 'checkout'])->name('transaksi.checkout');
+    Route::delete('/admin/transaksi/{id}', [admintransaksicontroller::class, 'destroy'])->name('transaksi.destroy');
+    Route::delete('/admin/datatransaksi/multidel', [admintransaksicontroller::class, 'multidel'])->name('transaksi.multidel');
+    Route::get('/admin/datatransaksi/cetak/{blnthn}', [admintransaksicontroller::class, 'cetakblnthn'])->name('transaksi.cetak.blnthn');
 
 
     //export
@@ -147,6 +172,8 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/admin/sync/mapeltodataajar', [adminsynccontroller::class, 'mapeltodataajar'])->name('sync.mapeltodataajar');
 
     //Seeder
+    Route::post('/admin/seeder/member', [adminseedercontroller::class, 'member'])->name('seeder.member');
+    Route::post('/admin/seeder/jadwaltreatment', [adminseedercontroller::class, 'jadwaltreatment'])->name('seeder.jadwaltreatment');
     Route::post('/admin/seeder/kelas', [adminseedercontroller::class, 'kelas'])->name('seeder.kelas');
     Route::post('/admin/seeder/siswa', [adminseedercontroller::class, 'siswa'])->name('seeder.siswa');
     Route::post('/admin/seeder/guru', [adminseedercontroller::class, 'guru'])->name('seeder.guru');
@@ -161,4 +188,31 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     // });
 
 
+    // member
+    //testimoni
+    Route::get('/member/testimoni', [membertestimonicontroller::class, 'index'])->name('member.testimoni');
+    Route::post('/member/testimoni/store', [membertestimonicontroller::class, 'store'])->name('member.testimoni.store');
+
+    //keranjang
+    Route::get('/member/keranjang', [memberkeranjangcontroller::class, 'index'])->name('member.keranjang');
+
+    //transaksi
+    Route::get('/member/transaksi', [membertransaksicontroller::class, 'index'])->name('member.transaksi');
+
 });
+
+
+
+Route::get('/produk', [landingcontroller::class, 'produk'])->name('landing.produk');
+
+
+Route::get('/treatment', [landingcontroller::class, 'treatment'])->name('landing.treatment');
+
+
+Route::get('/dokter', [landingcontroller::class, 'dokter'])->name('landing.dokter');
+
+
+Route::get('/jadwal', [landingcontroller::class, 'jadwal'])->name('landing.jadwal');
+
+
+Route::get('/testimoni', [landingcontroller::class, 'testimoni'])->name('landing.testimoni');

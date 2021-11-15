@@ -62,6 +62,7 @@ Member
                         <tr style="background-color: #F1F1F1">
                             <th class="text-center py-2 babeng-min-row"> <input type="checkbox" id="chkCheckAll"> All</th>
                             <th >Nama </th>
+                            <th >Username </th>
                             <th >Jenis Kelamin</th>
                             <th >Telp</th>
                             <th >Aksi</th>
@@ -75,6 +76,9 @@ Member
                                     {{ ((($loop->index)+1)+(($datas->currentPage()-1)*$datas->perPage())) }}</td>
                                 <td>
                                     {{$data->nama}}
+                                </td>
+                                <td>
+                                    {{$data->users?$data->users->username:'Data tidak ditemukan'}}
                                 </td>
                                 <td>
                                     {{$data->jk}}

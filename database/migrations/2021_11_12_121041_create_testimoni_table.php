@@ -18,6 +18,7 @@ class CreateTestimoniTable extends Migration
             $table->string('member_id');
             $table->string('pesan')->nullable();
             $table->string('tgl')->nullable();
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

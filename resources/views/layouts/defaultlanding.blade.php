@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>{{ !empty($pages)?$pages:'' }} {{ Fungsi::app_nama() }}</title>
+  <title>{{ !empty($pages)?Str::ucfirst($pages):'' }} - {{ Fungsi::app_nama() }}</title>
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -52,28 +52,17 @@
       <div class="logo">
         <h1 class="text-light"><a href="{{ url('/') }}">{{ Fungsi::app_nama() }}</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        {{-- <a href="{{url('/')}}"><img src="assets/img/kopek/cosmetics.png" alt="logo" class="img-fluid"></a> --}}
       </div>
       @include('landing.includes.navbar')
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="hero-container" data-aos="fade-up">
-      <!-- <h1>Baemon DEV </h1>
-      <h2>We Build Everything With Love</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
 
     @yield('content')
     @yield('containermodal')
 
 
-  </main><!-- End #main -->
 
 
   <!-- ======= Footer ======= -->

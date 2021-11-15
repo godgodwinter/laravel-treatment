@@ -32,7 +32,9 @@ Perawatan
                     <div class="p-2 bd-highlight">
 
                         <form action="{{ route('perawatan.cari') }}" method="GET">
-                            <input type="text" class="babeng babeng-select  ml-0" name="cari">
+                            <input type="month" name="blnthn" id="blnthn"
+                            class="form-control " placeholder=""
+                            value="{{$blnthn?$blnthn:date('Y-m')}}" required>
                         </div>
                         <div class="p-2 bd-highlight">
                             <span>
@@ -42,7 +44,10 @@ Perawatan
                         </div>
 
                         <div class="ml-auto p-2 bd-highlight">
+                            <a href="{{route('perawatan.cetak.blnthn',$blnthn?$blnthn:date('Y-m'))}}" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a>
+                            <a href="#" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="fas fa-sms"></i> Reminder</a>
                             <x-button-create link="{{route('perawatan.create')}}"></x-button-create>
+
                         </form>
 
                     </div>
@@ -166,8 +171,9 @@ $cari=$request->cari;
                 $hasil='Jadwal belum diatur';
                 $tgl=date('Y-m-d');
                 $cek=\App\Models\penjadwalan::where('perawatan_id',$data->id)->count();
+                $ambil=null;
                 if($cek>0){
-                $ambil=\App\Models\penjadwalan::where('perawatan_id',$data->id)->first();
+                $ambil=\App\Models\penjadwalan::with('dokter')->where('perawatan_id',$data->id)->first();
                     // dd($ambil);
                     $hasil=Fungsi::tanggalindo($ambil->tgl).' - '.$ambil->ruangan.' - '.$ambil->jam;
                     $tgl=$ambil->tgl;
@@ -208,9 +214,18 @@ $cari=$request->cari;
                     <select class="js-example-basic-single form-control-sm @error('dokter_id')
                     is-invalid
                 @enderror" name="dokter_id"  style="width: 75%" required>
+                @if($ambil!=null)
 
-                    <option disabled selected value=""> Pilih Dokter</option>
+                @if($ambil->dokter)
+                <option  selected value="{{$ambil->dokter->id}}"> {{$ambil->dokter->nama}}</option>
+                @else
+                <option disabled selected value=""> Pilih Dokter</option>
+                @endif
 
+                @else
+
+                <option disabled selected value=""> Pilih Dokter</option>
+                @endif
                     @foreach ($dokter as $t)
                         <option value="{{ $t->id }}"> {{ $t->nama }}</option>
                     @endforeach
@@ -231,8 +246,12 @@ $cari=$request->cari;
 
                     @foreach ($ruangan as $t)
                       <label class="selectgroup-item">
-                        <input type="radio" name="ruangan" value="{{$t->nama}}" class="selectgroup-input"   {{$loop->index=='0'?'checked=""':''}}>
-                        <span class="selectgroup-button">{{$t->nama}}</span>
+                        @if($ambil!=null)
+                        <input type="radio" name="ruangan" value="{{$t->nama}}" class="selectgroup-input"  {{$ambil->ruangan==$t->nama?'checked=""':''}}>
+                      @else
+                      <input type="radio" name="ruangan" value="{{$t->nama}}" class="selectgroup-input"  {{$loop->index=='0'?'checked=""':''}}>
+                      @endif
+                      <span class="selectgroup-button">{{$t->nama}}</span>
                       </label>
 
                       @endforeach
@@ -245,7 +264,11 @@ $cari=$request->cari;
                     <div class="selectgroup w-100">
                     @foreach ($jam as $t)
                       <label class="selectgroup-item">
+                          @if($ambil!=null)
+                          <input type="radio" name="jam" value="{{$t->nama}}" class="selectgroup-input"  {{$ambil->jam==$t->nama?'checked=""':''}}>
+                        @else
                         <input type="radio" name="jam" value="{{$t->nama}}" class="selectgroup-input"  {{$loop->index=='0'?'checked=""':''}}>
+                        @endif
                         <span class="selectgroup-button">{{$t->nama}}</span>
                       </label>
                     @endforeach

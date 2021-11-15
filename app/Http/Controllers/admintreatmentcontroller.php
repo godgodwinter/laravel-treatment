@@ -73,14 +73,34 @@ class admintreatmentcontroller extends Controller
                 'nama.nama'=>'nama harus diisi',
             ]);
 
-            DB::table('treatment')->insert(
+            $data_id=DB::table('treatment')->insertGetId(
                 array(
                        'nama'     =>   $request->nama,
                        'harga'     =>   $request->harga,
                        'created_at'=>date("Y-m-d H:i:s"),
                        'updated_at'=>date("Y-m-d H:i:s")
                 ));
+                $files = $request->file('files');
 
+
+                if($files!=null){
+
+
+                    // dd('storage'.'/'.$id->sekolah_logo);
+                    $namafilebaru=$data_id;
+                    $tujuan_upload = 'storage/treatment';
+                            // upload file
+                    $files->move($tujuan_upload,"treatment/".$namafilebaru.".jpg");
+
+                    $photo="treatment/".$namafilebaru.".jpg";
+
+
+                    treatment::where('id',$data_id)
+                    ->update([
+                        'photo'     =>   $photo,
+                    'updated_at'=>date("Y-m-d H:i:s")
+                    ]);
+                }
 
 
     return redirect()->route('treatment')->with('status','Data berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
@@ -122,6 +142,30 @@ class admintreatmentcontroller extends Controller
             'harga'     =>   $request->harga,
            'updated_at'=>date("Y-m-d H:i:s")
         ]);
+
+
+        $files = $request->file('files');
+
+
+        if($files!=null){
+
+
+            // dd('storage'.'/'.$id->sekolah_logo);
+            $namafilebaru=$id->id;
+            $tujuan_upload = 'storage/treatment';
+                    // upload file
+            $files->move($tujuan_upload,"treatment/".$namafilebaru.".jpg");
+
+            $photo="treatment/".$namafilebaru.".jpg";
+
+
+            treatment::where('id',$id->id)
+            ->update([
+                'photo'     =>   $photo,
+            'updated_at'=>date("Y-m-d H:i:s")
+            ]);
+        }
+
 
 
     return redirect()->route('treatment')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');

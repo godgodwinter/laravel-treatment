@@ -364,6 +364,12 @@ class Fungsi {
         return $data;
 
     }
+    public static function lembaga_logo(){
+
+        $settings = DB::table('settings')->first();
+        $data=$settings->lembaga_logo;
+        return $data;
+    }
     public static function lembaga_nama(){
 
         $settings = DB::table('settings')->first();

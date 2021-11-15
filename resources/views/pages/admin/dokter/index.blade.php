@@ -64,6 +64,7 @@ Dokter
                             <th >Nama </th>
                             <th >Jenis Kelamin</th>
                             <th >Telp</th>
+                            <th >Photo</th>
                             <th >Aksi</th>
                         </tr>
                     </thead>
@@ -81,6 +82,19 @@ Dokter
                                 </td>
                                 <td>
                                     {{$data->telp}}
+                                </td>
+                                <td  class="text-center babeng-min-row">
+                                    @php
+                                    $gambar=$data->photo;
+                                    $randomimg='https://ui-avatars.com/api/?name='.$data->nama.'&color=7F9CF5&background=EBF4FF';
+                                    @endphp
+                                    @if($data->photo!=null AND $data->photo!=url('storage') AND $data->photo!='')
+                                    <img alt="image" src="{{$gambar}}" class="img-thumbnail" data-toggle="tooltip" title="{{$data->nama}}" width="60px" height="60px" style="object-fit:cover;">
+                                    @else
+                                    <img alt="image" src="{{$randomimg}}" class="img-thumbnail" data-toggle="tooltip" title="{{$data->nama}}" width="60px" height="60px" style="object-fit:cover;">
+
+                                    @endif
+
                                 </td>
 
                                 <td class="text-center babeng-min-row">

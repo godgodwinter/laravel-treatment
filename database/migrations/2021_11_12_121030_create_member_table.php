@@ -20,7 +20,7 @@ class CreateMemberTable extends Migration
             $table->string('alamat')->nullable();
             $table->string('tgllahir')->nullable();
             $table->string('telp')->nullable();
-            $table->string('user_id')->nullable();
+            $table->string('users_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
