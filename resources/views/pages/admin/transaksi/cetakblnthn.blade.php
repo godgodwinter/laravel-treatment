@@ -50,10 +50,7 @@
         @empty
         <tr>
 
-            <td class="babeng-min-row">No Induk</td>
-            <td class="babeng-min-row">:</td>
-
-            <td > Data tidak ditemukan</td>
+            <td colspan="5"> Data tidak ditemukan</td>
         </tr>
 
         @endforelse
