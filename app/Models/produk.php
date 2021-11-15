@@ -20,9 +20,9 @@ class produk extends Model
             'photo',
         ];
 
-        public function kategori()
+        public function transaksidetail()
         {
-            return $this->hasMany('App\Models\kategori');
+            return $this->hasMany('App\Models\transaksidetail');
         }
 
     public function getPhotoAttribute($value){

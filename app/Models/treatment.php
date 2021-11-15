@@ -20,9 +20,9 @@ class treatment extends Model
             'photo',
         ];
 
-        public function kategori()
+        public function perawatan()
         {
-            return $this->hasMany('App\Models\kategori');
+            return $this->hasMany('App\Models\perawatan');
         }
 
     public function getPhotoAttribute($value){

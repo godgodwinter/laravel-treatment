@@ -24,6 +24,10 @@ class dokter extends Model
             'photo',
         ];
 
+        public function penjadwalan()
+        {
+            return $this->hasMany('App\Models\penjadwalan');
+        }
     public function getPhotoAttribute($value){
 
         return url('storage/'.$value);
