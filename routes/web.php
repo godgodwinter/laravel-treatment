@@ -204,12 +204,15 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
 
 Route::get('/produk', [landingcontroller::class, 'produk'])->name('landing.produk');
+Route::get('/produkdetail/{id}', [landingcontroller::class, 'produkdetail'])->name('landing.produkdetail');
 
 
 Route::get('/treatment', [landingcontroller::class, 'treatment'])->name('landing.treatment');
+Route::get('/treatmentdetail/{id}', [landingcontroller::class, 'treatmentdetail'])->name('landing.treatmentdetail');
 
 
 Route::get('/dokter', [landingcontroller::class, 'dokter'])->name('landing.dokter');
+Route::get('/dokterdetail/{id}', [landingcontroller::class, 'dokterdetail'])->name('landing.dokterdetail');
 
 
 Route::get('/jadwal', [landingcontroller::class, 'jadwal'])->name('landing.jadwal');

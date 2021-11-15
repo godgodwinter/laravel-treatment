@@ -64,7 +64,7 @@ Beranda
                   <img src="{{$gambar}}" class="img-fluid" alt="">
                   <div class="portfolio-info">
                     <h4>{{$data->nama}}</h4>
-                    <p>{{Fungsi::rupiah($data->harga)}}</p>
+                    <p>{{$data->spesialisasi}}</p>
                     <div class="portfolio-links">
                       <a href="{{$gambar}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
                       <a href="{{$gambar}}" title="More Details"><i class="bx bx-link"></i></a>
@@ -74,7 +74,7 @@ Beranda
 
         <div class="d-flex justify-content-between flex-row-reverse mt-3">
             <div class="text-right">
-                <a class="btn btn-md btn-info" href="{{route('landing.produkdetail',$data->id)}}">Detail</a>
+                <a class="btn btn-md btn-info" href="{{route('landing.dokterdetail',$data->id)}}">Detail</a>
             </div>
         </div>
               </div>

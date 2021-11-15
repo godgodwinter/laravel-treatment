@@ -74,7 +74,7 @@ Beranda
 
         <div class="d-flex justify-content-between flex-row-reverse mt-3">
             <div class="text-right">
-                <a class="btn btn-md btn-info" href="{{route('landing.produkdetail',$data->id)}}">Detail</a>
+                <a class="btn btn-md btn-info" href="{{route('landing.treatmentdetail',$data->id)}}">Detail</a>
             </div>
         </div>
               </div>
