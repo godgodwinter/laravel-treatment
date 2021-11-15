@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Fungsi;
 use App\Models\dokter;
+use App\Models\kategori;
 use App\Models\member;
 use App\Models\produk;
 use App\Models\treatment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class landingcontroller extends Controller
 {
@@ -61,8 +63,24 @@ class landingcontroller extends Controller
 
     public function jadwal(){
         $pages='jadwal';
-        $datas=member::count();
-    return view('landing.pages.jadwal',compact('datas','pages'));
+        $arrHari=kategori::where('prefix','hari')->get();
+        $arrJam=[];
+        $arrRuangan=kategori::where('prefix','ruangan')->pluck('nama');
+        $ruang=kategori::where('prefix','ruangan')->get();
+        $collection = new Collection();
+        foreach($arrHari as $data){
+            // dd($arr);
+            $arrJam=kategori::where('prefix','jam')->where('kode',$data->id)->get();
+            $collection->push((object)['hari' => $data->nama,
+                                        'id' => $data->id,
+                                        'jam' => $arrJam,
+                                        'ruangan' => $arrRuangan,
+            ]);
+        }
+        $datas=$collection;
+
+        // dd($datas);
+    return view('landing.pages.jadwal',compact('datas','pages','ruang'));
     }
     public function testimoni(){
         $pages='testimoni';
