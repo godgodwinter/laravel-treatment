@@ -28,24 +28,26 @@ Beranda
     <section id="about" class="about">
         <div class="container">
 
-          <div class="row justify-content-end">
-            <div class="col-lg-11">
-              <div class="row justify-content-end">
-
+          <div class="row justify-content-evenly">
+            <div class="col-lg-12">
+              <div class="row justify-content-between">
                 <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box py-5">
-                    <i class="fas fa-cubes"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{$jmlproduk?$jmlproduk:'0'}}" class="purecounter">0</span>
-                    <p>Produk</p>
+                  <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
+                    <i class="fas fa-cube align-middle pe-2"></i>
+                    <div id="container">
+                        <span data-purecounter-start="0" data-purecounter-end="{{$jmlproduk?$jmlproduk:'0'}}" class="purecounter">0</span>
+                        <p>Produk</p>
+                    </div>
                   </div>
                 </div>
 
                 <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box py-5">
-
-                    <i class="fas fa-vial"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="{{$jmltreatment?$jmltreatment:'0'}}" class="purecounter">0</span>
-                    <p>Treatment</p>
+                  <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
+                    <i class="fas fa-hand-holding-heart align-middle pe-2"></i>
+                    <div id="container">
+                        <span data-purecounter-start="0" data-purecounter-end="{{$jmltreatment?$jmltreatment:'0'}}" class="purecounter">0</span>
+                        <p>Treatment</p>
+                    </div>
                   </div>
                 </div>
 

@@ -57,14 +57,8 @@
       @include('landing.includes.navbar')
     </div>
   </header><!-- End Header -->
-
-
     @yield('content')
     @yield('containermodal')
-
-
-
-
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
