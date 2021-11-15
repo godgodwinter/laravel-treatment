@@ -60,7 +60,7 @@ Testimoni
                     <thead>
                         <tr style="background-color: #F1F1F1">
                             <th class="text-center py-2 babeng-min-row"> <input type="checkbox" id="chkCheckAll"> All</th>
-                            <th >Nama testimoni</th>
+                            <th >Nama Member</th>
                             <th class="text-center">Pesan</th>
                             <th class="text-center">Status</th>
                             <th >Aksi</th>

@@ -17,6 +17,9 @@ use App\Http\Controllers\admintestimonicontroller;
 use App\Http\Controllers\admintransaksicontroller;
 use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
+use App\Http\Controllers\memberkeranjangcontroller;
+use App\Http\Controllers\membertestimonicontroller;
+use App\Http\Controllers\membertransaksicontroller;
 use App\Http\Controllers\smscontroller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -182,4 +185,31 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     // });
 
 
+    // member
+    //testimoni
+    Route::get('/member/testimoni', [membertestimonicontroller::class, 'index'])->name('member.testimoni');
+    Route::post('/member/testimoni/store', [membertestimonicontroller::class, 'store'])->name('member.testimoni.store');
+
+    //keranjang
+    Route::get('/member/keranjang', [memberkeranjangcontroller::class, 'index'])->name('member.keranjang');
+
+    //transaksi
+    Route::get('/member/transaksi', [membertransaksicontroller::class, 'index'])->name('member.transaksi');
+
 });
+
+
+
+Route::get('/produk', [landingcontroller::class, 'produk'])->name('landing.produk');
+
+
+Route::get('/treatment', [landingcontroller::class, 'treatment'])->name('landing.treatment');
+
+
+Route::get('/dokter', [landingcontroller::class, 'dokter'])->name('landing.dokter');
+
+
+Route::get('/jadwal', [landingcontroller::class, 'jadwal'])->name('landing.jadwal');
+
+
+Route::get('/testimoni', [landingcontroller::class, 'testimoni'])->name('landing.testimoni');
