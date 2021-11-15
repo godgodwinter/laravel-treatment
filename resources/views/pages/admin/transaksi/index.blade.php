@@ -105,7 +105,7 @@ Transaksi
                                 </td>
 
                                 <td class="text-center babeng-min-row">
-                                    <button class="btn btn-sm btn-info">Detail</button>
+                                    <a href="{{route('transaksi.cetak.invoice',$data->id)}}" class="btn btn-sm btn-info">Invoice</a>
                                     <x-button-delete link="/admin/{{ $pages }}/{{$data->id}}" />
                                 </td>
 

@@ -17,6 +17,7 @@ use App\Http\Controllers\admintestimonicontroller;
 use App\Http\Controllers\admintransaksicontroller;
 use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
+use App\Http\Controllers\invoicecontroller;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\memberkeranjangcontroller;
 use App\Http\Controllers\membertestimonicontroller;
@@ -156,6 +157,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::delete('/admin/transaksi/{id}', [admintransaksicontroller::class, 'destroy'])->name('transaksi.destroy');
     Route::delete('/admin/datatransaksi/multidel', [admintransaksicontroller::class, 'multidel'])->name('transaksi.multidel');
     Route::get('/admin/datatransaksi/cetak/{blnthn}', [admintransaksicontroller::class, 'cetakblnthn'])->name('transaksi.cetak.blnthn');
+    Route::get('/invoice/{id}', [invoicecontroller::class, 'invoice'])->name('transaksi.cetak.invoice');
 
 
     //export

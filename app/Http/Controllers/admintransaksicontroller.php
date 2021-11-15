@@ -111,6 +111,7 @@ class admintransaksicontroller extends Controller
                 'produk.required'=>'produk harus diisi',
             ]);
             $produk=json_decode($request->produk);
+            // dd($produk);
             // foreach($produk as $data){
             //     dd(Uuid::uuid4()->toString(),$request,$data->nama);
             // }
@@ -131,7 +132,7 @@ class admintransaksicontroller extends Controller
 
             foreach($produk as $data){
 
-        $data_id=DB::table('transaksidetail')->insertGetId(
+        DB::table('transaksidetail')->insertGetId(
             array(
                    'transaksi_id'     =>   $data_id,
                    'produk_id'     =>   $data->id,
@@ -197,4 +198,5 @@ class admintransaksicontroller extends Controller
         $pdf = PDF::loadview('pages.admin.transaksi.cetakblnthn',compact('datas','blnthn'))->setPaper('a4', 'landscape');
         return $pdf->stream('datatransaksi'.$blnthn.'.pdf');
     }
+
 }
