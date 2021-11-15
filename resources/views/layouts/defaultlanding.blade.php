@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>{{ !empty($pages)?$pages:'' }} {{ Fungsi::app_nama() }}</title>
+  <title>{{ !empty($pages)?Str::ucfirst($pages):'' }} - {{ Fungsi::app_nama() }}</title>
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -52,7 +52,7 @@
       <div class="logo">
         <h1 class="text-light"><a href="{{ url('/') }}">{{ Fungsi::app_nama() }}</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        {{-- <a href="{{url('/')}}"><img src="assets/img/kopek/cosmetics.png" alt="logo" class="img-fluid"></a> --}}
       </div>
       @include('landing.includes.navbar')
     </div>
