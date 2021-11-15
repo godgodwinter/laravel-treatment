@@ -96,14 +96,16 @@ Perawatan
                                 <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
                                     @php
                                         $hasil='Jadwal belum diatur';
+                                        $warna='danger';
                                         $cek=\App\Models\penjadwalan::where('perawatan_id',$data->id)->count();
                                         if($cek>0){
                                         $ambil=\App\Models\penjadwalan::where('perawatan_id',$data->id)->first();
                                             // dd($ambil);
+                                            $warna='light';
                                             $hasil=Fungsi::tanggalindo($ambil->tgl).' - '.$ambil->ruangan.' - '.$ambil->jam;
                                         }
                                     @endphp
-                                    <button class="btn btn-light">{{$hasil}}</button>
+                                    <button class="btn btn-{{$warna}}">{{$hasil}}</button>
                                     </td>
                                 {{-- @push('after-style')
                                 <script>

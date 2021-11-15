@@ -100,7 +100,8 @@ Tambah Transaksi
                 <table id="example" class="table table-striped table-bordered mt-1 table-sm" style="width:100%">
                     <thead>
                         <tr style="background-color: #F1F1F1">
-                            <th class="text-center py-2 babeng-min-row"> <input type="checkbox" id="chkCheckAll"> All</th>
+                            <th class="text-center py-2 babeng-min-row">
+                                No</th>
                             <th >Nama produk</th>
                             <th class="text-center">Harga</th>
                             <th class="text-center">Stok</th>
@@ -112,7 +113,6 @@ Tambah Transaksi
                         @forelse ($datas as $data)
                         <tr id="sid{{ $data->id }}">
                                 <td class="text-center">
-                                    <input type="checkbox" name="ids" class="checkBoxClass " value="{{ $data->id }}">
                                     {{ ((($loop->index)+1)+(($datas->currentPage()-1)*$datas->perPage())) }}</td>
                                 <td>
                                     {{$data->nama}}
@@ -138,7 +138,7 @@ Tambah Transaksi
                                 </td>
 
                                 <td class="text-center babeng-min-row">
-                                    <button class="btn btn-info btn-sm open-AddBookDialog" data-toggle="modal" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-stok="{{$data->stok}}" data-harga="{{$data->harga}}" title="Add this item"  href="#modalAddtoCart"><i class="fas fa-cart-plus"></i></button>
+                                    <button class="btn btn-warning btn-sm open-AddBookDialog" data-toggle="modal" data-id="{{$data->id}}" data-nama="{{$data->nama}}" data-stok="{{$data->stok}}" data-harga="{{$data->harga}}" title="Add this item"  href="#modalAddtoCart"><i class="fas fa-cart-plus"></i></button>
                                 </td>
 
                                 @push('before-script')
@@ -304,7 +304,7 @@ $cari=$request->cari;
 
 
                                 <td class="text-center babeng-min-row">
-                                    <button class="btn btn-warning btn-sm BtnHapusKeranjangId" data-id="${index}"><i class="fas fa-times"></i></button>
+                                    <button class="btn btn-danger btn-sm BtnHapusKeranjangId" data-id="${index}"><i class="fas fa-times"></i></button>
                                 </td>
 
 
@@ -429,7 +429,7 @@ $cari=$request->cari;
                                 <input type="hidden" name="member_id" value="" id="formmember_id">
                                 <input type="hidden" name="produk" value="" id="formproduk">
                                 <input type="hidden" name="totalbayar" value="" id="formtotalbayar">
-                        <button class="btn btn-info ml-2" id="checkout"> Selesaikan Transaksi</button>
+                        <button class="btn btn-success ml-2" id="checkout"> Selesaikan Transaksi</button>
                     </form>
                     </div>
                 </div>
