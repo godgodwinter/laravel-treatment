@@ -17,6 +17,7 @@ use App\Http\Controllers\admintestimonicontroller;
 use App\Http\Controllers\admintransaksicontroller;
 use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
+use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\memberkeranjangcontroller;
 use App\Http\Controllers\membertestimonicontroller;
 use App\Http\Controllers\membertransaksicontroller;
@@ -27,9 +28,11 @@ use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
-Route::get('/', function () {
-    return view('landing.pages.index');
-});
+Route::get('/', [landingcontroller::class, 'index']);
+// Route::get('/', function () {
+
+//     return view('landing.pages.index');
+// });
 
 
 Route::get('/sms', [smscontroller::class, 'index'])->name('sms');

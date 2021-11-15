@@ -14,6 +14,16 @@ Beranda
 
 @section('content')
 
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+      <!-- <h1>Baemon DEV </h1>
+      <h2>We Build Everything With Love</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+    </div>
+  </section><!-- End Hero -->
+
+<main id="main">
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
         <div class="container">
@@ -25,7 +35,7 @@ Beranda
                 <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                   <div class="count-box py-5">
                     <i class="fas fa-cubes"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="14" class="purecounter">0</span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$jmlproduk?$jmlproduk:'0'}}" class="purecounter">0</span>
                     <p>Produk</p>
                   </div>
                 </div>
@@ -34,7 +44,7 @@ Beranda
                   <div class="count-box py-5">
 
                     <i class="fas fa-vial"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="23" class="purecounter">0</span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$jmltreatment?$jmltreatment:'0'}}" class="purecounter">0</span>
                     <p>Treatment</p>
                   </div>
                 </div>
@@ -42,7 +52,7 @@ Beranda
                 <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                   <div class="count-box pb-5 pt-0 pt-lg-5">
                       <i class="far fa-smile-beam"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="2" class="purecounter">0</span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$jmlmember?$jmlmember:'0'}}" class="purecounter">0</span>
                     <p>Member</p>
                   </div>
                 </div>
@@ -50,7 +60,7 @@ Beranda
                 <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                   <div class="count-box pb-5 pt-0 pt-lg-5">
                       <i class="fas fa-user-tag"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="22" class="purecounter">0</span>
+                    <span data-purecounter-start="0" data-purecounter-end="{{$jmldokter?$jmldokter:'0'}}" class="purecounter">0</span>
                     <p>Dokter</p>
                   </div>
                 </div>
@@ -120,6 +130,7 @@ Beranda
 
           </div>
         </section><!-- End Our Clients Section -->
+    </main><!-- End #main -->
 
 
 @endsection

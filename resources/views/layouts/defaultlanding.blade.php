@@ -58,22 +58,11 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="hero-container" data-aos="fade-up">
-      <!-- <h1>Baemon DEV </h1>
-      <h2>We Build Everything With Love</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
 
     @yield('content')
     @yield('containermodal')
 
 
-  </main><!-- End #main -->
 
 
   <!-- ======= Footer ======= -->
