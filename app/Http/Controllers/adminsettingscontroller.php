@@ -80,10 +80,11 @@ class adminsettingscontroller extends Controller
     }
 
     public function updatereminder(settings $id,Request $request){
-        // dd($request,$id);
+        $jam=date("H:i:s", strtotime($request->reminderjam));
+        // dd($request,$id,$jam);
         settings::where('id','1')
         ->update([
-            'reminderjam' => $request->reminderjam,
+            'reminderjam' => $jam,
             'reminderidmesin' => $request->reminderidmesin,
             'reminderpin' => $request->reminderpin,
            'updated_at'=>date("Y-m-d H:i:s")

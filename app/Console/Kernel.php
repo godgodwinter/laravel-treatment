@@ -77,7 +77,7 @@ class Kernel extends ConsoleKernel
 
         // })
         // ->timezone('Asia/Jakarta')
-        // ->dailyAt('06:00');
+        // ->dailyAt(Fungsi::reminderjam());
 
     }
 
