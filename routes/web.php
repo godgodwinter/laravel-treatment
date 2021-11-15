@@ -157,7 +157,6 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::delete('/admin/transaksi/{id}', [admintransaksicontroller::class, 'destroy'])->name('transaksi.destroy');
     Route::delete('/admin/datatransaksi/multidel', [admintransaksicontroller::class, 'multidel'])->name('transaksi.multidel');
     Route::get('/admin/datatransaksi/cetak/{blnthn}', [admintransaksicontroller::class, 'cetakblnthn'])->name('transaksi.cetak.blnthn');
-    Route::get('/invoice/{id}', [invoicecontroller::class, 'invoice'])->name('transaksi.cetak.invoice');
 
 
     //export
@@ -207,6 +206,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 });
 
 
+Route::get('/invoice/{id}', [invoicecontroller::class, 'invoice'])->name('transaksi.cetak.invoice');
 
 Route::get('/produk', [landingcontroller::class, 'produk'])->name('landing.produk');
 Route::get('/produkdetail/{id}', [landingcontroller::class, 'produkdetail'])->name('landing.produkdetail');
