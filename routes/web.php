@@ -46,9 +46,11 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     //settings
     Route::get('/admin/settings', [adminsettingscontroller::class, 'index'])->name('settings');
     Route::put('/admin/settings/{id}', [adminsettingscontroller::class, 'update'])->name('settings.update');
+    Route::post('/admin/updatereminder', [adminsettingscontroller::class, 'updatereminder'])->name('settings.reminder');
     Route::get('/admin/seeder/produk', [adminseedercontroller::class, 'produk'])->name('seeder.produk');
     Route::post('/admin/seeder/dokter', [adminseedercontroller::class, 'dokter'])->name('seeder.dokter');
     Route::get('/admin/seeder/treatment', [adminseedercontroller::class, 'treatment'])->name('seeder.treatment');
+    Route::get('/admin/reminder/remindersms', [smscontroller::class, 'remindersms'])->name('reminder.remindersms');
 
     //MASTERING
     //USER

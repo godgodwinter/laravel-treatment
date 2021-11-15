@@ -79,4 +79,15 @@ class adminsettingscontroller extends Controller
         return redirect()->route('settings')->with('status','Data berhasil diubah!')->with('tipe','success');
     }
 
+    public function updatereminder(settings $id,Request $request){
+        // dd($request,$id);
+        settings::where('id','1')
+        ->update([
+            'reminderjam' => $request->reminderjam,
+            'reminderidmesin' => $request->reminderidmesin,
+            'reminderpin' => $request->reminderpin,
+           'updated_at'=>date("Y-m-d H:i:s")
+        ]);
+        return redirect()->back()->with('status','Data berhasil diubah!')->with('tipe','success');
+    }
 }

@@ -199,7 +199,7 @@ $cari=$request->cari;
                             console.log(tgl{{$data->id}}.val());
 
                             let component=`<h4>${tgl{{$data->id}}.val()}</h4`;
-                            ruangandanhari{{$data->id}}.html(component);
+                            // ruangandanhari{{$data->id}}.html(component);
 
 
 
@@ -307,7 +307,7 @@ $cari=$request->cari;
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Reminder</h5>
           </div>
-          <form action="{{route('jadwaltreatment.storejam')}}" method="post">
+          <form action="{{route('settings.reminder')}}" method="post">
             @csrf
           <div class="modal-body">
 
@@ -319,8 +319,7 @@ $cari=$request->cari;
                             <i class="fas fa-clock"></i>
                           </div>
                         </div>
-                        <input type="text" class="form-control timepicker" value="" required name="nama">
-                        <input type="hidden" required name="kode" value="" readonly>
+                        <input type="text" class="form-control timepicker" value="{{Fungsi::reminderjam()!=null?Fungsi::reminderjam():'05:00:00'}}" required name="reminderjam">
                       </div>
                     </div>
 
@@ -328,8 +327,7 @@ $cari=$request->cari;
                 <div class="form-group col-md-10 col-12 mt-0">
                     <label>ID Mesin</label>
                     <div class="input-group">
-                        <input type="text" class="form-control " value="" required name="idmesin">
-                        <input type="hidden" required name="kode" value="" readonly>
+                        <input type="text" class="form-control " value="{{Fungsi::reminderidmesin()!=null?Fungsi::reminderidmesin():'123'}}" required name="reminderidmesin">
                       </div>
                     </div>
 
@@ -337,8 +335,7 @@ $cari=$request->cari;
                 <div class="form-group col-md-10 col-12 mt-0">
                     <label>Pin</label>
                     <div class="input-group">
-                        <input type="text" class="form-control " value="" required name="pin">
-                        <input type="hidden" required name="kode" value="" readonly>
+                        <input type="text" class="form-control " value="{{Fungsi::reminderpin()!=null?Fungsi::reminderpin():'123'}}" required name="reminderpin">
                       </div>
                     </div>
 
@@ -346,7 +343,7 @@ $cari=$request->cari;
 
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-warning">Manual Reminder</a>
+            <a href="{{route('reminder.remindersms')}}" class="btn btn-warning">Manual Reminder</a>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Simpan</button>
 
