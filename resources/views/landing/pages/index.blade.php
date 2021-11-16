@@ -17,9 +17,9 @@ Beranda
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container" data-aos="fade-up">
-      <!-- <h1>Baemon DEV </h1>
-      <h2>We Build Everything With Love</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+      <h1>{{Fungsi::app_nama()}}</h1>
+      <h2>Perawatan wajah dan tubuh terapi jerawat</h2>
+      {{-- <a href="#about" class="btn-get-started scrollto">Get Started</a> --}}
     </div>
   </section><!-- End Hero -->
 
@@ -118,22 +118,66 @@ Beranda
 
             <div class="section-title">
               <h2>Testimoni</h2>
-              <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+              <p>Apa yang dikatakan pelanggan tentang {{Fungsi::app_nama()}}</p>
             </div>
 
-            <div class="clients-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide"><img src="{{ asset('/') }}assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{{ asset('/') }}assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{{ asset('/') }}assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{{ asset('/') }}assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{{ asset('/') }}assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{{ asset('/') }}assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{{ asset('/') }}assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{{ asset('/') }}assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
-              </div>
-              <div class="swiper-pagination"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="clients-slider swiper">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
+                                  <div class="col-md-12 justify-content-center">
+                                    <p class="text-center">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eius ex, sequi nam hic reprehenderit voluptate repudiandae nobis officia porro dolore aperiam nisi, dolores nostrum. Numquam, expedita dolorum. Doloremque, quaerat.
+                                    </p>
+                                  </div>
+                                  <div class="col-md-12 px-auto d-flex justify-content-center">
+                                    <img src="{{asset('assets/img/avatar/avatar-3.png')}}" alt="namaPelanggan">
+                                </div>
+                                  <div class="col-md-12 justify-content-center">
+                                      <h6 class="text-center">
+                                          Bambang Gentolet
+                                      </h6>
+                                  </div>
+                              </div>
+                              <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
+                                <div class="col-md-12 justify-content-center">
+                                    <p class="text-center">
+                                        Lorem ipsum dolor
+                                    </p>
+                                  </div>
+                                  <div class="col-md-12 px-auto d-flex justify-content-center">
+                                    <img src="{{asset('assets/img/avatar/avatar-3.png')}}" alt="namaPelanggan">
+                                </div>
+                                  <div class="col-md-12 justify-content-center">
+                                      <h6 class="text-center">
+                                          Bambang Gentolet
+                                      </h6>
+                                  </div>
+                              </div>
+                              <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
+                                <div class="col-md-12 justify-content-center">
+                                    <p class="text-center">
+                                        Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum
+                                    </p>
+                                  </div>
+                                  <div class="col-md-12 px-auto d-flex justify-content-center">
+                                    <img src="{{asset('assets/img/avatar/avatar-3.png')}}" alt="namaPelanggan">
+                                </div>
+                                  <div class="col-md-12 justify-content-center">
+                                      <h6 class="text-center">
+                                          Bambang Gentolet
+                                      </h6>
+                                  </div>
+                              </div>
+                          </div>
+                            {{-- <div class="swiper-pagination"></div> --}}
+                          </div>
+                    </div>
+                </div>
             </div>
+
 
           </div>
         </section><!-- End Our Clients Section -->
