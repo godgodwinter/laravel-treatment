@@ -126,22 +126,27 @@ Beranda
                     <div class="col-lg-8">
                         <div class="clients-slider swiper">
                             <div class="swiper-wrapper">
-                              <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
-                                  <div class="col-md-12 justify-content-center">
-                                    <p class="text-center">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eius ex, sequi nam hic reprehenderit voluptate repudiandae nobis officia porro dolore aperiam nisi, dolores nostrum. Numquam, expedita dolorum. Doloremque, quaerat.
-                                    </p>
+                                @forelse ($testimoni as $t)
+                                <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
+                                    <div class="col-md-12 justify-content-center">
+                                      <p class="text-center">
+                                          {{$t->pesan}}
+                                      </p>
+                                    </div>
+                                    <div class="col-md-12 px-auto d-flex justify-content-center">
+                                      <img src="{{asset('assets/img/avatar/avatar-3.png')}}" alt="namaPelanggan">
                                   </div>
-                                  <div class="col-md-12 px-auto d-flex justify-content-center">
-                                    <img src="{{asset('assets/img/avatar/avatar-3.png')}}" alt="namaPelanggan">
+                                    <div class="col-md-12 justify-content-center">
+                                        <h6 class="text-center">
+                                           {{$t->member!=null?$t->member->nama:'Member tidak ditemukan'}}
+                                        </h6>
+                                    </div>
                                 </div>
-                                  <div class="col-md-12 justify-content-center">
-                                      <h6 class="text-center">
-                                          Bambang Gentolet
-                                      </h6>
-                                  </div>
-                              </div>
-                              <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
+
+                                @empty
+
+                                @endforelse
+                              {{-- <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
                                 <div class="col-md-12 justify-content-center">
                                     <p class="text-center">
                                         Lorem ipsum dolor
@@ -155,8 +160,8 @@ Beranda
                                           Bambang Gentolet
                                       </h6>
                                   </div>
-                              </div>
-                              <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
+                              </div> --}}
+                              {{-- <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
                                 <div class="col-md-12 justify-content-center">
                                     <p class="text-center">
                                         Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum
@@ -170,7 +175,7 @@ Beranda
                                           Bambang Gentolet
                                       </h6>
                                   </div>
-                              </div>
+                              </div> --}}
                           </div>
                             {{-- <div class="swiper-pagination"></div> --}}
                           </div>

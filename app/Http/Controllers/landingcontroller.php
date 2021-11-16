@@ -7,6 +7,7 @@ use App\Models\dokter;
 use App\Models\kategori;
 use App\Models\member;
 use App\Models\produk;
+use App\Models\testimoni;
 use App\Models\treatment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -19,7 +20,8 @@ class landingcontroller extends Controller
         $jmltreatment=treatment::count();
         $jmldokter=dokter::count();
         $jmlmember=member::count();
-    return view('landing.pages.index',compact('jmlproduk','jmltreatment','jmldokter','jmlmember','pages'));
+        $testimoni=testimoni::with('member')->get();
+    return view('landing.pages.index',compact('jmlproduk','jmltreatment','jmldokter','jmlmember','pages','testimoni'));
     }
 
     public function produk(){
