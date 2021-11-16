@@ -20,8 +20,7 @@
         "milon/barcode": "^8.0",
         "phpoffice/phpword": "^0.18.2",
         "ramsey/uuid": "^4.2",
-        "simplesoftwareio/simple-qrcode": "^4.2",
-        "twilio/sdk": "^6.31"
+        "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
