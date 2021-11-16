@@ -164,11 +164,11 @@
   new Swiper('.clients-slider', {
     speed: 400,
     loop: true,
-    // autoplay:{
-    //   delay: 5000,
-    //   disableOnInteraction: false,
+    autoplay:{
+      delay: 5000,
+      disableOnInteraction: false,
 
-    // },
+    },
     slidesPerView: 'auto',
     pagination: {
       el: '.swiper-pagination',
@@ -177,7 +177,7 @@
     },
     grid: {
         rows: 1,
-    }
+    },
     // breakpoints: {
     //   320: {
     //     slidesPerView: 2,
