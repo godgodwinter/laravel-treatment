@@ -91,6 +91,7 @@ Tools and Framework
 * [Nodejs](https://node.js)
 * [gitbash](https://git-scm.com/downloads)
 * [composer](https://getcomposer.org/)
+* [docker](https://www.docker.com/)
 
 Library/Plugin
 * [Auth:Fortify](#)
@@ -104,6 +105,12 @@ Fitur Utama
 * [Menejemen Dokter](#)
 * [Menejemen Member dan Penjadwalan Perawatan](#)
 * [Pengingat SMS gateway](#)
+
+
+Docker
+* [mysql dan settings database](#)
+* [phpmyadmin](#)
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -163,6 +170,37 @@ Buka browser dan tulis alamat berikut
    
    ```sh
    http://127.0.0.1:8000/
+   ```
+
+
+
+### Docker Installation
+
+<!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
+1. Compose
+   ```sh
+   docker-compose up
+   ```
+2. ctrl+c kemudian jalankan container dengan cara berikut :
+   ```sh
+   docker-compose start
+   ```
+3. Akses projek dengan link port :3000
+   ```sh
+   http://127.0.0.1:3000/
+   ```
+
+4. Akses phpmyadmin dengan port :8081
+   ```sh
+   http://127.0.0.1:8081/
+   ```
+5. Untuk menggunakan artisan dapat menggunakan perintah berikut : 
+   ```sh
+   docker-compose exec baemon-treatment php artisan db:seed
+   ```
+   atau migrate:fresh jika ingin dari data kosong
+   ```sh
+   docker-compose exec baemon-treatment php artisan list
    ```
 
 
