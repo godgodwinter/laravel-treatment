@@ -46,6 +46,8 @@ class oneseeder extends Seeder
             'reminderjam' => '06:00:00',
             'reminderidmesin' => '772',
             'reminderpin' => '105649',
+            'reminderotomatis' => 'Tidak Aktif',
+            'reminderhari' => '3',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
          ]);

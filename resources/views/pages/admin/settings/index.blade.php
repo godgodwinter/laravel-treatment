@@ -197,7 +197,7 @@ Pengaturan
 
                     <form action="{{route('seeder.member')}}" method="post" class="d-inline">
                         @csrf
-                        <button class="btn btn-info">Seeder Data Member</button>
+                        <button class="btn btn-info">Seeder Data Member dan testimoni</button>
                     </form>
 
 

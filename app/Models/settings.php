@@ -21,5 +21,10 @@ class settings extends Model
         'lembaga_kota',
         'lembaga_logo',
         'sekolahlogo',
+        'reminderjam',
+        'reminderidmesin',
+        'reminderpin',
+        'reminderhari',
+        'reminderotomatis',
     ];
 }

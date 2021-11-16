@@ -87,6 +87,8 @@ class adminsettingscontroller extends Controller
             'reminderjam' => $jam,
             'reminderidmesin' => $request->reminderidmesin,
             'reminderpin' => $request->reminderpin,
+            'reminderotomatis' => $request->reminderotomatis,
+            'reminderhari' => $request->reminderhari,
            'updated_at'=>date("Y-m-d H:i:s")
         ]);
         return redirect()->back()->with('status','Data berhasil diubah!')->with('tipe','success');
