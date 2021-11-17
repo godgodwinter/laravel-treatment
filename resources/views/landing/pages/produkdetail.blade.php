@@ -47,7 +47,7 @@ Beranda
                   <div class="swiper-slide">
 
             @php
-            $gambar=url('/assets/img/example-image.jpg');
+            $gambar=url('assets/img/raphael-lovaski-Pe9IXUuC6QU-unsplash.jpg');
             @endphp
             @if($datas->photo!=null AND $datas->photo!=url('storage') AND $datas->photo!='')
             @php
@@ -60,7 +60,9 @@ Beranda
 
 
                 </div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination">
+                    
+                </div>
               </div>
             </div>
 
