@@ -241,7 +241,7 @@ Project Link: [https://github.com/godgodwinter/laravel-treatment](https://github
 [license-url]: https://github.com/godgodwinter/laravel-treatment/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.instagram.com/kukuh.sn/
-[product-screenshot-ss0]: images/landing_index
+[product-screenshot-ss0]: images/landing_index.png
 [product-screenshot-ss1]: images/chating.png
 [product-screenshot-ss2]: images/jawaltreadment.png
 [product-screenshot-ss3]: images/reminder.png
