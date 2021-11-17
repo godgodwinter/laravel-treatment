@@ -26,7 +26,7 @@ Jadwal Treatmentku
     <div class="row">
 
 
-    <div class="section-body  col-md-7 col-12">
+    <div class="section-body  col-md-12 col-12">
         <div class="card">
             <div class="card-body ">
 
@@ -43,8 +43,10 @@ Jadwal Treatmentku
                     <thead>
                         <tr style="background-color: #F1F1F1">
                             <th class="text-center py-2 babeng-min-row"> No</th>
-                            <th >Nama testimoni</th>
-                            <th class="text-center">Pesan</th>
+                            <th class="text-center">Tanggal</th>
+                            <th class="text-center">Total</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Cetak</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,10 +56,28 @@ Jadwal Treatmentku
 
                                     {{ ((($loop->index)+1)+(($datas->currentPage()-1)*$datas->perPage())) }}</td>
                                 <td>
-                                    {{$data->member?$data->member->nama:'Data tidak ditemukan'}}
+                                    {{$data->tgl?Fungsi::tanggalindo($data->tgl):'Data tidak ditemukan'}}
                                 </td>
-                                <td class="text-center">
-                                    {{ $data->pesan }}
+                                <td class="text-center babeng-min-row">
+                                    {{Fungsi::rupiah($data->totaltagihan)}}
+                                </td>
+                                <td  class="text-center babeng-min-row">
+                                    @if($data->status=='pending')
+                                        <span class="badge badge-info">
+                                    @elseif($data->status=='success')
+                                    <span class="badge badge-success">
+                                    @else
+                                        <span class="badge badge-danger">
+                                    @endif
+
+                                    {{Str::ucfirst($data->status) }}
+
+                                    </span>
+
+                                </td>
+                                <td class="babeng-min-row">
+
+                                    <a href="{{route('transaksi.cetak.invoice',$data->id)}}" class="btn btn-sm btn-info">Invoice</a>
                                 </td>
                             </tr>
                         @empty
@@ -74,39 +94,6 @@ Jadwal Treatmentku
     </div>
 
 
-
-    <div class="section-body col-md-5 col-12">
-        <div class="card">
-            <div class="card-body ">
-                <h5>Tulis Testimoni</h5>
-
-
-
-                <form action="{{route('member.testimoni.store')}}" method="post" enctype="multipart/form-data">
-                    @csrf
-
-                    <div class="form-group col-md-12 col-12 mt-0 ">
-                        <textarea class="form-control" style="min-width: 100%;height:100%;" name="pesan"
-                                id="pesan" required ></textarea>
-                        @error('pesan')<div class="invalid-feedback"> {{$message}}</div>
-                        @enderror
-                    </div>
-
-
-
-
-
-                    <div class="card-footer text-right ">
-                        <button class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-
-
-
-
-            </div>
-        </div>
-    </div>
 
     </div>
 </section>

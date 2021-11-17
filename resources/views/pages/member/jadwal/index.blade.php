@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-Jadwal Treatmentku
+Testimoni
 @endsection
 
 @push('before-script')
@@ -26,7 +26,7 @@ Jadwal Treatmentku
     <div class="row">
 
 
-    <div class="section-body  col-md-7 col-12">
+    <div class="section-body  col-md-12 col-12">
         <div class="card">
             <div class="card-body ">
 
@@ -43,22 +43,30 @@ Jadwal Treatmentku
                     <thead>
                         <tr style="background-color: #F1F1F1">
                             <th class="text-center py-2 babeng-min-row"> No</th>
-                            <th >Nama testimoni</th>
-                            <th class="text-center">Pesan</th>
+                            <th >Tanggal </th>
+                            <th class="text-center">Jam</th>
+                            <th class="text-center">Ruangan</th>
+                            {{-- <th class="text-center">Status</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($datas as $data)
-                        <tr id="sid{{ $data->id }}">
+                        <tr >
                                 <td class="text-center">
 
-                                    {{ ((($loop->index)+1)+(($datas->currentPage()-1)*$datas->perPage())) }}</td>
-                                <td>
-                                    {{$data->member?$data->member->nama:'Data tidak ditemukan'}}
+                                    {{ (($loop->index)+1) }}</td>
+                                <td class="text-center">
+                                            {{$data->tgl?Fungsi::tanggalindo($data->tgl):'Jadwal belum ditentukan'}}
                                 </td>
                                 <td class="text-center">
-                                    {{ $data->pesan }}
+                                            {{$data->jam?$data->jam:'Jadwal belum ditentukan'}}
                                 </td>
+                                <td class="text-center">
+                                            {{$data->ruangan?$data->ruangan:'Jadwal belum ditentukan'}}
+                                </td>
+                                {{-- <td class="text-center">
+                                            {{$data->status?$data->status:'Jadwal belum ditentukan'}}
+                                </td> --}}
                             </tr>
                         @empty
                             <tr>
@@ -75,38 +83,6 @@ Jadwal Treatmentku
 
 
 
-    <div class="section-body col-md-5 col-12">
-        <div class="card">
-            <div class="card-body ">
-                <h5>Tulis Testimoni</h5>
-
-
-
-                <form action="{{route('member.testimoni.store')}}" method="post" enctype="multipart/form-data">
-                    @csrf
-
-                    <div class="form-group col-md-12 col-12 mt-0 ">
-                        <textarea class="form-control" style="min-width: 100%;height:100%;" name="pesan"
-                                id="pesan" required ></textarea>
-                        @error('pesan')<div class="invalid-feedback"> {{$message}}</div>
-                        @enderror
-                    </div>
-
-
-
-
-
-                    <div class="card-footer text-right ">
-                        <button class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-
-
-
-
-            </div>
-        </div>
-    </div>
 
     </div>
 </section>

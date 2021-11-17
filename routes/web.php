@@ -19,6 +19,9 @@ use App\Http\Controllers\admintreatmentcontroller;
 use App\Http\Controllers\adminuserscontroller;
 use App\Http\Controllers\invoicecontroller;
 use App\Http\Controllers\landingcontroller;
+use App\Http\Controllers\memberchatcontroller;
+use App\Http\Controllers\memberinvoicecontroller;
+use App\Http\Controllers\memberjadwalcontroller;
 use App\Http\Controllers\memberkeranjangcontroller;
 use App\Http\Controllers\membertestimonicontroller;
 use App\Http\Controllers\membertransaksicontroller;
@@ -196,6 +199,12 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     //testimoni
     Route::get('/member/testimoni', [membertestimonicontroller::class, 'index'])->name('member.testimoni');
     Route::post('/member/testimoni/store', [membertestimonicontroller::class, 'store'])->name('member.testimoni.store');
+    //jadwal
+    Route::get('/member/jadwal', [memberjadwalcontroller::class, 'index'])->name('member.jadwal');
+    Route::get('/member/chat', [memberchatcontroller::class, 'index'])->name('member.chat');
+    Route::post('/member/chat/store', [memberchatcontroller::class, 'store'])->name('member.chat.store');
+    //invoice
+    Route::get('/member/invoice', [memberinvoicecontroller::class, 'index'])->name('member.invoice');
 
     //keranjang
     Route::get('/member/keranjang', [memberkeranjangcontroller::class, 'index'])->name('member.keranjang');
