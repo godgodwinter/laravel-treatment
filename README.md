@@ -91,10 +91,11 @@ This section should list any major frameworks that you built your project using.
 Tools and Framework
 * [Laravel 8](https://laravel.com)
 * [PHP 7.4+](https://php.net)
-* [Nodejs](https://node.js)
 * [gitbash](https://git-scm.com/downloads)
 * [composer](https://getcomposer.org/)
+Alternatif (tidak perlu diinstall)
 * [docker](https://www.docker.com/)
+* [Nodejs](https://node.js)
 
 Library/Plugin
 * [Auth:Fortify](#)
