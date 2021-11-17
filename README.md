@@ -74,10 +74,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot-ss1]](https://github.com/godgodwinter/laravel-treatment)
+[![Product Name Screen Shot][product-screenshot-ss0]](https://github.com/godgodwinter/laravel-treatment)
 [![Product Name Screen Shot][product-screenshot-ss2]](https://github.com/godgodwinter/laravel-treatment)
 [![Product Name Screen Shot][product-screenshot-ss3]](https://github.com/godgodwinter/laravel-treatment)
 [![Product Name Screen Shot][product-screenshot-ss4]](https://github.com/godgodwinter/laravel-treatment)
+[![Product Name Screen Shot][product-screenshot-ss1]](https://github.com/godgodwinter/laravel-treatment)
 <!-- [![Product Name Screen Shot][product-classdiagram1]](https://github.com/godgodwinter/laravel-treatment) -->
 
 Sistem Treatment Klinik kecantikan Scincare
@@ -240,6 +241,7 @@ Project Link: [https://github.com/godgodwinter/laravel-treatment](https://github
 [license-url]: https://github.com/godgodwinter/laravel-treatment/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.instagram.com/kukuh.sn/
+[product-screenshot-ss0]: images/landing_index
 [product-screenshot-ss1]: images/chating.png
 [product-screenshot-ss2]: images/jawaltreadment.png
 [product-screenshot-ss3]: images/reminder.png
