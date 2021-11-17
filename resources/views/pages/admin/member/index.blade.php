@@ -88,6 +88,7 @@ Member
                                 </td>
 
                                 <td class="text-center babeng-min-row">
+                                    <a class="btn btn-info" href="{{route('member.periksachat',$data->id)}}">Chat</a>
                                     {{-- <x-button-reset-pass link="/admin/{{ $pages }}/{{$data->id}}/reset" /> --}}
                                     <x-button-edit link="/admin/{{ $pages }}/{{$data->id}}" />
                                     <x-button-delete link="/admin/{{ $pages }}/{{$data->id}}" />

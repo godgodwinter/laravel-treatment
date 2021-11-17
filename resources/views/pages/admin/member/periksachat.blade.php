@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-Kontak Admin
+Chat dengan member
 @endsection
 
 @push('before-script')
@@ -105,13 +105,6 @@ Kontak Admin
                                         <td class="text-left">
                                         <button class="btn btn-success px-5"> {{$pesan->pesan}}</button>
                                         <p style="font-size: 8pt" ><i>{{$pesan->created_at}}</i></p>
-                                        <form action="{{route('member.chatdetail.destroy',[$pesan->id,$data->member_id])}}" method="post" class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <button  style="font-size: 8pt" class=" btn btn-sm btn-danger"
-                                                onclick="return  confirm('Anda yakin menghapus pesan ini? Y/N')"  data-toggle="tooltip" data-placement="top" title="Hapus pesan!"><span
-                                                    class="pcoded-micon"> <i class="fas fa-trash"></i></span></button>
-                                        </form>
                                         </td>
                                         <td class="text-center babeng-min-row">
                                         </td>
@@ -123,6 +116,13 @@ Kontak Admin
                                         <td class="text-right">
                                         <button class="btn btn-info px-5"> {{$pesan->pesan}}</button>
                                         <p style="font-size: 8pt" ><i>{{$pesan->created_at}}</i></p>
+                                        <form action="{{route('member.periksachat.destroy',[$pesan->id,$data->member_id])}}" method="post" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button  style="font-size: 8pt" class=" btn btn-sm btn-danger"
+                                                onclick="return  confirm('Anda yakin menghapus pesan ini? Y/N')"  data-toggle="tooltip" data-placement="top" title="Hapus pesan!"><span
+                                                    class="pcoded-micon"> <i class="fas fa-trash"></i></span></button>
+                                        </form>
                                         </td>
                                         <td class="text-center babeng-min-row">
                                             <img src="{{asset('assets/img/avatar/avatar-3.png')}}" alt="namaPelanggan" width="50px">
@@ -159,7 +159,7 @@ Kontak Admin
 
 
 
-                <form action="{{route('member.chat.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('member.adminchat.store',$member->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group col-md-12 col-12 mt-0 ">

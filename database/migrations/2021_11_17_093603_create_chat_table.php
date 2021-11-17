@@ -17,6 +17,8 @@ class CreateChatTable extends Migration
             $table->bigIncrements('id');
             $table->integer('member_id');
             $table->integer('users_id');
+            $table->string('tgladminread')->nullable();
+            $table->string('tglmemberread')->nullable();
             $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();

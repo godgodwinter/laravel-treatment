@@ -17,6 +17,8 @@ class chat extends Model
             'member_id',
             'users_id',
             'status',
+            'tgladminread',
+            'tglmemberread',
         ];
 
 

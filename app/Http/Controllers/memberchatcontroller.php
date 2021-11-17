@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Fungsi;
 use App\Models\chat;
+use App\Models\chatdetail;
 use App\Models\member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,4 +87,13 @@ class memberchatcontroller extends Controller
     return redirect()->route('member.chat')->with('status','Pesan berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
 
     }
+
+    public function chatdetaildestroy(chatdetail $id,$member){
+        chatdetail::destroy($id->id);
+
+
+    return redirect()->route('member.chat')->with('status','Pesan berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
+
+    }
+
 }

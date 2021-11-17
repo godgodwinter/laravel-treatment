@@ -109,6 +109,9 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/admin/datamember/create', [adminmembercontroller::class, 'create'])->name('member.create');
     Route::post('/admin/datamember', [adminmembercontroller::class, 'store'])->name('member.store');
     Route::delete('/admin/datamember/multidel', [adminmembercontroller::class, 'multidel'])->name('member.multidel');
+    Route::get('/admin/datamember/periksachat/{member}', [adminmembercontroller::class, 'periksachat'])->name('member.periksachat');
+    Route::post('/admin/datamember/periksachatstore/{member}', [adminmembercontroller::class, 'periksachatstore'])->name('member.adminchat.store');
+    Route::delete('/admin/datamember/periksachatdestroy/{id}/{member}', [adminmembercontroller::class, 'periksachatdestroy'])->name('member.periksachat.destroy');
 
     //testimoni
     Route::get('/admin/testimoni', [admintestimonicontroller::class, 'index'])->name('testimoni');
@@ -203,6 +206,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/member/jadwal', [memberjadwalcontroller::class, 'index'])->name('member.jadwal');
     Route::get('/member/chat', [memberchatcontroller::class, 'index'])->name('member.chat');
     Route::post('/member/chat/store', [memberchatcontroller::class, 'store'])->name('member.chat.store');
+    Route::delete('/member/chatdetaildestroy/{id}/{member}', [memberchatcontroller::class, 'chatdetaildestroy'])->name('member.chatdetail.destroy');
     //invoice
     Route::get('/member/invoice', [memberinvoicecontroller::class, 'index'])->name('member.invoice');
 
