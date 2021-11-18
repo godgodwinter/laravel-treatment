@@ -1,8 +1,5 @@
 @extends('layouts.defaultlanding')
 
-@section('title')
-Beranda
-@endsection
 
 @push('before-script')
 
@@ -21,10 +18,11 @@ Beranda
       <div class="breadcrumb-hero">
         <div class="container">
           <div class="breadcrumb-hero">
-            <h2>{{ucfirst($pages)}}</h2>
+            <h2>{{strtoupper($pages)}}</h2>
           </div>
         </div>
       </div>
+
       <div class="container">
         <ol>
           <li><a href="{{url('/')}}">Beranda</a></li>
@@ -37,17 +35,17 @@ Beranda
     <section id="portfolio" class="portfolio">
       <div class="container">
 
-        <div class="row">
+        {{-- <div class="row">
 
-          {{-- <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <li data-filter=".filter-app">App</li>
               <li data-filter=".filter-card">Card</li>
               <li data-filter=".filter-web">Web</li>
             </ul>
-          </div> --}}
-        </div>
+          </div>
+        </div> --}}
 
         <div class="row portfolio-container" data-aos="fade-up">
             @forelse ($datas as $data)

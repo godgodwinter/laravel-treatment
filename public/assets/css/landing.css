@@ -374,11 +374,11 @@ body {
     text-shadow: 0 1px 2px var(--wax-flower);
   }
   #hero h2 {
-    color: var(--radical-red);
+    color: var(--radical-red-active);
     margin-bottom: 50px;
     font-size: 24px;
     font-weight: 500;
-    text-shadow: 0 1px 15px var(--wax-flower);
+    text-shadow: 0 1px 1px var(--monza);
   }
   #hero .btn-get-started {
     font-family: "Raleway", sans-serif;
