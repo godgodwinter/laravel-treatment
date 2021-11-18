@@ -17,6 +17,8 @@ class AddSmsgatewayOnSettingsTable extends Migration
             $table->text('reminderjam')->nullable();
             $table->text('reminderidmesin')->nullable();
             $table->text('reminderpin')->nullable();
+            $table->text('reminderhari')->nullable();
+            $table->text('reminderotomatis')->nullable();
 
         });
     }

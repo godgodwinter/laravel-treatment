@@ -68,7 +68,7 @@ class smscontroller extends Controller
             $ambildatapenjadwalan=penjadwalan::with('perawatan')->get();
             foreach($ambildatapenjadwalan as $data){
                 $tgl=$data->tgl;
-                $hasil= date('Y-m-d', strtotime('-1 days', strtotime($tgl)));
+                $hasil= date('Y-m-d', strtotime('-'.Fungsi::reminderhari().' days', strtotime($tgl)));
 
                 if($hasil==date('Y-m-d')){
                         $telp=str_replace(' ', '', $data->perawatan->member->telp);

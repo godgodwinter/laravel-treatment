@@ -52,7 +52,6 @@ class landingcontroller extends Controller
 
     public function dokter(){
         $pages='dokter';
-        $pages='treatment';
         $datas=dokter::paginate(9);
     return view('landing.pages.dokter',compact('datas','pages'));
     }

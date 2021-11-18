@@ -42,7 +42,7 @@ class adminseedercontroller extends Controller
         ]);
 
             $nomerinduk=$faker->unique()->ean8;
-            DB::table('member')->insert([
+            $member_id=DB::table('member')->insertGetId([
                 'nama' =>  $nama,
                 'users_id' =>  $users_id,
                 'jk' => $faker->randomElement(['Laki-laki', 'Perempuan']),
@@ -53,6 +53,14 @@ class adminseedercontroller extends Controller
                 'updated_at' => Carbon::now()
             ]);
 
+            DB::table('testimoni')->insertGetId([
+                'member_id' =>  $member_id,
+                'pesan' => $faker->randomElement(['Sangat membantu untuk mendapatkan perawatan', 'Mantap sekali','Sangat rekomended','Pelayan ramah', 'Sangat memuaskan','Terimakasih','Ok','Sangat membantu']),
+                'tgl' => $faker->numberBetween(2020,2022).'-0'.$faker->numberBetween(1,9).'-'.$faker->numberBetween(10,29),
+                'status' => $faker->randomElement(['Ok', 'hidden']),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
 
      }
 

@@ -342,6 +342,33 @@ $cari=$request->cari;
                     </div>
 
 
+                    <div class="form-group col-md-10 col-12 mt-0">
+                        <label>Pengingat otomatis</label>
+                        {{-- <div class="input-group">
+                            <input type="text" class="form-control " value="{{Fungsi::reminderotomatis()!=null?Fungsi::reminderotomatis():'Aktif'}}" required name="reminderotomatis">
+                          </div> --}}
+
+                            <div class="selectgroup w-100">
+                            <label class="selectgroup-item">
+                                <input type="radio" name="reminderotomatis" value="Aktif" class="selectgroup-input" {{Fungsi::reminderotomatis()=='Aktif'?'checked=""':''}}>
+                                <span class="selectgroup-button">Aktif</span>
+                            </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="reminderotomatis" value="Tidak aktif" class="selectgroup-input" {{Fungsi::reminderotomatis()=='Aktif'?'':'checked=""'}}>
+                                <span class="selectgroup-button">Tidak Aktif</span>
+                              </label>
+
+                            </div>
+                        </div>
+
+                    <div class="form-group col-md-10 col-12 mt-0">
+                        <label>Ingatkan sebelum (Hari)</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control " value="{{Fungsi::reminderhari()!=null?Fungsi::reminderhari():'1'}}" required name="reminderhari" min="1" max="10">
+                          </div>
+                        </div>
+
+
 
           </div>
           <div class="modal-footer">
