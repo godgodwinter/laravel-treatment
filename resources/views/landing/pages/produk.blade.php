@@ -52,7 +52,7 @@ Beranda
         <div class="row portfolio-container" data-aos="fade-up">
             @forelse ($datas as $data)
             @php
-            $gambar=url('assets/img/raphael-lovaski-Pe9IXUuC6QU-unsplash.jpg');
+            $gambar=url('assets/img/example-image.jpg');
             @endphp
             @if($data->photo!=null AND $data->photo!=url('storage') AND $data->photo!='')
             @php

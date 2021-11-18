@@ -1104,7 +1104,7 @@ body {
     height: 100%;
     border-radius: 0;
     border-style: solid;
-    border-color: black;
+    border-color: none; !important
 
   }
   .portfolio-details .portfolio-details-slider .swiper-pagination {
@@ -1124,6 +1124,7 @@ body {
   .portfolio-details .portfolio-info {
     padding: 30px;
     box-shadow: 0px 0 30px rgba(60, 65, 51, 0.08);
+    background-color: var(--wax-flower-dark);
   }
   .portfolio-details .portfolio-info h3 {
     font-size: 22px;
@@ -2025,3 +2026,58 @@ body {
     font-size: 13px;
     color: #fff;
   }
+
+/* -------------------------
+@articBurn
+------------------------- */
+
+.dokter-detail {
+    min-height: 500px;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.6) !important;
+    position: relative;
+    display: flex;
+    padding: 0 !important;
+    justify-content: space-evenly;
+    overflow: hidden;
+    transition: 0.5;
+    background-color: var(--dark-sunglo) !important;
+}
+
+.dokter-detail:hover .dokter-detail-card{
+    transform: translateY(10px);
+}
+
+.dokter-detail .dokter-detail-card{
+  position: absolute;
+  /* top: 50%;
+  left: 50%; */
+  width: 100%;
+  height: 100%;
+  /* transform: translate(-50%, -50%); */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: 0.5s;
+  /* background-color: black; */
+}
+
+.dokter-detail .dokter-detail-card img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.dokter-detail .dokter-detail-card .dokter-info{
+    position: absolute;
+    background-color: red;
+    width: 100%;
+    bottom: 0;
+    transition: 0.3s;
+}
+
+.dokter-detail:hover .dokter-info{
+    bottom: 5%;
+}

@@ -47,7 +47,7 @@ Beranda
                   <div class="swiper-slide">
 
             @php
-            $gambar=url('assets/img/raphael-lovaski-Pe9IXUuC6QU-unsplash.jpg');
+            $gambar=url('assets/img/example-image.jpg');
             @endphp
             @if($datas->photo!=null AND $datas->photo!=url('storage') AND $datas->photo!='')
             @php
@@ -61,7 +61,7 @@ Beranda
 
                 </div>
                 <div class="swiper-pagination">
-                    
+
                 </div>
               </div>
             </div>
@@ -78,10 +78,10 @@ Beranda
               <div class="portfolio-description">
 
 
-                {{-- <h2>This is an example of portfolio detail</h2>
+                <h2>{{$datas->nama}}</h2>
                 <p>
                   Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-                </p> --}}
+                </p>
               </div>
             </div>
 
