@@ -2045,7 +2045,7 @@ body {
 }
 
 .dokter-detail:hover .dokter-detail-card{
-    transform: translateY(10px);
+    transform: translateY(5px);
 }
 
 .dokter-detail .dokter-detail-card{
@@ -2072,12 +2072,34 @@ body {
 
 .dokter-detail .dokter-detail-card .dokter-info{
     position: absolute;
-    background-color: red;
+    /* background-color: red; */
     width: 100%;
     bottom: 0;
     transition: 0.3s;
+    color: white;
+}
+
+.dokter-detail .dokter-detail-card .dokter-info h3{
+    border-style: none;
+    color: white;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .dokter-detail:hover .dokter-info{
     bottom: 5%;
+}
+
+.dokter-info-wrapper{
+    height: 20%;
+    width: inherit;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: -3%;
+    transition: 0.3s;
+}
+
+.dokter-detail:hover .dokter-info-wrapper{
+    bottom: 0;
+    height: 25%;
 }

@@ -68,8 +68,11 @@ Beranda
               <div class="portfolio-info dokter-detail">
                   <div class="dokter-detail-card">
                       <img src="/assets/img/example-image.jpg" alt="{{$datas->nama}}">
+                      <div class="dokter-info-wrapper"></div>
                       <div class="dokter-info">
-                        <h3>{{$datas->nama}}</h3>
+                        <h3 class="text-center">{{$datas->nama}}</h3>
+                        <h6 class="text-center">Dokter {{$datas->spesialisasi}}</h6>
+                        <h6 class="text-center">{{$datas->jk}}</h6>
                       </div>
                   </div>
 
