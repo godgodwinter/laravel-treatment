@@ -75,14 +75,14 @@ Beranda
                 </ul>
                 <img src="data:image/png;base64,{{DNS2D::getBarcodePNG(route('landing.produkdetail',$datas->id), 'QRCODE')}}" alt="barcode" class="float-left"/>
               </div>
-              <div class="portfolio-description">
+              {{-- <div class="portfolio-description">
 
 
                 <h2>{{$datas->nama}}</h2>
                 <p>
                   Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
                 </p>
-              </div>
+              </div> --}}
             </div>
 
           </div>
