@@ -33,20 +33,27 @@ Beranda
               <div class="row justify-content-between">
                 <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                   <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
+
                     <i class="fas fa-cube align-middle pe-2"></i>
                     <div id="container">
+                    <a href="{{route('landing.produk')}}" class="d-inline">
                         <span data-purecounter-start="0" data-purecounter-end="{{$jmlproduk?$jmlproduk:'0'}}" class="purecounter">0</span>
                         <p>Produk</p>
+                </a>
+
                     </div>
                   </div>
+
                 </div>
 
                 <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                   <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
                     <i class="fas fa-hand-holding-heart align-middle pe-2"></i>
                     <div id="container">
+                    <a href="{{route('landing.treatment')}}" class="d-inline">
                         <span data-purecounter-start="0" data-purecounter-end="{{$jmltreatment?$jmltreatment:'0'}}" class="purecounter">0</span>
                         <p>Treatment</p>
+                    </a>
                     </div>
                   </div>
                 </div>
@@ -55,8 +62,10 @@ Beranda
                   <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
                     <i class="fas fa-user align-middle pe-2"></i>
                     <div id="container">
+                    <a href="{{route('landing.jadwal')}}" class="d-inline">
                         <span data-purecounter-start="0" data-purecounter-end="{{$jmlmember?$jmlmember:'0'}}" class="purecounter">0</span>
                         <p>Member</p>
+                    </a>
                     </div>
                   </div>
                 </div>
@@ -65,8 +74,10 @@ Beranda
                   <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
                     <i class="fas fa-user-nurse align-middle pe-2"></i>
                     <div id="container">
+                    <a href="{{route('landing.dokter')}}" class="d-inline">
                         <span data-purecounter-start="0" data-purecounter-end="{{$jmldokter?$jmldokter:'0'}}" class="purecounter">0</span>
                         <p>Dokter</p>
+                    </a>
                     </div>
                   </div>
                 </div>
