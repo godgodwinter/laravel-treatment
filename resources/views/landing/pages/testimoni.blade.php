@@ -43,17 +43,18 @@
 
             @forelse ($datas as $data)
             @php
-            $gambar=url('assets/img/example-image.jpg');
+            // $gambar=url('assets/img/example-image.jpg');
+            $gambar=asset('assets/img/avatar/avatar-3.png');
             @endphp
-            @if($data->photo!=null AND $data->photo!=url('storage') AND $data->photo!='')
+            @if($data->member!=null AND $data->member->photo!=url('storage') AND $data->member->photo!='')
             @php
-                 $gambar=$data->photo;
+                 $gambar=$data->member->photo;
             @endphp
             @endif
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div class="member" data-aos="fade-up">
                 <div class="member-img">
-                  <img src="{{$gambar}}" class="img-fluid" alt="">
+                  <img src="{{$gambar}}" class="img-fluid" alt="" >
                   <div class="social">
                     <a href="">{{$data->member?'Member':'Belum Menjadi Member'}}</a>
                   </div>

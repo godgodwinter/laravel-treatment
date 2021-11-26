@@ -21,7 +21,7 @@ Beranda
       <div class="breadcrumb-hero">
         <div class="container">
           <div class="breadcrumb-hero">
-            <h2>{{ucfirst($pages)}} Perawatan</h2>
+            <h2>{{ucfirst($pages)}} </h2>
           </div>
         </div>
       </div>

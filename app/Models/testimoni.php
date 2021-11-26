@@ -18,11 +18,16 @@ class testimoni extends Model
             'pesan',
             'tgl',
             'status',
+            'photo',
         ];
 
         public function member()
         {
             return $this->belongsTo('App\Models\member');
+        }
+        public function getPhotoAttribute($value){
+
+            return url('storage/'.$value);
         }
 
 }

@@ -21,7 +21,7 @@
       <li><a class="{{($pages=='treatment'?'active':'')}}" href="{{route('landing.treatment')}}">Treatment</a></li>
       {{-- <li><a  class="{{($pages=='dokter'?'active':'')}}" href="{{route('landing.dokter')}}">Dokter</a></li> --}}
       <li><a  class="{{($pages=='testimoni'?'active':'')}}" href="{{route('landing.testimoni')}}">Testimoni</a></li>
-      <li><a  class="{{($pages=='jadwal'?'active':'')}}" href="{{route('landing.jadwal')}}">Jadwal Perawatan</a></li>
+      <li><a  class="{{($pages=='jadwal'?'active':'')}}" href="{{route('landing.jadwal')}}">Reminder</a></li>
       {{-- <li><a class="{{($pages=='testimoni'?'active':'')}}" href="{{route('landing.testimoni')}}">Testimoni</a></li> --}}
 
       <li><a class="buttonLogin" href="{{ url('/login') }}">Masuk</a></li>

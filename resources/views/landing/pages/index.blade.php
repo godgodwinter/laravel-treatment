@@ -138,6 +138,15 @@ Beranda
                         <div class="clients-slider swiper">
                             <div class="swiper-wrapper">
                                 @forelse ($testimoni as $t)
+                                @php
+                                // $gambar=url('assets/img/example-image.jpg');
+                                $gambar=asset('assets/img/avatar/avatar-3.png');
+                                @endphp
+                                @if($t->member!=null AND $t->member->photo!=url('storage') AND $t->member->photo!='')
+                                @php
+                                     $gambar=$t->member->photo;
+                                @endphp
+                                @endif
                                 <div class="swiper-slide d-flex flex-column align-items-center justify-content-center px-2">
                                     <div class="col-md-12 justify-content-center">
                                       <p class="text-center">
@@ -145,7 +154,7 @@ Beranda
                                       </p>
                                     </div>
                                     <div class="col-md-12 px-auto d-flex justify-content-center">
-                                      <img src="{{asset('assets/img/avatar/avatar-3.png')}}" alt="namaPelanggan">
+                                      <img src="{{$gambar}}" alt="namaPelanggan">
                                   </div>
                                     <div class="col-md-12 justify-content-center">
                                         <h6 class="text-center">

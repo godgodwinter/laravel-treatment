@@ -122,7 +122,7 @@ class adminmembercontroller extends Controller
 
 
 
-            DB::table('member')->insert(
+            $data_id=DB::table('member')->insertGetId(
                 array(
                        'nama'     =>   $request->nama,
                        'jk'     =>   $request->jk,
@@ -135,6 +135,27 @@ class adminmembercontroller extends Controller
                 ));
 
 
+                $files = $request->file('files');
+
+
+                if($files!=null){
+
+
+                    // dd('storage'.'/'.$id->sekolah_logo);
+                    $namafilebaru=$data_id;
+                    $tujuan_upload = 'storage/member';
+                            // upload file
+                    $files->move($tujuan_upload,"member/".$namafilebaru.".jpg");
+
+                    $photo="member/".$namafilebaru.".jpg";
+
+
+                    member::where('id',$data_id)
+                    ->update([
+                        'photo'     =>   $photo,
+                    'updated_at'=>date("Y-m-d H:i:s")
+                    ]);
+                }
 
     return redirect()->route('member')->with('status','Data berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
 
@@ -219,7 +240,27 @@ class adminmembercontroller extends Controller
             'alamat'     =>   $request->alamat,
            'updated_at'=>date("Y-m-d H:i:s")
         ]);
+        $data_id=$id->id;
 
+        $files = $request->file('files');
+        if($files!=null){
+
+
+            // dd('storage'.'/'.$id->sekolah_logo);
+            $namafilebaru=$data_id;
+            $tujuan_upload = 'storage/member';
+                    // upload file
+            $files->move($tujuan_upload,"member/".$namafilebaru.".jpg");
+
+            $photo="member/".$namafilebaru.".jpg";
+
+
+            member::where('id',$data_id)
+            ->update([
+                'photo'     =>   $photo,
+            'updated_at'=>date("Y-m-d H:i:s")
+            ]);
+        }
 
     return redirect()->route('member')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');
     }

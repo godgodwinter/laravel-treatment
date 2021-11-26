@@ -20,6 +20,7 @@ class member extends Model
             'tgllahir',
             'alamat',
             'users_id',
+            'photo',
         ];
 
 
@@ -28,5 +29,9 @@ class member extends Model
             return $this->belongsTo('App\Models\User');
         }
 
+        public function getPhotoAttribute($value){
+
+            return url('storage/'.$value);
+        }
 
 }

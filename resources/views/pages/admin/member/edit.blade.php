@@ -30,7 +30,7 @@ Member
             </div>
             <div class="card-body">
 
-                <form action="{{route('member.update',$id->id)}}" method="post">
+                <form action="{{route('member.update',$id->id)}}" method="post" enctype="multipart/form-data">
                     @method('put')
                     @csrf
 
@@ -150,11 +150,11 @@ Member
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
                           <div id="image-preview" class="image-preview">
                             <label for="image-upload" id="image-label2">UPLOAD FOTO</label>
-                            <input type="file" name="memberfoto" id="image-upload" class="@error('memberfoto')
+                            <input type="file" name="files" id="image-upload" class="@error('files')
                             is_invalid
                         @enderror"  accept="image/png, image/gif, image/jpeg" />
 
-                        @error('memberfoto')<div class="invalid-feedback"> {{$message}}</div>
+                        @error('files')<div class="invalid-feedback"> {{$message}}</div>
                         @enderror
                           </div>
                         </div>
