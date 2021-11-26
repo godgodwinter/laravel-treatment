@@ -149,7 +149,7 @@ Beranda
                                   </div>
                                     <div class="col-md-12 justify-content-center">
                                         <h6 class="text-center">
-                                           {{$t->member!=null?$t->member->nama:'Member tidak ditemukan'}}
+                                           {{$t->member!=null?$t->member->nama:$t->member_id}}
                                         </h6>
                                     </div>
                                 </div>

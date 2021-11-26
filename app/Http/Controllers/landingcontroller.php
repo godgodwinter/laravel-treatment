@@ -11,6 +11,7 @@ use App\Models\testimoni;
 use App\Models\treatment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class landingcontroller extends Controller
 {
@@ -20,7 +21,7 @@ class landingcontroller extends Controller
         $jmltreatment=treatment::count();
         $jmldokter=dokter::count();
         $jmlmember=member::count();
-        $testimoni=testimoni::with('member')->get();
+        $testimoni=testimoni::with('member')->where('status','!=','hidden')->get();
     return view('landing.pages.index',compact('jmlproduk','jmltreatment','jmldokter','jmlmember','pages','testimoni'));
     }
 
@@ -85,10 +86,33 @@ class landingcontroller extends Controller
     }
     public function testimoni(){
         $pages='testimoni';
-        $jmlproduk=produk::count();
-        $jmltreatment=treatment::count();
-        $jmldokter=dokter::count();
-        $jmlmember=member::count();
-    return view('landing.pages.produk',compact('jmlproduk','jmltreatment','jmldokter','jmlmember','pages'));
+        $datas=testimoni::with('member')->where('status','!=','hidden')->orderBy('tgl','desc')->paginate(9);
+    return view('landing.pages.testimoni',compact('datas','pages'));
+    }
+    public function testimonistore(Request $request){
+        $pages='testimoni';
+        $request->validate([
+            'member_id'=>'required',
+            'pesan'=>'required',
+
+        ],
+        [
+            'nama.nama'=>'nama harus diisi',
+        ]);
+
+        $data_id=DB::table('testimoni')->insertGetId(
+            array(
+                   'member_id'     =>   $request->member_id,
+                   'pesan'     =>   $request->pesan,
+                   'status'     =>   'Ok',
+                   'tgl'     =>   date("Y-m-d H:i:s"),
+                   'created_at'=>date("Y-m-d H:i:s"),
+                   'updated_at'=>date("Y-m-d H:i:s")
+            ));
+
+
+
+
+return redirect()->route('landing.testimoni')->with('status','Data berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
     }
 }

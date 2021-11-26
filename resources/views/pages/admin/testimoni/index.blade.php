@@ -73,7 +73,7 @@ Testimoni
                                     <input type="checkbox" name="ids" class="checkBoxClass " value="{{ $data->id }}">
                                     {{ ((($loop->index)+1)+(($datas->currentPage()-1)*$datas->perPage())) }}</td>
                                 <td>
-                                    {{$data->member?$data->member->nama:'Data tidak ditemukan'}}
+                                    {{$data->member?$data->member->nama:$data->member_id}}
                                 </td>
                                 <td class="text-center">
                                     {{ $data->pesan }}

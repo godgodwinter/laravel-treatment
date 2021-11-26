@@ -237,3 +237,4 @@ Route::get('/jadwal', [landingcontroller::class, 'jadwal'])->name('landing.jadwa
 
 
 Route::get('/testimoni', [landingcontroller::class, 'testimoni'])->name('landing.testimoni');
+Route::post('/testimonistore', [landingcontroller::class, 'testimonistore'])->name('landing.testimoni.store');
