@@ -68,7 +68,7 @@ Beranda
 
       <section>
 
-        <div class="section-title" data-aos="fade-up">
+        <div class="section-title mt-5" data-aos="fade-up">
             <h2>Ruangan Tersedia</h2>
             @forelse ($ruang as $r)
                  <button class="btn btn-info">Ruang {{$r->nama}}</button>

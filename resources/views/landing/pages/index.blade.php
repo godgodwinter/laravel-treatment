@@ -62,7 +62,7 @@ Beranda
                   <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
                     <i class="fas fa-user align-middle pe-2"></i>
                     <div id="container">
-                    <a href="{{route('landing.jadwal')}}" class="d-inline">
+                    <a href="{{route('landing.testimoni')}}" class="d-inline">
                         <span data-purecounter-start="0" data-purecounter-end="{{$jmlmember?$jmlmember:'0'}}" class="purecounter">0</span>
                         <p>Member</p>
                     </a>
