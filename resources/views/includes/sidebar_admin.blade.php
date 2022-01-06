@@ -20,18 +20,18 @@
                     class="fas fa-passport"></i> <span>Produk</span></a></li>
         <li {{ $pages == 'treatment' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('treatment') }}"><i
                     class="fas fa-school"></i><span>Treatment</span></a></li>
-        <li {{ $pages == 'dokter' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('dokter') }}"><i
-                    class="fas fa-user-graduate"></i><span>Dokter</span></a></li>
+        {{-- <li {{ $pages == 'dokter' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('dokter') }}"><i
+                    class="fas fa-user-graduate"></i><span>Dokter</span></a></li> --}}
         <li {{ $pages == 'member' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('member') }}"><i
                     class="fas fa-chalkboard-teacher"></i><span>Member</span></a></li>
-        <li {{ $pages == 'ruangan' ? 'class=active' : '' }}><a class="nav-link"
+        {{-- <li {{ $pages == 'ruangan' ? 'class=active' : '' }}><a class="nav-link"
                 href="{{ route('ruangan') }}"><i class="fas fa-person-booth"></i><span>
-                    Ruangan </span></a></li>
-        <li {{ $pages == 'jadwaltreatment' ? 'class=active' : '' }}><a class="nav-link"
+                    Ruangan </span></a></li> --}}
+        {{-- <li {{ $pages == 'jadwaltreatment' ? 'class=active' : '' }}><a class="nav-link"
                 href="{{ route('jadwaltreatment') }}"><i class="fas fa-business-time"></i><span>Jadwal
-                    Treatment</span></a></li>
-        <li {{ $pages == 'users' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('users') }}"><i
-                    class="fas fa-building"></i> <span>User</span></a></li>
+                    Treatment</span></a></li> --}}
+        {{-- <li {{ $pages == 'users' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('users') }}"><i
+                    class="fas fa-building"></i> <span>User</span></a></li> --}}
                     <li {{ $pages == 'testimoni' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('testimoni') }}"><i class="fas fa-comments"></i> <span>Testimoni</span></a></li>
     </ul>
 </li>
@@ -47,9 +47,9 @@
     </ul>
 </li> --}}
 
-<li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('perawatan') }}"><i class="fas fa-luggage-cart"></i> <span>Perawatan</span></a></li>
+<li {{ $pages == 'perawatan' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('perawatan') }}"><i class="fas fa-luggage-cart"></i> <span>Reminder</span></a></li>
 
-<li {{ $pages == 'transaksi' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('transaksi') }}"><i class="fas fa-cart-arrow-down"></i><span>Transaksi</span></a></li>
+{{-- <li {{ $pages == 'transaksi' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('transaksi') }}"><i class="fas fa-cart-arrow-down"></i><span>Transaksi</span></a></li> --}}
 
 {{-- <li class="nav-item dropdown  {{ $pages == 'absensi' || $pages == 'pelanggaran' ? 'active' : '' }}">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-id-card-alt"></i>

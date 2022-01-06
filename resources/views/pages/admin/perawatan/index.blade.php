@@ -71,7 +71,7 @@ Perawatan
                             <th >Nama Member</th>
                             <th >Paket Treatment</th>
                             <th >Status</th>
-                            <th >Jadwal</th>
+                            {{-- <th >Jadwal</th> --}}
                             <th >Aksi</th>
                         </tr>
                     </thead>
@@ -93,7 +93,7 @@ Perawatan
                                     {{$data->tglbayar?Fungsi::tanggalindo($data->tglbayar):''}}
                                     @endif
                                 </td>
-                                <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
+                                {{-- <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
                                     @php
                                         $hasil='Jadwal belum diatur';
                                         $warna='danger';
@@ -106,7 +106,7 @@ Perawatan
                                         }
                                     @endphp
                                     <button class="btn btn-{{$warna}}">{{$hasil}}</button>
-                                    </td>
+                                    </td> --}}
                                 {{-- @push('after-style')
                                 <script>
                                     $(function () {
@@ -361,12 +361,12 @@ $cari=$request->cari;
                             </div>
                         </div>
 
-                    <div class="form-group col-md-10 col-12 mt-0">
+                    {{-- <div class="form-group col-md-10 col-12 mt-0">
                         <label>Ingatkan sebelum (Hari)</label>
                         <div class="input-group">
                             <input type="number" class="form-control " value="{{Fungsi::reminderhari()!=null?Fungsi::reminderhari():'1'}}" required name="reminderhari" min="1" max="10">
                           </div>
-                        </div>
+                        </div> --}}
 
 
 
