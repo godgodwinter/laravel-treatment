@@ -78,6 +78,7 @@ class smscontroller extends Controller
                                 $nomer++;
                     }
 
+                    // dd('kirim pesan',$telp,$pesan,$nomer);
             // dd($besok->format('d M Y'));
             // periksa jadwal perawatan //table penjadwalan where tgl
                     // $ambildatapenjadwalan=penjadwalan::with('perawatan')->get();
