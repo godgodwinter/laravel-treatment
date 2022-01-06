@@ -31,9 +31,9 @@
                 Status
             </th>
 
-            <th>
+            {{-- <th>
                 Jadwal
-            </th>
+            </th> --}}
         </tr>
         @forelse ($datas as $data)
         <tr>
@@ -49,7 +49,7 @@
                 @endif
             </td>
 
-            <td >
+            {{-- <td >
                 @php
                     $hasil='Jadwal belum diatur';
                     $cek=\App\Models\penjadwalan::where('perawatan_id',$data->id)->count();
@@ -61,7 +61,7 @@
                 @endphp
 
                 {{$hasil}}
-            </td>
+            </td> --}}
         </tr>
 
         @empty

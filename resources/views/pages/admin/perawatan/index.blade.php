@@ -342,11 +342,11 @@ $cari=$request->cari;
                     </div>
 
 
-                    <div class="form-group col-md-10 col-12 mt-0">
-                        <label>Pengingat otomatis</label>
                         {{-- <div class="input-group">
                             <input type="text" class="form-control " value="{{Fungsi::reminderotomatis()!=null?Fungsi::reminderotomatis():'Aktif'}}" required name="reminderotomatis">
                           </div> --}}
+                    {{-- <div class="form-group col-md-10 col-12 mt-0">
+                        <label>Pengingat otomatis</label>
 
                             <div class="selectgroup w-100">
                             <label class="selectgroup-item">
@@ -359,7 +359,7 @@ $cari=$request->cari;
                               </label>
 
                             </div>
-                        </div>
+                        </div> --}}
 
                     {{-- <div class="form-group col-md-10 col-12 mt-0">
                         <label>Ingatkan sebelum (Hari)</label>
@@ -372,7 +372,7 @@ $cari=$request->cari;
 
           </div>
           <div class="modal-footer">
-            <a href="{{route('reminder.remindersms')}}" class="btn btn-warning">Manual Reminder</a>
+            <a href="{{route('reminder.remindersms')}}" class="btn btn-warning">Kirim Reminder</a>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Simpan</button>
 

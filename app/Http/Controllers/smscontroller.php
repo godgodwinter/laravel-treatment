@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Fungsi;
 use App\Models\penjadwalan;
+use App\Models\perawatan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use \Shipu\MuthoFun\Facades\MuthoFun;;
 use Twilio\Rest\Client;
@@ -64,24 +66,39 @@ class smscontroller extends Controller
             return($output);
             }
             $nomer=0;
+            $tgl=Carbon::now()->subDays(1);
+
+                    $ambildatayangdiingatkan=perawatan::with('member')->where('status','Lunas')->get();
+                    foreach($ambildatayangdiingatkan as $data){
+                                    $telp=str_replace(' ', '', $data->member->telp);
+                        $pesan="Yth. Sdr/Sdri ".$data->member->nama.", Kami dari Klinik Perawatan Ramdhani Skincare memberitahu bahwa besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik Kami. Terimakasih.";
+                                // dd('kirim pesan',$telp,$pesan);
+                                $sending=kirimsms($telp,$pesan);
+
+                                $nomer++;
+                    }
+
+            // dd($besok->format('d M Y'));
             // periksa jadwal perawatan //table penjadwalan where tgl
-            $ambildatapenjadwalan=penjadwalan::with('perawatan')->get();
-            foreach($ambildatapenjadwalan as $data){
-                $tgl=$data->tgl;
-                $hasil= date('Y-m-d', strtotime('-'.Fungsi::reminderhari().' days', strtotime($tgl)));
+                    // $ambildatapenjadwalan=penjadwalan::with('perawatan')->get();
+                    // foreach($ambildatapenjadwalan as $data){
+                    //     // Carbon::now()->subDays(30)
+                    //     dd(Carbon::now()->subDays(30));
+                    //     $tgl=$data->tgl;
+                    //     $hasil= date('Y-m-d', strtotime('-'.Fungsi::reminderhari().' days', strtotime($tgl)));
 
-                if($hasil==date('Y-m-d')){
-                        $telp=str_replace(' ', '', $data->perawatan->member->telp);
-                    $pesan="Yth. Sdr/Sdri ".$data->perawatan->member->nama.", Kami dari Klinik Perawatan Ramdhani Skincare memberitahu bahwa besok ".$tgl." ada jadwal perawatan di Klinik Kami. Terimakasih.";
-                    // dd('kirim pesan',$telp,$pesan);
-                    $sending=kirimsms($telp,$pesan);
+                    //     if($hasil==date('Y-m-d')){
+                    //             $telp=str_replace(' ', '', $data->perawatan->member->telp);
+                    //         $pesan="Yth. Sdr/Sdri ".$data->perawatan->member->nama.", Kami dari Klinik Perawatan Ramdhani Skincare memberitahu bahwa besok ".$tgl." ada jadwal perawatan di Klinik Kami. Terimakasih.";
+                    //         // dd('kirim pesan',$telp,$pesan);
+                    //         $sending=kirimsms($telp,$pesan);
 
-                    $nomer++;
-                    // dd('kirim pesan',$data->perawatan->member->telp);
+                    //         $nomer++;
+                    //         // dd('kirim pesan',$data->perawatan->member->telp);
 
-                }
+                    //     }
 
-            }
+                    // }
         // dd($ambildatapenjadwalan,$nomer);
 
             // jika ada yang h-1 maka kirim pesan
