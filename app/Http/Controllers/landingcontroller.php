@@ -22,7 +22,8 @@ class landingcontroller extends Controller
         $jmldokter=dokter::count();
         $jmlmember=member::count();
         $testimoni=testimoni::with('member')->where('status','!=','hidden')->get();
-    return view('landing.pages.index',compact('jmlproduk','jmltreatment','jmldokter','jmlmember','pages','testimoni'));
+        $jmltestimoni=testimoni::with('member')->where('status','!=','hidden')->count();
+    return view('landing.pages.index',compact('jmlproduk','jmltreatment','jmldokter','jmlmember','pages','testimoni','jmltestimoni'));
     }
 
     public function produk(){

@@ -69,8 +69,18 @@ Beranda
                     </div>
                   </div>
                 </div>
-
                 <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                    <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
+                        <i class="fas fa-comments  align-middle pe-2"></i>
+                      <div id="container">
+                      <a href="{{route('landing.testimoni')}}" class="d-inline">
+                          <span data-purecounter-start="0" data-purecounter-end="{{$jmltestimoni?$jmltestimoni:'0'}}" class="purecounter">0</span>
+                          <p>Testimoni</p>
+                      </a>
+                      </div>
+                    </div>
+                  </div>
+                {{-- <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                   <div class="count-box py-5 text-center d-flex justify-content-center align-middle">
                     <i class="fas fa-user-nurse align-middle pe-2"></i>
                     <div id="container">
@@ -80,7 +90,7 @@ Beranda
                     </a>
                     </div>
                   </div>
-                </div>
+                </div> --}}
 
               </div>
             </div>
