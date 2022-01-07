@@ -313,7 +313,7 @@ $cari=$request->cari;
             @csrf
           <div class="modal-body">
 
-                <div class="form-group col-md-10 col-12 mt-0">
+                {{-- <div class="form-group col-md-10 col-12 mt-0">
                     <label>Jam Pengingat</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -323,7 +323,7 @@ $cari=$request->cari;
                         </div>
                         <input type="text" class="form-control timepicker" value="{{Fungsi::reminderjam()!=null?Fungsi::reminderjam():'05:00:00'}}" required name="reminderjam">
                       </div>
-                    </div>
+                    </div> --}}
 
 
                 <div class="form-group col-md-10 col-12 mt-0">
