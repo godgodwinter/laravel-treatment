@@ -71,8 +71,9 @@ class smscontroller extends Controller
             return($output);
             }
             $nomer=0;
-            $tgl=Carbon::now()->subDays(1);
-
+            // $tgl=Carbon::now()->subDays(2);
+            $tgl=Carbon::tomorrow();
+            // dd($tgl);
                     $ambildatayangdiingatkan=perawatan::with('member')->where('status','Lunas')->get();
                     // dd($ambildatayangdiingatkan);
                     foreach($ambildatayangdiingatkan as $data){
