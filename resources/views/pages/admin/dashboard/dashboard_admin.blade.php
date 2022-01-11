@@ -12,7 +12,7 @@
 
             <div class="section-body">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="card card-statistic-1">
                         <div class="card-icon bg-primary">
                             <i class="fas fa-user-graduate"></i>
@@ -24,13 +24,13 @@
                           <div class="card-body">
 
                             {{$produkJml}} Produk
-                            <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 1Kelas</div>
+                            {{-- <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 1Kelas</div> --}}
 
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="card card-statistic-1">
                         <div class="card-icon bg-danger">
                             <i class="fas fa-school"></i>
@@ -46,7 +46,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    {{-- <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="card card-statistic-1">
                         <div class="card-icon bg-warning">
                             <i class="fab fa-monero"></i>
@@ -62,8 +62,8 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    </div> --}}
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="card card-statistic-1">
                         <div class="card-icon bg-success">
                             <i class="fas fa-microchip"></i>

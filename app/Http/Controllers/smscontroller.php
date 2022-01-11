@@ -74,18 +74,21 @@ class smscontroller extends Controller
             $tgl=Carbon::now()->subDays(1);
 
                     $ambildatayangdiingatkan=perawatan::with('member')->where('status','Lunas')->get();
+                    // dd($ambildatayangdiingatkan);
                     foreach($ambildatayangdiingatkan as $data){
                                     $telp=str_replace(' ', '', $data->member->telp);
                         // $pesan="Yth. Sdr/Sdri ".$data->member->nama.", Kami dari Klinik Perawatan Ramdhani Skincare memberitahu bahwa besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik Kami. Terimakasih.";
                                 // dd('kirim pesan',$telp,$pesan);
                             // $pesan="Pesan";
-                            $pesan="Yth Sdr/Sdri ".$data->member->nama.", Besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih.";
-                            // $nama=$data->member->nama;
+                            // $pesan="Yth Sdr/Sdri ".$data->member->nama.", Besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih.";
+                            $nama=$data->member->nama;
                             // dd($nama);
                             // $sending=sendsms($telp,$pesan);
-                            $nama=mb_strimwidth($data->member->nama, 0, 6, ".");;
+                            $nama=mb_strimwidth($data->member->nama, 0, 6, "");;
                             $jadwal=$tgl->format('d-m-Y');
-            $sending=sendsms($telp,"Yth Sdr/Sdri ".$nama.", Besok Tgl ".$jadwal." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih. ");
+                            // dd($nama);
+                            $pesan="Yth Sdr/Sdri ".$nama.", Besok Tgl ".$jadwal." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih. ";
+            $sending=sendsms($telp,$pesan);
                         // dd($sending,$nama,$jadwal);
 //  $sending=sendsms($telp,$pesan);
             // $sending=sendsms("085736862399","Testing sms reminder ");
@@ -94,7 +97,7 @@ class smscontroller extends Controller
                                 $nomer++;
                     }
 
-                    // dd('kirim pesan',$telp,$pesan,$nomer);
+                    // dd('kirim pesan',$telp,$pesan,$telp);
             // dd($besok->format('d M Y'));
             // periksa jadwal perawatan //table penjadwalan where tgl
                     // $ambildatapenjadwalan=penjadwalan::with('perawatan')->get();
