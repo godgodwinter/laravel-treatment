@@ -33,12 +33,14 @@ class smscontroller extends Controller
 
             // $output contains the output string
             $output = curl_exec($ch);
-
             // close curl resource to free up system resources
             curl_close($ch);
             return($output);
             }
-            $sending=sendsms("085736862399","Sdr/Sdri AAAAAA bbbb cccc, Besok 06-01-2022 ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih. ");
+            $nomer="085736862399";
+            $nama='Paijo';
+            $jadwal='2022-01-01';
+            $sending=sendsms($nomer,"Sdr/Sdri ".$nama.", Besok ".$jadwal." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih. ");
             dd('test');
     }
     public function remindersms(Request $request){
@@ -77,10 +79,14 @@ class smscontroller extends Controller
                         // $pesan="Yth. Sdr/Sdri ".$data->member->nama.", Kami dari Klinik Perawatan Ramdhani Skincare memberitahu bahwa besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik Kami. Terimakasih.";
                                 // dd('kirim pesan',$telp,$pesan);
                             // $pesan="Pesan";
-                            // $pesan="Sdr/Sdri ".$data->member->nama.", Besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih.";
-                            $nama=$data->member->nama;
+                            $pesan="Yth Sdr/Sdri ".$data->member->nama.", Besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih.";
+                            // $nama=$data->member->nama;
                             // dd($nama);
-                            $sending=sendsms($telp,"Pemberitahuan ! Besok ada jadwal perawatan di Klinik Perawatan Ramdhani Skincare. Terimakasih. ");
+                            // $sending=sendsms($telp,$pesan);
+                            $nama=mb_strimwidth($data->member->nama, 0, 6, ".");;
+                            $jadwal=$tgl->format('d-m-Y');
+            $sending=sendsms($telp,"Yth Sdr/Sdri ".$nama.", Besok Tgl ".$jadwal." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih. ");
+                        // dd($sending,$nama,$jadwal);
 //  $sending=sendsms($telp,$pesan);
             // $sending=sendsms("085736862399","Testing sms reminder ");
                                 // $sending=kirimsms($telp,$pesan);
