@@ -50,8 +50,10 @@ class adminperawatancontroller extends Controller
         $datas=perawatan::with('member')
         ->whereMonth('tglbayar',$month)
         ->whereYear('tglbayar',$year)
-        ->with('treatment')->paginate(Fungsi::paginationjml());
-
+        ->with('treatment')
+        ->orderBy('created_at','desc')
+        ->paginate(Fungsi::paginationjml());
+        // dd('tes');
 
         return view('pages.admin.perawatan.index',compact('datas','request','pages','dokter','ruangan','jam','namaHari','blnthn'));
     }

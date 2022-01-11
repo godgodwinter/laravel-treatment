@@ -74,7 +74,7 @@ class smscontroller extends Controller
             // $tgl=Carbon::now()->subDays(2);
             $tgl=Carbon::tomorrow();
             // dd($tgl);
-                    $ambildatayangdiingatkan=perawatan::with('member')->where('status','Lunas')->get();
+                    $ambildatayangdiingatkan=perawatan::with('member')->where('status','Lunas')->whereDate('created_at', Carbon::today())->get();
                     // dd($ambildatayangdiingatkan);
                     foreach($ambildatayangdiingatkan as $data){
                                     $telp=str_replace(' ', '', $data->member->telp);
