@@ -73,7 +73,7 @@ Beranda
                   <li><strong>Harga</strong>: {{Fungsi::rupiah($datas->harga)}}</li>
                   <li><strong>Sisa barang</strong>: {{$datas->stok}}</li>
                 </ul>
-                <img src="data:image/png;base64,{{DNS2D::getBarcodePNG(route('landing.produkdetail',$datas->id), 'QRCODE')}}" alt="barcode" class="float-left"/>
+                {{-- <img src="data:image/png;base64,{{DNS2D::getBarcodePNG(route('landing.produkdetail',$datas->id), 'QRCODE')}}" alt="barcode" class="float-left"/> --}}
               </div>
               {{-- <div class="portfolio-description">
 
