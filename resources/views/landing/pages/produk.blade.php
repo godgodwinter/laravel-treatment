@@ -77,7 +77,7 @@
                   </div>
                   <img src="{{$gambar}}" class="img-fluid" alt="{{$data->nama}}">
                   <div class="portfolio-info">
-                    <a href="{{$gambar}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="fas fa-expand"></i></a>
+                    <a href="{{$gambar}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{$data->nama}} - {{Fungsi::rupiah($data->harga)}}"><i class="fas fa-expand"></i></a>
                     {{-- <h4>{{$data->nama}}</h4>
                     <p>{{Fungsi::rupiah($data->harga)}}</p> --}}
                     {{-- <div class="portfolio-links">
