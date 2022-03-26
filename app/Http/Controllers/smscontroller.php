@@ -47,7 +47,7 @@ class smscontroller extends Controller
 
         $pesan='Pesan';
 
-        function sendsms($to,$msg){
+        function sendsms($to,$pesan){
             //init SMS gateway, look at android SMS gateway
             // $idmesin = getenv("SMSGATE_IDMESIN");
             // $pin = getenv("SMSGATE_PIN");
@@ -56,9 +56,13 @@ class smscontroller extends Controller
             $pin = Fungsi::reminderpin();
             // create curl resource
             $ch = curl_init();
-
+            // dd("https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$to&text=$msg");
             // set url
-            curl_setopt($ch, CURLOPT_URL, "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$to&text=$msg");
+            // $pesan="Yth Sdr $nama Besok Tgl $jadwal ada jadwal perawatan di Klinik Perawatan Ramdhani Skincare. Terimakasih.";
+            // dd($pesan);
+            $doKirimPesan="https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$to&text=".urlencode($pesan);
+            // dd($doKirimPesan);
+            curl_setopt($ch, CURLOPT_URL, $doKirimPesan);
 
             //return the transfer as a string
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -68,62 +72,48 @@ class smscontroller extends Controller
 
             // close curl resource to free up system resources
             curl_close($ch);
+            // dd($output,$doKirimPesan);
             return($output);
             }
             $nomer=0;
             // $tgl=Carbon::now()->subDays(2);
             $tgl=Carbon::tomorrow();
             // dd($tgl);
-                    $ambildatayangdiingatkan=perawatan::with('member')->where('status','Lunas')->whereDate('created_at', Carbon::today())->get();
-                    // dd($ambildatayangdiingatkan);
+                    $ambildatayangdiingatkan=perawatan::with('member')->where('status','Lunas')
+                    ->get();
+                    $tglskrg=strtotime(date('Y-m-d'));
+                    // dd($ambildatayangdiingatkan->count());
                     foreach($ambildatayangdiingatkan as $data){
+                    $tgljadwal=strtotime($data->tglbayar);
+                    $statusTgl=$tgljadwal-$tglskrg;
+                    // $satuhari=strtotime(date('Y-m-d',strtotime(date('Y-m-d'). "+1 days")))-strtotime(date('Y-m-d'));
+                    //1 day=='86400'
+                    // dd($satuhari);
+                    if($statusTgl>=0){
+
+                        if($statusTgl<=86400){
+                    // dd($ambildatayangdiingatkan,$statusTgl,$data->member->nama,$data->tglbayar);
                                     $telp=str_replace(' ', '', $data->member->telp);
                         // $pesan="Yth. Sdr/Sdri ".$data->member->nama.", Kami dari Klinik Perawatan Ramdhani Skincare memberitahu bahwa besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik Kami. Terimakasih.";
                                 // dd('kirim pesan',$telp,$pesan);
+                                $jadwal=Fungsi::tanggalindo($data->tglbayar);
                             // $pesan="Pesan";
                             // $pesan="Yth Sdr/Sdri ".$data->member->nama.", Besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih.";
                             $nama=$data->member->nama;
                             // dd($nama);
                             // $sending=sendsms($telp,$pesan);
-                            $nama=mb_strimwidth($data->member->nama, 0, 6, "");;
-                            $jadwal=$tgl->format('d-m-Y');
+                            $nama=mb_strimwidth($data->member->nama, 0, 10, "");;
+                            // $jadwal=$tgl->format('d-m-Y');
                             // dd($nama);
-                            $pesan="Yth Sdr/Sdri ".$nama.", Besok Tgl ".$jadwal." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih. ";
-            $sending=sendsms($telp,$pesan);
-                        // dd($sending,$nama,$jadwal);
-//  $sending=sendsms($telp,$pesan);
-            // $sending=sendsms("085736862399","Testing sms reminder ");
+                            $pesan="Yth Sdra / Sdri $nama Besok Tgl $jadwal ada jadwal perawatan di Klinik Perawatan Ramdhani Skincare. Terimakasih.";
+                                $sending=sendsms($telp,$pesan);
                                 // $sending=kirimsms($telp,$pesan);
-
                                 $nomer++;
+                            }
+                        }
                     }
 
-                    // dd('kirim pesan',$telp,$pesan,$telp);
-            // dd($besok->format('d M Y'));
-            // periksa jadwal perawatan //table penjadwalan where tgl
-                    // $ambildatapenjadwalan=penjadwalan::with('perawatan')->get();
-                    // foreach($ambildatapenjadwalan as $data){
-                    //     // Carbon::now()->subDays(30)
-                    //     dd(Carbon::now()->subDays(30));
-                    //     $tgl=$data->tgl;
-                    //     $hasil= date('Y-m-d', strtotime('-'.Fungsi::reminderhari().' days', strtotime($tgl)));
-
-                    //     if($hasil==date('Y-m-d')){
-                    //             $telp=str_replace(' ', '', $data->perawatan->member->telp);
-                    //         $pesan="Yth. Sdr/Sdri ".$data->perawatan->member->nama.", Kami dari Klinik Perawatan Ramdhani Skincare memberitahu bahwa besok ".$tgl." ada jadwal perawatan di Klinik Kami. Terimakasih.";
-                    //         // dd('kirim pesan',$telp,$pesan);
-                    //         $sending=kirimsms($telp,$pesan);
-
-                    //         $nomer++;
-                    //         // dd('kirim pesan',$data->perawatan->member->telp);
-
-                    //     }
-
-                    // }
-        // dd($ambildatapenjadwalan,$nomer);
-
-            // jika ada yang h-1 maka kirim pesan
-        // dd($request);
+                    
         return redirect()->back()->with('status','Pengingat berhasil di kirim! '.$nomer.' member telah diberi pesan reminder!')->with('tipe','success');
     }
 

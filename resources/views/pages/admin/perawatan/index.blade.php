@@ -71,7 +71,8 @@ Perawatan
                             <th >Nama Member</th>
                             <th >Paket Treatment</th>
                             <th >Status</th>
-                            {{-- <th >Jadwal</th> --}}
+                            <th >Jadwal Perawatan</th>
+                            <th >Jadwal Perawatan Selanjutnya</th>
                             <th >Aksi</th>
                         </tr>
                     </thead>
@@ -89,9 +90,14 @@ Perawatan
                                 </td>
                                 <td>
                                     {{$data->status}}
-                                    @if($data->status=='Lunas') -
+                                </td>
+                                <td>
+                                    @if($data->status=='Lunas') 
                                     {{$data->tglbayar?Fungsi::tanggalindo($data->tglbayar):''}}
                                     @endif
+                                </td>
+                                <td>
+                                    {{$data->tglbayar?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglbayar . "+14 days"))):''}}
                                 </td>
                                 {{-- <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
                                     @php

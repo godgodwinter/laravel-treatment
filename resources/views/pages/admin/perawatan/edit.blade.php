@@ -106,7 +106,7 @@ perawatan
 
 
                     <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                        <label for="tglbayar">Tanggal Bayar<code> // Biarkan jika belum dibayar</code></label>
+                        <label for="tglbayar">Tanggal Perawatan<code> </code></label>
                         <input type="date" name="tglbayar" id="tglbayar" class="form-control @error('tglbayar') is-invalid @enderror" value="{{old('tglbayar')?old('tglbayar') : $id->tglbayar}}" required>
                         @error('tglbayar')<div class="invalid-feedback"> {{$message}}</div>
                         @enderror
