@@ -89,9 +89,9 @@ Member
                       </div>
 
                     <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                        <label for="emaiL">Email<code>*)</code></label>
+                        <label for="emaiL">Email<code></code></label>
 
-                        <input type="text" class="form-control  @error('email') is-invalid @enderror" name="email" required  value="{{old('email')}}">
+                        <input type="text" class="form-control  @error('email') is-invalid @enderror" name="email"   value="{{old('email')}}">
 
                         @error('email')<div class="invalid-feedback"> {{$message}}</div>
                         @enderror
