@@ -89,14 +89,21 @@ class smscontroller extends Controller
                     // $satuhari=strtotime(date('Y-m-d',strtotime(date('Y-m-d'). "+1 days")))-strtotime(date('Y-m-d'));
                     //1 day=='86400'
                     // dd($satuhari);
-                    if($statusTgl>=0){
-
-                        if($statusTgl<=86400){
+                    $sebelum14hari=-1*(86400*14);
+                    // dd($sebelum14hari);
+                    if($statusTgl>=$sebelum14hari){
+                        // dd('test2');
+                            // 1hari=86400
+                            $sebelum14hariplussatuhari=$sebelum14hari+86400;
+                        if($statusTgl<=$sebelum14hariplussatuhari){
+                            // dd('test3');
+                        $jadwal=date('Y-m-d',strtotime($data->tglbayar. "+14 days"));
+                        // dd($jadwal);
                     // dd($ambildatayangdiingatkan,$statusTgl,$data->member->nama,$data->tglbayar);
                                     $telp=str_replace(' ', '', $data->member->telp);
                         // $pesan="Yth. Sdr/Sdri ".$data->member->nama.", Kami dari Klinik Perawatan Ramdhani Skincare memberitahu bahwa besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik Kami. Terimakasih.";
                                 // dd('kirim pesan',$telp,$pesan);
-                                $jadwal=Fungsi::tanggalindo($data->tglbayar);
+                                // $jadwal=Fungsi::tanggalindo($data->tglbayar);
                             // $pesan="Pesan";
                             // $pesan="Yth Sdr/Sdri ".$data->member->nama.", Besok ".$tgl->format('d-m-Y')." ada jadwal perawatan di Klinik  Perawatan Ramdhani Skincare. Terimakasih.";
                             $nama=$data->member->nama;
