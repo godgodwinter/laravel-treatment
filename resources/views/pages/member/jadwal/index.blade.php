@@ -43,9 +43,10 @@ Testimoni
                     <thead>
                         <tr style="background-color: #F1F1F1">
                             <th class="text-center py-2 babeng-min-row"> No</th>
-                            <th >Tanggal </th>
-                            <th class="text-center">Jam</th>
-                            <th class="text-center">Ruangan</th>
+                            <th class="text-center">Paket Treatment </th>
+                            <th  class="text-center">Status </th>
+                            <th class="text-center">Jadwal perawatan</th>
+                            <th class="text-center">Jadwal Perawatan Selanjutnya</th>
                             {{-- <th class="text-center">Status</th> --}}
                         </tr>
                     </thead>
@@ -56,17 +57,19 @@ Testimoni
 
                                     {{ (($loop->index)+1) }}</td>
                                 <td class="text-center">
-                                            {{$data->tgl?Fungsi::tanggalindo($data->tgl):'Jadwal belum ditentukan'}}
+                                    {{$data->treatment->nama?$data->treatment->nama:"Data tidak ditemukan"}}
                                 </td>
                                 <td class="text-center">
-                                            {{$data->jam?$data->jam:'Jadwal belum ditentukan'}}
+                                    {{$data->status}}
                                 </td>
                                 <td class="text-center">
-                                            {{$data->ruangan?$data->ruangan:'Jadwal belum ditentukan'}}
+                                    @if($data->status=='Lunas') 
+                                    {{$data->tglbayar?Fungsi::tanggalindo($data->tglbayar):''}}
+                                    @endif
                                 </td>
-                                {{-- <td class="text-center">
-                                            {{$data->status?$data->status:'Jadwal belum ditentukan'}}
-                                </td> --}}
+                                <td class="text-center">
+                                    {{$data->tglbayar?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglbayar . "+14 days"))):''}}
+                                </td>
                             </tr>
                         @empty
                             <tr>

@@ -44,7 +44,7 @@ Perawatan
                         </div>
 
                         <div class="ml-auto p-2 bd-highlight">
-                            <a href="{{route('perawatan.cetak.blnthn',$blnthn?$blnthn:date('Y-m'))}}" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a>
+                            {{-- <a href="{{route('perawatan.cetak.blnthn',$blnthn?$blnthn:date('Y-m'))}}" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a> --}}
 
                         </form>
                             <a href="#"  data-toggle="modal" data-target="#modalReminder" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="fas fa-sms"></i> Reminder</a>

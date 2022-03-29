@@ -11,5 +11,5 @@
 <li {{ $pages == 'jadwal' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('member.jadwal') }}"><i class="fas fa-id-card-alt"></i><span>Jadwal treatment </span></a></li>
 
 
-<li {{ $pages == 'invoice' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('member.invoice') }}"><i class="fas fa-id-card-alt"></i><span>Invoice</span></a></li>
+{{-- <li {{ $pages == 'invoice' ? 'class=active' : '' }}><a class="nav-link" href="{{ route('member.invoice') }}"><i class="fas fa-id-card-alt"></i><span>Invoice</span></a></li> --}}
 
