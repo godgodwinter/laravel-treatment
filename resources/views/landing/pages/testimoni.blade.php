@@ -30,7 +30,7 @@
         </ol>
       </div>
       <div class="text-center mb-3">
-        <a href="#tambah" class="btn btn-round btn-primary">Tambah {{ucfirst($pages)}}</a>
+        {{-- <a href="#tambah" class="btn btn-round btn-primary">Tambah {{ucfirst($pages)}}</a> --}}
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -87,7 +87,7 @@
 
 
     <!-- ======= Contact Section ======= -->
-    <section id="tambah" class="contact">
+    {{-- <section id="tambah" class="contact">
         <div class="container">
 
           <div class="row mt-5">
@@ -95,7 +95,6 @@
             <div class="col-lg-4" data-aos="fade-right">
               <div >
                 <div >
-                  {{-- <i class="bi bi-geo-alt"></i> --}}
                   <h4>Tambahkan Testimoni:</h4>
                 </div>
 
@@ -125,7 +124,8 @@
           </div>
 
         </div>
-      </section><!-- End Contact Section -->
+      </section> --}}
+      <!-- End Contact Section -->
 
   </main><!-- End #main -->
 
