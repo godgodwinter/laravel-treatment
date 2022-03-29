@@ -45,7 +45,7 @@ Invoice
                             <th class="text-center py-2 babeng-min-row"> No</th>
                             <th class="text-center">Paket Treatment </th>
                             <th  class="text-center">Status </th>
-                            <th class="text-center">Jadwal perawatan</th>
+                            <th class="text-center">Tanggal perawatan</th>
                             {{-- <th class="text-center">Jadwal Perawatan Selanjutnya</th> --}}
                             {{-- <th class="text-center">Status</th> --}}
                         </tr>
