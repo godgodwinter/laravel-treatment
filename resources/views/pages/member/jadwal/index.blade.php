@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-Jadwal Treatment
+Invoice
 @endsection
 
 @push('before-script')
@@ -46,7 +46,7 @@ Jadwal Treatment
                             <th class="text-center">Paket Treatment </th>
                             <th  class="text-center">Status </th>
                             <th class="text-center">Jadwal perawatan</th>
-                            <th class="text-center">Jadwal Perawatan Selanjutnya</th>
+                            {{-- <th class="text-center">Jadwal Perawatan Selanjutnya</th> --}}
                             {{-- <th class="text-center">Status</th> --}}
                         </tr>
                     </thead>
@@ -67,9 +67,9 @@ Jadwal Treatment
                                     {{$data->tglbayar?Fungsi::tanggalindo($data->tglbayar):''}}
                                     @endif
                                 </td>
-                                <td class="text-center">
+                                {{-- <td class="text-center">
                                     {{$data->tglbayar?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglbayar . "+14 days"))):''}}
-                                </td>
+                                </td> --}}
                             </tr>
                         @empty
                             <tr>
