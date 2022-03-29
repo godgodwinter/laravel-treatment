@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-Jadwal Treatmentku
+Invoice
 @endsection
 
 @push('before-script')

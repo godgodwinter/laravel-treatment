@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-Testimoni
+Jadwal Treatment
 @endsection
 
 @push('before-script')
