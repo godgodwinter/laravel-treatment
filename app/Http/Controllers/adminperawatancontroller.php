@@ -136,6 +136,21 @@ class adminperawatancontroller extends Controller
     return redirect()->route('perawatan')->with('status','Data berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
 
     }
+    public function gantistatus(perawatan $id)
+    {
+        $statusbaru='Sudah Treatment';
+        if($id->statustreatment=='Sudah Treatment'){
+            $statusbaru='Belum Treatment';
+        }
+        perawatan::where('id',$id->id)
+        ->update([
+            'statustreatment'     =>   $statusbaru,
+           'updated_at'=>date("Y-m-d H:i:s")
+        ]);
+
+        return redirect()->route('perawatan')->with('status','Data berhasil diupdate!')->with('tipe','success')->with('icon','fas fa-feather');
+
+    }
 
     public function edit(perawatan $id)
     {

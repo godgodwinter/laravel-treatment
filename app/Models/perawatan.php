@@ -18,6 +18,7 @@ class perawatan extends Model
             'member_id',
             'status',
             'tglbayar',
+            'statustreatment',
         ];
 
         public function member()

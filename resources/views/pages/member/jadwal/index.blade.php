@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-Invoice
+Rekam Medik
 @endsection
 
 @push('before-script')

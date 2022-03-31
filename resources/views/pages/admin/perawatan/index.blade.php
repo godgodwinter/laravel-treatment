@@ -44,7 +44,7 @@ Perawatan
                         </div>
 
                         <div class="ml-auto p-2 bd-highlight">
-                            {{-- <a href="{{route('perawatan.cetak.blnthn',$blnthn?$blnthn:date('Y-m'))}}" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a> --}}
+                            <a href="{{route('perawatan.cetak.blnthn',$blnthn?$blnthn:date('Y-m'))}}" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="far fa-file-pdf"></i> Cetak</a>
 
                         </form>
                             <a href="#"  data-toggle="modal" data-target="#modalReminder" class="btn btn-icon btn-primary  ml-0 btn-sm px-3"><i class="fas fa-sms"></i> Reminder</a>
@@ -70,10 +70,11 @@ Perawatan
                             <th class="text-center py-2 babeng-min-row"> <input type="checkbox" id="chkCheckAll"> All</th>
                             <th >Nama Member</th>
                             <th >Paket Treatment</th>
-                            <th >Status</th>
+                            <th >Status Pembayaran</th>
                             <th >Jadwal Perawatan</th>
                             <th >Jadwal Perawatan Selanjutnya</th>
-                            <th >Aksi</th>
+                            <th class="text-center">Status Treatment</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -122,9 +123,16 @@ Perawatan
                                     });
                                 </script>
                                 @endpush --}}
-
+<td class="text-center">
+    @if($data->statustreatment=='Sudah Treatment')
+                                    <button  class="btn btn-icon btn-info btn-sm ml-0 px-2"  data-toggle="tooltip" data-placement="top" title="Sudah Treatment!"><i class="fas fa-check"></i></button>
+                                    @else 
+                                    <button  class="btn btn-icon btn-danger btn-sm ml-0 px-2"  data-toggle="tooltip" data-placement="top" title="Belum Treatment!"><i class="fas fa-times"></i></button>
+                                    @endif
+</td>
                                 <td class="text-center babeng-min-row">
-                                    {{-- <x-button-reset-pass link="/admin/{{ $pages }}/{{$data->id}}/reset" /> --}}
+                                  
+    <a href="{{route('perawatan.gantistatus',$data->id)}}" class="btn btn-icon btn-info btn-sm ml-0 px-2"  data-toggle="tooltip" data-placement="top" title="Ganti Status Perawatan!"><i class="fas fa-retweet"></i></a>
                                     <x-button-edit link="/admin/{{ $pages }}/{{$data->id}}" />
                                     <x-button-delete link="/admin/{{ $pages }}/{{$data->id}}" />
                                 </td>
