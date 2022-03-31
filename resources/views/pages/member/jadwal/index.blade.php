@@ -47,7 +47,7 @@ Rekam Medik
                             <th  class="text-center">Status </th>
                             <th class="text-center">Tanggal perawatan</th>
                             {{-- <th class="text-center">Jadwal Perawatan Selanjutnya</th> --}}
-                            {{-- <th class="text-center">Status</th> --}}
+                            <th class="text-center">Status Perawatan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,11 +70,20 @@ Rekam Medik
                                 {{-- <td class="text-center">
                                     {{$data->tglbayar?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglbayar . "+14 days"))):''}}
                                 </td> --}}
+
+<td class="text-center">
+    @if($data->statustreatment=='Sudah Treatment')
+                                    <button  class="btn btn-icon btn-info btn-sm ml-0 px-2"  data-toggle="tooltip" data-placement="top" title="Sudah Treatment!"><i class="fas fa-check"></i></button>
+                                    @else 
+                                    <button  class="btn btn-icon btn-danger btn-sm ml-0 px-2"  data-toggle="tooltip" data-placement="top" title="Belum Treatment!"><i class="fas fa-times"></i></button>
+                                    @endif
+</td>
                             </tr>
                         @empty
                             <tr>
                                 <td colspan="5" class="text-center">Data tidak ditemukan</td>
                             </tr>
+
                         @endforelse
                     </tbody>
                 </table>
