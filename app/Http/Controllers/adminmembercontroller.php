@@ -87,18 +87,18 @@ class adminmembercontroller extends Controller
                 'nama.nama'=>'Nama harus diisi',
             ]);
 
-            $cek=DB::table('member')
-            ->where('nama',$request->nama)
-            ->count();
-                if($cek>0){
-                        $request->validate([
-                        'nama'=>'required|unique:member,nama',
-                        ],
-                        [
-                            'nama.unique'=>'nama sudah digunakan',
-                        ]);
+            // $cek=DB::table('member')
+            // ->where('nama',$request->nama)
+            // ->count();
+            //     if($cek>0){
+            //             $request->validate([
+            //             'nama'=>'required|unique:member,nama',
+            //             ],
+            //             [
+            //                 'nama.unique'=>'nama sudah digunakan',
+            //             ]);
 
-                }
+            //     }
 
                 $request->validate([
                     'nama'=>'required',
