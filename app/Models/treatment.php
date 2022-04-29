@@ -8,26 +8,27 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class treatment extends Model
 {
-        public $table = "treatment";
+    public $table = "treatment";
 
-        use SoftDeletes;
-        use HasFactory;
+    use SoftDeletes;
+    use HasFactory;
 
-        protected $fillable = [
-            'nama',
-            'harga',
-            'stok',
-            'photo',
-        ];
+    protected $fillable = [
+        'nama',
+        'harga',
+        'stok',
+        'photo',
+        'reminderweek',
+    ];
 
-        public function perawatan()
-        {
-            return $this->hasMany('App\Models\perawatan');
-        }
-
-    public function getPhotoAttribute($value){
-
-        return url('storage/'.$value);
+    public function perawatan()
+    {
+        return $this->hasMany('App\Models\perawatan');
     }
 
+    public function getPhotoAttribute($value)
+    {
+
+        return url('storage/' . $value);
+    }
 }

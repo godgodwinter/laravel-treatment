@@ -87,18 +87,24 @@ Perawatan
                                     {{$data->member->nama?$data->member->nama:"Data tidak ditemukan"}}
                                 </td>
                                 <td>
-                                    {{$data->treatment->nama?$data->treatment->nama:"Data tidak ditemukan"}}
+                                    {{$data->treatment->nama?$data->treatment->nama:"Data tidak ditemukan"}}  - {{ $data->treatment->reminderweek?$data->treatment->reminderweek:2 }} minggu
                                 </td>
                                 <td>
                                     {{$data->status}}
                                 </td>
                                 <td>
-                                    @if($data->status=='Lunas') 
+                                    @if($data->status=='Lunas')
                                     {{$data->tglbayar?Fungsi::tanggalindo($data->tglbayar):''}}
                                     @endif
                                 </td>
                                 <td>
-                                    {{$data->tglbayar?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglbayar . "+14 days"))):''}}
+                                    @php
+                                    $days="+14 days";
+                                    $jmlhari=($data->treatment->reminderweek?$data->treatment->reminderweek:2)*7;
+                                    $days="+14 days";
+                                    $days="+{$jmlhari} days";
+                                    @endphp
+                                    {{$data->tglbayar?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglbayar . $days))):''}}
                                 </td>
                                 {{-- <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
                                     @php
@@ -126,12 +132,12 @@ Perawatan
 <td class="text-center">
     @if($data->statustreatment=='Sudah Treatment')
                                     <button  class="btn btn-icon btn-info btn-sm ml-0 px-2"  data-toggle="tooltip" data-placement="top" title="Sudah Treatment!"><i class="fas fa-check"></i></button>
-                                    @else 
+                                    @else
                                     <button  class="btn btn-icon btn-danger btn-sm ml-0 px-2"  data-toggle="tooltip" data-placement="top" title="Belum Treatment!"><i class="fas fa-times"></i></button>
                                     @endif
 </td>
                                 <td class="text-center babeng-min-row">
-                                  
+
     <a href="{{route('perawatan.gantistatus',$data->id)}}" class="btn btn-icon btn-info btn-sm ml-0 px-2"  data-toggle="tooltip" data-placement="top" title="Ganti Status Perawatan!"><i class="fas fa-retweet"></i></a>
                                     <x-button-edit link="/admin/{{ $pages }}/{{$data->id}}" />
                                     <x-button-delete link="/admin/{{ $pages }}/{{$data->id}}" />
@@ -356,10 +362,10 @@ $cari=$request->cari;
                     </div>
 
 
-                        {{-- <div class="input-group">
-                            <input type="text" class="form-control " value="{{Fungsi::reminderotomatis()!=null?Fungsi::reminderotomatis():'Aktif'}}" required name="reminderotomatis">
-                          </div> --}}
-                    {{-- <div class="form-group col-md-10 col-12 mt-0">
+                        <div class="input-group">
+                            <input type="text" class="form-control " value="{{Fungsi::reminderotomatis()!=null?Fungsi::reminderotomatis():'Aktif'}}" required name="reminderotomatis" readonly>
+                          </div>
+                    <div class="form-group col-md-10 col-12 mt-0">
                         <label>Pengingat otomatis</label>
 
                             <div class="selectgroup w-100">
@@ -373,7 +379,7 @@ $cari=$request->cari;
                               </label>
 
                             </div>
-                        </div> --}}
+                        </div>
 
                     {{-- <div class="form-group col-md-10 col-12 mt-0">
                         <label>Ingatkan sebelum (Hari)</label>

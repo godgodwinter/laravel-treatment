@@ -73,13 +73,13 @@ perawatan
                         <option>{{old('treatment_id')}}</option>
                     @else
                         @if($id->treatment_id)
-                        <option value="{{$id->treatment->id}}">{{$id->treatment->nama}}</option>
+                        <option value="{{$id->treatment->id}}">{{$id->treatment->nama}}  - {{ $id->treatment->reminderweek?$id->treatment->reminderweek:2 }} minggu</option>
                         @endif
                     @endif
 
 
                             @foreach ($treatment as $t)
-                                <option value="{{ $t->id }}"> {{ $t->nama }}</option>
+                            <option value="{{ $t->id }}"> {{ $t->nama }} - {{ $t->reminderweek?$t->reminderweek:2 }} minggu</option>
                             @endforeach
                           </select>
                             @error('treatment_id')<div class="invalid-feedback"> {{$message}}</div>

@@ -41,7 +41,7 @@
             <td class="babeng-min-row">{{$loop->index+1}}</td>
 
             <td > {{$data->member->nama}}</td>
-            <td > {{$data->treatment->nama}}</td>
+            <td > {{$data->treatment->nama}} -  {{$data->treatment->reminderweek?$data->treatment->reminderweek:2}} Minggu</td>
             <td>
                 {{$data->status}}
                 @if($data->status=='Lunas') -

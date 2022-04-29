@@ -56,16 +56,16 @@ perawatan
 
 
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="treatment_id">Pilih Treatment <code></code></label>
+                            <label for="treatment_id">Pilih Treatment <code >(reminder per minggu)</code></label>
 
                             <select class="js-example-basic-single form-control-sm @error('treatment_id')
                             is-invalid
                         @enderror" name="treatment_id"  style="width: 75%" required>
 
-                            <option disabled selected value=""> Pilih Treatment</option>
+                            <option disabled selected value=""> Pilih Treatment </option>
 
                             @foreach ($treatment as $t)
-                                <option value="{{ $t->id }}"> {{ $t->nama }}</option>
+                                <option value="{{ $t->id }}"> {{ $t->nama }} - {{ $t->reminderweek?$t->reminderweek:2 }} minggu</option>
                             @endforeach
                           </select>
                             @error('treatment_id')<div class="invalid-feedback"> {{$message}}</div>
