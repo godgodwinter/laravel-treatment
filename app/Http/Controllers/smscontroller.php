@@ -84,7 +84,7 @@ class smscontroller extends Controller
         // $tgl=Carbon::now()->subDays(2);
         $tgl = Carbon::tomorrow();
         // dd($tgl);
-        $ambildatayangdiingatkan = perawatan::with('member')->where('status', 'Lunas')
+        $ambildatayangdiingatkan = perawatan::with('member')->with('treatment')->where('status', 'Lunas')
             ->get();
         $tglskrg = strtotime(date('Y-m-d'));
         // dd($ambildatayangdiingatkan->count());
@@ -100,7 +100,8 @@ class smscontroller extends Controller
             // $days="+14 days";
             // $days="+{$jmlhari} days";
             $jmlhari = 14;
-            $jmlhari = ($data->treatment->reminderweek ? $data->treatment->reminderweek : 2) * 7;;
+            $jmlhari = ($data->treatment->reminderweek ? $data->treatment->reminderweek : 2) * 7;
+            // dd(($data->treatment->reminderweek ? $data->treatment->reminderweek : 2) * 7);
             $sebelum14hari = -1 * (86400 * $jmlhari);
             // dd($sebelum14hari);
             if ($statusTgl >= $sebelum14hari) {

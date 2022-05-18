@@ -8,26 +8,26 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class perawatan extends Model
 {
-        public $table = "perawatan";
+    public $table = "perawatan";
 
-        use SoftDeletes;
-        use HasFactory;
+    use SoftDeletes;
+    use HasFactory;
 
-        protected $fillable = [
-            'treatment_id',
-            'member_id',
-            'status',
-            'tglbayar',
-            'statustreatment',
-        ];
+    protected $fillable = [
+        'treatment_id',
+        'member_id',
+        'status',
+        'tglbayar',
+        'statustreatment',
+    ];
 
-        public function member()
-        {
-            return $this->belongsTo('App\Models\member');
-        }
+    public function member()
+    {
+        return $this->belongsTo('App\Models\member');
+    }
 
-        public function treatment()
-        {
-            return $this->belongsTo('App\Models\treatment');
-        }
+    public function treatment()
+    {
+        return $this->belongsTo('App\Models\treatment');
+    }
 }
