@@ -73,7 +73,9 @@ perawatan
                         <option>{{old('treatment_id')}}</option>
                     @else
                         @if($id->treatment_id)
-                        <option value="{{$id->treatment->id}}">{{$id->treatment->nama}}  - {{ $id->treatment->reminderweek?$id->treatment->reminderweek:2 }} minggu</option>
+                        <option value="{{$id->treatment->id}}">{{$id->treatment->nama}}
+                             {{-- - {{ $id->treatment->reminderweek?$id->treatment->reminderweek:2 }} minggu --}}
+                            </option>
                         @endif
                     @endif
 

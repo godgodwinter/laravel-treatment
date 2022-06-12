@@ -106,6 +106,13 @@ Perawatan
                                     $days="+{$jmlhari} days";
                                     @endphp --}}
                                     {{$data->tglreminder?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglreminder))):''}}
+                                    @php
+
+                    $jadwal = date('Y-m-d', strtotime($data->tglreminder . "-1 days"));
+                                    @endphp
+                                    {{-- {{ $data->tglreminder }}
+                    {{ $jadwal }} --}}
+
                                 </td>
                                 {{-- <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
                                     @php
