@@ -65,7 +65,8 @@ perawatan
                             <option disabled selected value=""> Pilih Treatment </option>
 
                             @foreach ($treatment as $t)
-                                <option value="{{ $t->id }}"> {{ $t->nama }} - {{ $t->reminderweek?$t->reminderweek:2 }} minggu</option>
+                                <option value="{{ $t->id }}"> {{ $t->nama }} </option>
+                                {{-- <option value="{{ $t->id }}"> {{ $t->nama }} - {{ $t->reminderweek?$t->reminderweek:2 }} minggu</option> --}}
                             @endforeach
                           </select>
                             @error('treatment_id')<div class="invalid-feedback"> {{$message}}</div>
@@ -88,6 +89,26 @@ perawatan
                         <label for="tglbayar">Tanggal Perawatan<code> </code></label>
                         <input type="date" name="tglbayar" id="tglbayar" class="form-control @error('tglbayar') is-invalid @enderror" value="{{old('tglbayar')?old('tglbayar') : date('Y-m-d')}}" required>
                         @error('tglbayar')<div class="invalid-feedback"> {{$message}}</div>
+                        @enderror
+                    </div>
+
+                @php
+                $tglnow = (date('Y-m-d'));
+                // $tglskrg = strtotime(date('Y-m-d'));
+                //      $jmlhari = 14;
+                //     $jmlhari = ($t->reminderweek ? $t->reminderweek : 2) * 7;
+                //     $jmldetik =(86400 * $jmlhari);
+                //     $tglreminder = $tglskrg + $jmldetik;
+                            // $jadwal = date('Y-m-d', strtotime($tglreminder));
+                            $jadwal = date('Y-m-d', strtotime($tglnow . "+14 days"));
+                            // dd($tglskrg,$tglreminder,$jadwal);
+                            // dd($jadwal);
+                            // $jadwal = date('Y-m-d', strtotime($data->tglbayar . "+14 days"));
+                @endphp
+                    <div class="form-group col-md-5 col-5 mt-0 ml-5">
+                        <label for="tglreminder">Tanggal Perawatan Selanjutnya<code> </code></label>
+                        <input type="date" name="tglreminder" id="tglreminder" class="form-control @error('tglreminder') is-invalid @enderror" value="{{old('tglreminder')?old('tglreminder') :$jadwal}}" required>
+                        @error('tglreminder')<div class="invalid-feedback"> {{$message}}</div>
                         @enderror
                     </div>
 

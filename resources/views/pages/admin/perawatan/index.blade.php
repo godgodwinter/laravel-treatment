@@ -87,7 +87,8 @@ Perawatan
                                     {{$data->member->nama?$data->member->nama:"Data tidak ditemukan"}}
                                 </td>
                                 <td>
-                                    {{$data->treatment->nama?$data->treatment->nama:"Data tidak ditemukan"}}  - {{ $data->treatment->reminderweek?$data->treatment->reminderweek:2 }} minggu
+                                    {{$data->treatment->nama?$data->treatment->nama:"Data tidak ditemukan"}}
+                                    {{-- - {{ $data->treatment->reminderweek?$data->treatment->reminderweek:2 }} minggu --}}
                                 </td>
                                 <td>
                                     {{$data->status}}
@@ -98,13 +99,13 @@ Perawatan
                                     @endif
                                 </td>
                                 <td>
-                                    @php
+                                    {{-- @php
                                     $days="+14 days";
                                     $jmlhari=($data->treatment->reminderweek?$data->treatment->reminderweek:2)*7;
                                     $days="+14 days";
                                     $days="+{$jmlhari} days";
-                                    @endphp
-                                    {{$data->tglbayar?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglbayar . $days))):''}}
+                                    @endphp --}}
+                                    {{$data->tglreminder?Fungsi::tanggalindo(date('Y-m-d',strtotime($data->tglreminder))):''}}
                                 </td>
                                 {{-- <td id="jadwalAtur{{ $data->id }}" data-toggle="modal" data-target="#modaljadwalAtur{{ $data->id }}">
                                     @php

@@ -63,7 +63,7 @@ Treatment
                             <th class="text-center py-2 babeng-min-row"> <input type="checkbox" id="chkCheckAll"> All</th>
                             <th >Nama </th>
                             <th >Harga</th>
-                            <th class="text-center">Reminder</th>
+                            {{-- <th class="text-center">Reminder</th> --}}
                             <th >Photo</th>
                             <th >Aksi</th>
                         </tr>
@@ -80,9 +80,9 @@ Treatment
                                 <td>
                                     {{Fungsi::rupiah($data->harga)}}
                                 </td>
-                                <td class="text-center">
+                                {{-- <td class="text-center">
                                     {{$data->reminderweek?$data->reminderweek:'2'}} Minggu
-                                </td>
+                                </td> --}}
                                 <td  class="text-center babeng-min-row">
                                     @php
                                     $gambar=$data->photo;
