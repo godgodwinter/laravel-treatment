@@ -49,12 +49,12 @@ Treatment
                         @enderror
                     </div>
 
-                    <div class="form-group col-md-5 col-5 mt-0 ml-5">
+                    {{-- <div class="form-group col-md-5 col-5 mt-0 ml-5">
                         <label for="harga">Reminder <code>*) per minggu</code></label>
                         <input type="number" name="reminderweek" min="1" id="harga" class="form-control @error('reminderweek') is-invalid @enderror" value="{{old('reminderweek')?old('reminderweek'):2}}" required>
                         @error('harga')<div class="invalid-feedback"> {{$message}}</div>
                         @enderror
-                    </div>
+                    </div> --}}
 
 
                     @push('after-script')

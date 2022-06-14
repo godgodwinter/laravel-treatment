@@ -68,7 +68,7 @@ class admintreatmentcontroller extends Controller
             [
                 'nama' => 'required',
                 'harga' => 'required|integer|min:1',
-                'reminderweek' => 'required|integer|min:1',
+                // 'reminderweek' => 'required|integer|min:1',
 
             ],
             [
@@ -80,7 +80,7 @@ class admintreatmentcontroller extends Controller
             array(
                 'nama'     =>   $request->nama,
                 'harga'     =>   $request->harga,
-                'reminderweek'     =>   $request->reminderweek,
+                // 'reminderweek'     =>   $request->reminderweek,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             )
@@ -135,7 +135,7 @@ class admintreatmentcontroller extends Controller
             [
                 'nama' => 'required',
                 'harga' => 'required|integer|min:1',
-                'reminderweek' => 'required|integer|min:1',
+                // 'reminderweek' => 'required|integer|min:1',
 
             ],
             [
@@ -148,7 +148,7 @@ class admintreatmentcontroller extends Controller
             ->update([
                 'nama'     =>   $request->nama,
                 'harga'     =>   $request->harga,
-                'reminderweek'     =>   $request->reminderweek,
+                // 'reminderweek'     =>   $request->reminderweek,
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
 

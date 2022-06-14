@@ -56,7 +56,9 @@ perawatan
 
 
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
-                            <label for="treatment_id">Pilih Treatment <code >(reminder per minggu)</code></label>
+                            <label for="treatment_id">Pilih Treatment
+                                {{-- <code >(reminder per minggu)</code> --}}
+                            </label>
 
                             <select class="js-example-basic-single form-control-sm @error('treatment_id')
                             is-invalid
